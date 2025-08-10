@@ -1,0 +1,78 @@
+<?php
+
+namespace App\Http\Controllers\api;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Http\Requests\Register;
+use App\Http\Requests\Login;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;  
+use Exception;  
+use Auth;
+
+class AuthenticationController extends Controller
+{
+    //Register Function
+
+    public function Register(Register $request)
+    {
+        try {
+            $user = User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+            ]);
+
+            $token = $user->createToken('app')->accessToken;
+
+            return response([
+                'message' => 'Registration Successful',
+                'token' => $token,
+                'user' => $user,
+            ], 200);
+        } catch (Exception $exception) {
+            return response()->json([
+                'message' => $exception->getMessage(),
+            ], 400);
+        }
+    }
+
+    //Login Function
+
+    public function Login(Request $request){
+
+        try {
+            
+            if(Auth::attempt($request->only('email' , 'password'))){
+
+                $user = Auth::user();
+                $token = $user->createToken('app')->accessToken;
+
+                return response([
+
+                    'message' => 'Login Successfull',
+                    'token' => $token,
+                    'user' => $user,
+
+                ] , 200);
+
+            }
+
+        } catch (Excetpion $e) {
+         
+            return response()->json([
+
+                'message' => $e->getMessage(),
+
+            ], 400);
+            
+        }
+        return response([
+
+            'message' => 'Invalid Email or Password',
+
+        ], 401);
+
+    }
+}

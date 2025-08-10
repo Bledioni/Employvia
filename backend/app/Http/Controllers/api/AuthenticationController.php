@@ -47,7 +47,7 @@ class AuthenticationController extends Controller
             if(Auth::attempt($request->only('email' , 'password'))){
 
                 $user = Auth::user();
-                $token = $user->createToken('app')->accessToken;
+                $token = $user->createToken('app')->plainTextToken;
 
                 return response([
 

@@ -7,6 +7,7 @@ use Laravel\Passport\Http\Controllers\ClientController;
 use Laravel\Passport\Http\Controllers\PersonalAccessTokenController;
 use App\Http\Controllers\api\AuthenticationController;
 use App\Http\Controllers\api\ResetPasswordController;
+use App\Http\Controllers\api\ForgetPasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,8 +33,23 @@ Route::get('oauth/clients', [ClientController::class, 'index'])
 Route::post('oauth/personal-access-tokens', [PersonalAccessTokenController::class, 'store'])
     ->middleware('auth:api');
 
+
+//Auth Controller API
+
 //Register Route API
 Route::post('/register', [AuthenticationController::class, 'Register']);
 
 //Login Route API
 Route::post('/login' , [AuthenticationController::class , 'Login']);
+
+// ---------------------------------------------------------------------------
+
+// Resset Password API
+
+Route::post('/resetpassword' , [ResetPasswordController::class , 'ResetPassword']);
+
+// ----------------------------------------------------------------------------
+
+//Forget Password
+
+Route::post('/forgetpassword' , [ForgetPasswordController::class , 'ForgetPassword']);

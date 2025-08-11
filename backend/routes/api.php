@@ -8,6 +8,7 @@ use Laravel\Passport\Http\Controllers\PersonalAccessTokenController;
 use App\Http\Controllers\api\AuthenticationController;
 use App\Http\Controllers\api\ResetPasswordController;
 use App\Http\Controllers\api\ForgetPasswordController;
+use App\Http\Controllers\api\UserDashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,22 +35,29 @@ Route::post('oauth/personal-access-tokens', [PersonalAccessTokenController::clas
     ->middleware('auth:api');
 
 
-//Auth Controller API
+//Authentication API
 
-//Register Route API
+//Register API
 Route::post('/register', [AuthenticationController::class, 'Register']);
 
-//Login Route API
+//Login API
 Route::post('/login' , [AuthenticationController::class , 'Login']);
 
-// ---------------------------------------------------------------------------
-
-// Resset Password API
-
+//ResetPassword API
 Route::post('/resetpassword' , [ResetPasswordController::class , 'ResetPassword']);
 
-// ----------------------------------------------------------------------------
-
-//Forget Password
-
+//ForgetPassword API
 Route::post('/forgetpassword' , [ForgetPasswordController::class , 'ForgetPassword']);
+
+// ------------------------------------------------------
+
+// User Dashboard — show all jobs for users
+Route::middleware(['auth:sanctum'])->get('/user/dashboard', [UserDashboard::class, 'AllJobs']);
+
+
+// Employer Dashboard — protect and route to employer controller
+Route::middleware(['auth:sanctum'])->get('/employeer/dashboard', [EmployerDashboard::class, 'index']);
+
+
+// Admin Dashboard — protect and route to admin controller
+Route::middleware(['auth:sanctum'])->get('/admin/dashboard', [AdminDashboard::class, 'index']);

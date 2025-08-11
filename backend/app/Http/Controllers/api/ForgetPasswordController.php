@@ -23,40 +23,28 @@ class ForgetPasswordController extends Controller
 
             return response([
 
-                'message' => "Email Invalid",
-
-            ], 401);
+                'message' => "Email Not Found",
+                
+            ],  401);
 
         }
 
         $token = rand(10 , 100000);
 
-        try {
-            
-            DB::table('password_reset_tokens')->insert([
+        DB::table('password_reset_tokens')->updateOrInsert(
 
-                'email' => $email,
-                'token' => $token,
+            ['email' => $email],
+            ['token' => $token],
 
-            ]);
+        );
 
-            Mail::to($email)->send(new employviaMail($token));
+        Mail::to($email)->send(new employviaMail($token));
 
-            return response([
+        return response([
 
-                'message' => 'Reset Password Mail send on your email',
+            'message' => "Password Reset Link Has Been Successfully Send",
 
-            ], 200);
-
-        } catch (Exception $e) {
-            
-            return response()->json([
-
-                'message' => $e->getMessage(),
-
-            ] , 400);
-
-        }
+        ],  200);
 
     }
 }

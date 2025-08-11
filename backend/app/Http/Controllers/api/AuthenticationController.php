@@ -23,6 +23,7 @@ class AuthenticationController extends Controller
                 'name' => $request->name,
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
+                'role' => $request->role
 
             ]);
 
@@ -61,6 +62,22 @@ class AuthenticationController extends Controller
                     'user' => $user,
 
                 ] , 200);
+
+                if(auth()->user()->role === 'admin'){
+
+                    return redirect('/admin/dashboard');
+
+                }
+                else if(auth()->user()->role === 'user'){
+
+                    return redirect('/user/dashboard');
+
+                }
+                else if(auth()->user()->role === 'employeer'){
+
+                    return redirect('/employeer/dashboard');
+
+                }
 
             }
 

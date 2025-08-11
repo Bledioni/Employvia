@@ -41,7 +41,7 @@ class employviaMail extends Mailable
         return new Content(
             view: 'mail.forget',
             with: [
-                'token' => $this->token;
+                'token' => $this->token,
             ]
         );
     }

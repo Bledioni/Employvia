@@ -75,7 +75,7 @@ class AuthenticationController extends Controller
                 }
                 else if(auth()->user()->role === 'employeer'){
 
-                    return redirect('/employeer/dashboard');
+                    return redirect('/employeer/dashboard')
 
                 }
 

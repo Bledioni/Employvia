@@ -60,4 +60,4 @@ Route::middleware(['auth:sanctum'])->get('/employeer/dashboard', [EmployerDashbo
 
 
 // Admin Dashboard — protect and route to admin controller
-Route::middleware(['auth:sanctum'])->get('/admin/dashboard', [AdminDashboard::class, 'index']);
+Route::middleware(['auth:sanctum'])->get('/admin/dashboard', [AdminDashboard::class, 'index'])

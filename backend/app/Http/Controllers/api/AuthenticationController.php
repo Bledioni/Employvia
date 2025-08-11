@@ -18,23 +18,28 @@ class AuthenticationController extends Controller
     public function Register(Register $request)
     {
         try {
-            $user = User::create([
+            User::create([
+
                 'name' => $request->name,
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
+
             ]);
 
-            $token = $user->createToken('app')->accessToken;
-
             return response([
-                'message' => 'Registration Successful',
-                'token' => $token,
-                'user' => $user,
-            ], 200);
-        } catch (Exception $exception) {
+
+                    'message'=> "Registration Successfull",
+
+                ], 200);
+            
+        } catch (Excetpion $e) {
+            
             return response()->json([
-                'message' => $exception->getMessage(),
+
+                'message' => $e->getMessage(),
+
             ], 400);
+
         }
     }
 

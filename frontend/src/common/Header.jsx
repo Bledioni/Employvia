@@ -1,15 +1,27 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Nav from "./Nav";
+import Login from "../components/auth/Login";
+import Register from "../components/auth/Register";
+import Logout from "../components/auth/Logout";
+import ForgetPassword from "../components/auth/ForgetPassword";
+import ResetPassword from "../components/auth/ResetPassword";
 
-function Header() {
-  return (
-    <nav>
-      <Link to="/">Home</Link> |{" "}
-      <Link to="/login">Login</Link> |{" "}
-      <Link to="/register">Signup</Link> |{" "}
-      <Link to="/Logout">Logout</Link> |{" "}
-    </nav>
-  );
+function Header(){
+
+return(
+<Router>
+    <Nav />
+    <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/logout" element={<Logout />} />
+        <Route path="/forgetpassword" element={<ForgetPassword />} />
+        <Route path="/resetpassword/:token" element={<ResetPassword />} />
+    </Routes>
+</Router>
+    )
+
 }
 
 export default Header;

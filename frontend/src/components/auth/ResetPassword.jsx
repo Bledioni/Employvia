@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link  } from "react-router-dom";
 
 function ResetPassword(){
 
@@ -8,6 +8,8 @@ function ResetPassword(){
     const[email , setEmail] =useState('');
     const[password , setPassword] =useState('');
     const[confirmpassword , setConfirmPassword] =useState('');
+    const[successMessage, setSuccessMessage] = useState('');
+    const[errorMessage, setErrorMessage] = useState('');
 
     function handleSubmit(e){
 
@@ -23,21 +25,29 @@ function ResetPassword(){
         })
         .then(response => {
 
-            console.log("Password Has benn successfully changed" , response.data);
+            setSuccessMessage("Password has been successfully changed ✅");
 
         })
         .catch(error => {
 
-            console.log("Error" , error.response.data);
+            if(password !== password_confirmation){
+
+                setErrorMessage("Incorrect Password")
+
+            }
 
         })
+        
 
     }
 
     return(
 
-        <div>
-            <form onChange={handleSubmit}>
+        <div className="forgetpassword">
+            
+            <h2>Reset Password</h2>
+
+            <form onSubmit={handleSubmit}>
                 <input 
                     type="text"
                     placeholder="Code"
@@ -62,9 +72,12 @@ function ResetPassword(){
                     value={confirmpassword}
                     onChange={(e) => setConfirmPassword(e.target.value)} 
                 />
-                <button type="submit">Submit</button>
+                <button type="submit">Reset Password</button>
             </form>
+            {successMessage && <p>{successMessage}</p>}
+            {errorMessage && <p>{errorMessage}</p>}
         </div>
+
 
     )
 

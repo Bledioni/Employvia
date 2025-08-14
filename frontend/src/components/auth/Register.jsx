@@ -1,9 +1,11 @@
 import axios from "axios";
 import React, { useState } from "react";
+import forgetpassword from './style/forgetpassword.css';
 
 
 function Register(){
 
+    const[role , setRole] = useState('');
     const[name , setName] = useState('');
     const[email , setEmail] = useState('');
     const[password , setPassword] = useState('');
@@ -15,6 +17,7 @@ function Register(){
 
         axios.post('/register' ,{
 
+            role:role,
             name:name,
             email:email,
             password:password,
@@ -37,7 +40,16 @@ function Register(){
     return(
 
         <div>
-            <form onClick={handleSubmit}>
+            <form onSubmit={handleSubmit}>
+                <div>
+                    Sign In As
+                    <button type="button"
+                        onClick={() => setRole("user")}>
+                        Candidate
+                    </button>
+                    <button type="button"
+                        onClick={() => setRole("employer")}>Employeer</button>
+                </div>
                 <input 
                     type="text"
                     placeholder="Name"

@@ -27,13 +27,13 @@ class AuthenticationController extends Controller
 
             ]);
 
-            return response([
+            return response()->json([
 
                     'message'=> "Registration Successfull",
 
                 ], 200);
             
-        } catch (Excetpion $e) {
+        } catch (Exception $e) {
             
             return response()->json([
 

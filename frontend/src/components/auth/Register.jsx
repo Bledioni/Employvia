@@ -13,7 +13,7 @@ function Register(){
 
         e.preventDefault();
 
-        axios.post('register' ,{
+        axios.post('/register' ,{
 
             name:name,
             email:email,

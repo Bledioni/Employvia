@@ -1,9 +1,13 @@
 import axios from "axios";
-import React from "react";
+import React, { useEffect } from "react";
 
 function Logout(){
 
-    
+    useEffect(() => {
+
+        localStorage.removeItem('token');
+
+    } ,[])
 
 }
 

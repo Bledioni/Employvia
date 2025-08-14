@@ -1,5 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+
 
 function Login(){
 
@@ -49,6 +51,8 @@ function Login(){
                 />
                 <button type="submit">Login</button>
             </form>
+
+            <p>Forget Password <Link to="/forgetpassword">Reset</Link></p>
 
         </div>
 

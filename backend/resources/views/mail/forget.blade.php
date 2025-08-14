@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    <p>Change Your Password <a href="http://localhost:3000/reset/{{ $token }}" targe="_blank">Click Here</a></p>
+    <p>Change Your Password <a href="http://localhost:3000/resetpassword/{{ $token }}" targe="_blank">Click Here</a></p>
 
     <br>
     <p>PinCode:{{ $token }}</p>

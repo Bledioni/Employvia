@@ -6,7 +6,8 @@ function Header() {
     <nav>
       <Link to="/">Home</Link> |{" "}
       <Link to="/login">Login</Link> |{" "}
-      <Link to="/register">Signup</Link>
+      <Link to="/register">Signup</Link> |{" "}
+      <Link to="/Logout">Logout</Link> |{" "}
     </nav>
   );
 }

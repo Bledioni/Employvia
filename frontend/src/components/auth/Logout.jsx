@@ -7,4 +7,4 @@ function Logout(){
 
 }
 
-export default
+export default Logout;

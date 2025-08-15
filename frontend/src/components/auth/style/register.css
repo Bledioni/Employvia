@@ -4,8 +4,7 @@
 }
 
 body {
-    overflow-y: hidden;
-    overflow-x: hidden;
+   
 }
 
 .register-form-main-container {
@@ -13,7 +12,7 @@ body {
     justify-content: space-between;
     align-items: center;
     margin-inline: 10rem;
-    height: 105vh;
+    height: 100vh;
 }
 
 .register-form-main-container a:visited {
@@ -31,7 +30,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 25rem;
+    width: 30rem;
     gap: 1rem;
 }
 
@@ -59,6 +58,64 @@ body {
 
 .register-form-image img {
     height: 100%;
+    margin-top: 5rem;
+}
+
+
+.register-form h2 , p{
+
+    margin: 0;
+    margin-top: 1rem;
+
+}
+
+.register-form p{
+
+    margin-bottom: 1rem;
+
+}
+
+.register-form-role{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color:rgb(231, 231, 231);
+    padding: 1rem;
+    font-weight: 600;
+    gap: 1rem;
+    color: rgb(114, 114, 114);
+    border-radius: 5px;
+}
+
+.register-form-role-select{
+
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.register-form-role-select button{
+
+    background-color: rgb(231, 231, 231);
+    color: rgb(67, 67, 67);
+    font-weight: 500;
+    width: 14rem;
+
+}
+
+.register-form-role-select button:hover{
+
+    color: white;
+
+}
+
+.register-form-role-select button.active{
+
+    background-color: #003776;
+    color: white;
+
 }
 
 @media(max-width:1800px) {
@@ -92,10 +149,16 @@ body {
 
 @media(max-width:520px) {
     .register-form {
-        margin-top: 20rem;
+        margin-top: 5rem;
     }
 
     .register-form form {
         width: 20rem;
+    }
+    
+    .register-form-role-select button{
+
+        width: 9rem;
+
     }
 }

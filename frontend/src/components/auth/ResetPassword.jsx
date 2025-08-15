@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Link  , useNavigate} from "react-router-dom";
-import forgetpassword from './style/forgetpassword.css';
+import resetpassword from './style/resetpassword.css';
 
 function ResetPassword(){
 
@@ -56,7 +56,7 @@ function ResetPassword(){
     }
     return(
 
-        <div className="forgetpassword">
+        <div className="resetpassword">
             
             <h2>Reset Password</h2>
 

@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Nav from "./Nav";
 import Login from "../components/auth/Login";
 import Register from "../components/auth/Register";
 import Logout from "../components/auth/Logout";
@@ -11,7 +10,6 @@ function Header(){
 
 return(
 <Router>
-    <Nav />
     <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />

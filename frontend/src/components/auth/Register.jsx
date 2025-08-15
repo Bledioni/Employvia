@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
-
-
+import staffTalking from '../../images/login/staffTalking.png';
+import register from '../auth/style/register.css';
 
 function Register(){
 
@@ -39,9 +39,9 @@ function Register(){
 
     return(
 
-        <div>
+        <div className="register-form-main-container">
+            <div className="register-form">
             <form onSubmit={handleSubmit}>
-                <div>
                     Sign In As
                     <button type="button"
                         onClick={() => setRole("user")}>
@@ -49,7 +49,6 @@ function Register(){
                     </button>
                     <button type="button"
                         onClick={() => setRole("employer")}>Employeer</button>
-                </div>
                 <input 
                     type="text"
                     placeholder="Name"
@@ -76,6 +75,10 @@ function Register(){
                 />
                 <button type="submit" >Submit</button>
             </form>
+            </div>
+            <div className="register-form-image">
+                <img src={staffTalking} alt="" />
+            </div>
         </div>
 
     )

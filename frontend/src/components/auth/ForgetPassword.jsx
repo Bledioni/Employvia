@@ -30,7 +30,7 @@ function ForgetPassword(){
 
     return(
 
-        <div>
+        <div className="forgetpassword">
             <form onSubmit={handleSubmit}>
                 <input 
                     type="email"

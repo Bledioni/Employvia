@@ -1,7 +1,7 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { use, useState } from "react";
 import { Link } from "react-router-dom";
-import login from './style/login.css';
+import login from '../auth/style/login.css';
 import staffTalking from '../../images/login/staffTalking.png';
 
 
@@ -9,6 +9,7 @@ function Login(){
 
     const [email , setEmail] = useState('');
     const [password , setPassword] = useState('');
+    const [errorMessage , setErrorMessage] = useState('');
 
     function handleSubmit(e){
         
@@ -27,18 +28,27 @@ function Login(){
 
         })
         .catch(error => {
-
-            console.log("Error: " , error.data.response);
-
-        })
+            if (error.response) {
+                setErrorMessage(error.response.data.message);
+                setTimeout(() => {
+                    setErrorMessage('');
+                }, 5000);
+            } else {
+                setErrorMessage("Something went wrong. Please try again.");
+                setTimeout(() => {
+                    setErrorMessage('');
+                }, 5000);
+            }
+        });
 
     }
 
     return(
 
         <div className="login-form-main-container">
-        
             <div className="login-form">
+                <h2>Sign In</h2>
+                <p>Don't have an account? <Link to="/register">Create account</Link></p>
                 <form onSubmit={handleSubmit}>
                     <input 
                         type="email"
@@ -54,6 +64,7 @@ function Login(){
                     />
                     <button type="submit">Login</button>
                 </form>
+                {errorMessage &&<p style={{color: '#e74c3c'}}>{errorMessage}</p>}
             <p><Link to="/forgetpassword">Forget Password</Link></p>
             </div>
 

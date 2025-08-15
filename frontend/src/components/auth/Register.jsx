@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
-import forgetpassword from './style/forgetpassword.css';
+
 
 
 function Register(){

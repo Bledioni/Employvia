@@ -49,7 +49,7 @@ function InsertCompany() {
                 message = error.response.data.message || message;
             }
             console.log("Error", message);
-            alert(message);
+
         });
     }
 

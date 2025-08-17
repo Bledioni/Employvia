@@ -13,8 +13,15 @@ return new class extends Migration
     {
         Schema::create('companies', function (Blueprint $table) {
             $table->id('id');
-            $table->id('user_id');
-            $table->string('contact_info');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->string('company_name');
+            $table->string('company_info');
+            $table->string('organization_type');
+            $table->string('industry_type');
+            $table->integer('team_size');
+            $table->year('year_of_estabilshment');
+            $table->string('company_website');
+            $table->string('company_vision');
             $table->string('logo');
             $table->timestamps();
         });
@@ -22,7 +29,7 @@ return new class extends Migration
 
     /**
      * Reverse the migrations.
-     */
+     */ 
     public function down(): void
     {
         Schema::dropIfExists('companies');

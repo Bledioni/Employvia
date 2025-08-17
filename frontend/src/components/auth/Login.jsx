@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { use, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link , useNavigate} from "react-router-dom";
 import login from '../auth/style/login.css';
 import staffTalking from '../../images/login/staffTalking.png';
 
@@ -10,6 +10,7 @@ function Login(){
     const [email , setEmail] = useState('');
     const [password , setPassword] = useState('');
     const [errorMessage , setErrorMessage] = useState('');
+    const navigate = useNavigate();
 
     function handleSubmit(e){
         
@@ -25,6 +26,14 @@ function Login(){
 
             console.log("Login Successfully" , response.data);
             localStorage.setItem("token" , response.data.token);
+
+            const role = response.data.user.role;
+
+            if(role === 'employer'){
+
+                navigate('/insertcompany');
+
+            }
 
         })
         .catch(error => {

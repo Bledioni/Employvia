@@ -9,7 +9,7 @@ use App\Http\Controllers\api\AuthenticationController;
 use App\Http\Controllers\api\ResetPasswordController;
 use App\Http\Controllers\api\ForgetPasswordController;
 use App\Http\Controllers\api\UserDashboard;
-
+use App\Http\Controllers\Employer\CompanyController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -52,12 +52,13 @@ Route::post('/forgetpassword' , [ForgetPasswordController::class , 'ForgetPasswo
 // ------------------------------------------------------
 
 // User Dashboard — show all jobs for users
-Route::middleware(['auth:sanctum'])->get('/user/dashboard', [UserDashboard::class, 'AllJobs']);
+// Route::middleware(['auth:sanctum'])->get('/user/dashboard', [UserDashboard::class, 'AllJobs']);
 
 
 // Employer Dashboard — protect and route to employer controller
-Route::middleware(['auth:sanctum'])->get('/employeer/dashboard', [EmployerDashboard::class, 'index']);
+Route::middleware(['auth:sanctum'])->get('/employeer/dashboard', [CompanyController::class, 'index']);
+Route::middleware(['auth:sanctum'])->post('/insertcompany', [CompanyController::class, 'InsertCompany']);
 
 
 // Admin Dashboard — protect and route to admin controller
-Route::middleware(['auth:sanctum'])->get('/admin/dashboard', [AdminDashboard::class, 'index']);
+// Route::middleware(['auth:sanctum'])->get('/admin/dashboard', [AdminDashboard::class, 'index']);

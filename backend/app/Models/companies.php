@@ -16,9 +16,12 @@ class Companies extends Model
         'organization_type',
         'industry_type',
         'team_size',
-        'year_of_estabilshment',
+        'year_of_establishment',
         'company_website',
         'company_vision',
+        'map_location',
+        'phone',
+        'email',
         'logo',
 
     ];

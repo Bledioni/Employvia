@@ -60,5 +60,6 @@ Route::middleware(['auth:sanctum'])->get('/employeer/dashboard', [CompanyControl
 Route::middleware(['auth:sanctum'])->post('/insertcompany', [CompanyController::class, 'InsertCompany']);
 
 
+
 // Admin Dashboard — protect and route to admin controller
 // Route::middleware(['auth:sanctum'])->get('/admin/dashboard', [AdminDashboard::class, 'index']);

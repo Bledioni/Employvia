@@ -25,9 +25,12 @@ class CompanyController extends Controller
                 'organization_type' => $request->organization_type,
                 'industry_type' => $request->industry_type,
                 'team_size' => $request->team_size,
-                'year_of_estabilshment' => $request->year_of_estabilshment,
+                'year_of_establishment' => $request->year_of_establishment,
                 'company_website' => $request->company_website,
                 'company_vision' => $request->company_vision,
+                'map_location' => $request->map_location,
+                'phone' => $request->phone,
+                'email' => $request->email,
                 'logo' => $logoPath,
             ]);
 

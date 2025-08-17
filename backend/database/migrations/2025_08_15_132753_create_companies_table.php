@@ -19,10 +19,13 @@ return new class extends Migration
             $table->string('organization_type');
             $table->string('industry_type');
             $table->integer('team_size');
-            $table->year('year_of_estabilshment');
+            $table->year('year_of_establishment');
             $table->string('company_website');
             $table->string('company_vision');
             $table->string('logo');
+            $table->string('map_location')->nullable();
+            $table->string('phone');
+            $table->string('email')->unique();
             $table->timestamps();
         });
     }

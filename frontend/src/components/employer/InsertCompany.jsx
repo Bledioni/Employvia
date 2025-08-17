@@ -10,9 +10,12 @@ function InsertCompany() {
     const [organizationType, setOrganizationType] = useState('');
     const [industryType, setIndustryType] = useState('');
     const [teamSize, setTeamSize] = useState('');
-    const [yearOfEstabilshment, setYearOfEstabilshment] = useState('');
+    const [yearOfEstablishment, setYearOfEstablishment] = useState('');
     const [companyWebsite, setCompanyWebsite] = useState('');
     const [companyVision, setCompanyVision] = useState('');
+    const [mapLocation, setMapLocation] = useState('');
+    const [phone, setPhone] = useState('');
+    const [email, setEmail] = useState('');
     const navigate = useNavigate('');
 
     function handleSubmit(e) {
@@ -27,9 +30,12 @@ function InsertCompany() {
         formData.append('organization_type', organizationType);
         formData.append('industry_type', industryType);
         formData.append('team_size', teamSize);
-        formData.append('year_of_estabilshment', yearOfEstabilshment);
+        formData.append('year_of_establishment', yearOfEstablishment);
         formData.append('company_website', companyWebsite);
         formData.append('company_vision', companyVision);
+        formData.append('map_location', mapLocation);
+        formData.append('phone', phone);
+        formData.append('email', email);
         formData.append('logo', logo);
 
 
@@ -57,6 +63,7 @@ function InsertCompany() {
         <div>
             {step === 1 && (
                 <form onSubmit={(e) => { e.preventDefault(); setStep(2); }}>
+                    <h3>Company Info</h3>
                     <input type="file" onChange={(e) => setLogo(e.target.files[0])} />
                     <input 
                         type="text"
@@ -75,7 +82,7 @@ function InsertCompany() {
             )}
 
             {step === 2 && (
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={(e) => {e.preventDefault(); setStep(3);}}>
                     <input 
                         type="text"
                         placeholder="Organization Type"
@@ -97,8 +104,8 @@ function InsertCompany() {
                     <input 
                         type="text"
                         placeholder="Year of Establishment"
-                        value={yearOfEstabilshment}
-                        onChange={(e) => setYearOfEstabilshment(e.target.value)} 
+                        value={yearOfEstablishment}
+                        onChange={(e) => setYearOfEstablishment(e.target.value)} 
                     />
                     <input 
                         type="text"
@@ -112,8 +119,34 @@ function InsertCompany() {
                         value={companyVision}
                         onChange={(e) => setCompanyVision(e.target.value)} 
                     />
-                    <button type="submit">Submit</button>
+                    <button type="submit">Next</button>
+                    <form onSubmit={(e) => {e.preventDefault(); setStep(1);}}><button type="submit">Back</button></form>
                 </form>
+            )}
+            {step === 3 && (
+                <div>
+                    <form onSubmit={handleSubmit}>
+                    <input 
+                        type="text"
+                        placeholder="Map Location"
+                        value={mapLocation}
+                        onChange={(e) => setMapLocation(e.target.value)} 
+                    />
+                    <input 
+                        type="number"
+                        placeholder="Phone Number"
+                        value={phone}
+                        onChange={(e) => setPhone(e.target.value)} 
+                    />
+                    <input 
+                        type="email"
+                        placeholder="Set Email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)} 
+                    />
+                    <form onSubmit={(e) => {e.preventDefault(); setStep(2);}}><button type="submit">Back</button></form>
+                    </form>
+                </div>
             )}
         </div>
     );

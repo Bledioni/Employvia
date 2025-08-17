@@ -28,9 +28,12 @@ class InsertCompanyRequest extends FormRequest
             'organization_type' => 'required|string|max:255',
             'industry_type' => 'required|string|max:255',
             'team_size' => 'required|integer|min:1',
-            'year_of_estabilshment' => 'required|digits:4|integer|min:1900|max:' . date('Y'),
+            'year_of_establishment' => 'required|digits:4|integer|min:1900|max:' . date('Y'),
             'company_website' => 'nullable|url|max:255',
             'company_vision' => 'required|string|max:1000',
+            'map_location' => 'nullable|string|max:1000',
+            'phone' => 'required|string|max:25',
+            'email' => 'required|email|max:55',
             'logo' => 'nullable|file|image|max:2048',
         ];
     }

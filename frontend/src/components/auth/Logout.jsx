@@ -6,6 +6,8 @@ function Logout(){
     useEffect(() => {
 
         localStorage.removeItem('token');
+        localStorage.removeItem('user_id');
+        localStorage.removeItem('role');
 
     } ,[])
 

@@ -26,6 +26,7 @@ function Login(){
 
             console.log("Login Successfully" , response.data);
             localStorage.setItem("token" , response.data.token);
+            localStorage.setItem("user_id" , response.data.user.id);
 
             const role = response.data.user.role;
 

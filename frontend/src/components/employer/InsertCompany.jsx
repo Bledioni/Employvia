@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import '@fortawesome/fontawesome-free/css/all.min.css';
 import { useNavigate } from "react-router-dom";
 
 function InsertCompany() {
@@ -19,7 +20,7 @@ function InsertCompany() {
     const navigate = useNavigate('');
 
     function handleSubmit(e) {
-        e.preventDefault();
+        e.preventDefault()
 
         const formData = new FormData();
         const userId = localStorage.getItem("user_id");
@@ -63,7 +64,19 @@ function InsertCompany() {
         <div>
             {step === 1 && (
                 <form onSubmit={(e) => { e.preventDefault(); setStep(2); }}>
-                    <h3>Company Info</h3>
+
+                    <div className="insert-company-headline">
+                        <h4>EmployVia</h4>
+                        <div className="insert-company-headline-setup-progress">
+                            Setup Progress
+                        </div>
+                    </div>
+                    <div className="insert-company-nav">
+                        <h4><i class="fa-solid fa-user"></i>Company Info</h4>
+                        <h4><i class="fa-solid fa-circle-info"></i>Founding Info</h4>
+                        <h4><i class="fa-solid fa-at"></i>Contact</h4>
+                    </div>
+
                     <input type="file" onChange={(e) => setLogo(e.target.files[0])} />
                     <input 
                         type="text"
@@ -77,7 +90,7 @@ function InsertCompany() {
                         value={companyInfo}
                         onChange={(e) => setCompanyInfo(e.target.value)} 
                     />
-                    <button type="submit">Next</button>
+                    <button type="submit">Save & Next</button>
                 </form>
             )}
 
@@ -119,8 +132,8 @@ function InsertCompany() {
                         value={companyVision}
                         onChange={(e) => setCompanyVision(e.target.value)} 
                     />
-                    <button type="submit">Next</button>
-                    <form onSubmit={(e) => {e.preventDefault(); setStep(1);}}><button type="submit">Back</button></form>
+                    <form onSubmit={(e) => {e.preventDefault(); setStep(1);}}><button type="submit">Previos</button></form>
+                    <button type="submit">Save & Next</button>
                 </form>
             )}
             {step === 3 && (
@@ -144,7 +157,8 @@ function InsertCompany() {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)} 
                     />
-                    <form onSubmit={(e) => {e.preventDefault(); setStep(2);}}><button type="submit">Back</button></form>
+                    <form onSubmit={(e) => {e.preventDefault(); setStep(2);}}><button type="submit">Previos</button></form>
+                    <button type="submit">Finish Editing</button>
                     </form>
                 </div>
             )}

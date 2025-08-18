@@ -20,7 +20,7 @@ function InsertCompany() {
     const navigate = useNavigate('');
 
     function handleSubmit(e) {
-        e.preventDefault()
+        e.preventDefault();
 
         const formData = new FormData();
         const userId = localStorage.getItem("user_id");

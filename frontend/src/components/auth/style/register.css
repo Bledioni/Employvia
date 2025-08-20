@@ -3,10 +3,6 @@
     text-decoration: none;
 }
 
-body {
-   
-}
-
 .register-form-main-container {
     display: flex;
     justify-content: space-between;
@@ -119,6 +115,7 @@ body {
 }
 
 @media(max-width:1800px) {
+
     .register-form-image img {
         height: 50rem;
     }
@@ -148,6 +145,9 @@ body {
 }
 
 @media(max-width:520px) {
+
+   
+    
     .register-form {
         margin-top: 5rem;
     }

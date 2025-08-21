@@ -18,7 +18,7 @@ return(
         <Route path="/logout" element={<Logout />} />
         <Route path="/forgetpassword" element={<ForgetPassword />} />
         <Route path="/resetpassword/:token" element={<ResetPassword />} />
-        <Route path="/insertcompany" element={<ProtectedRoute><InsertCompany /></ProtectedRoute>} />
+        <Route path="/insertcompany" element={<InsertCompany />} />
     </Routes>
 </Router>
     )

@@ -99,6 +99,24 @@ body {
 
 }
 
+.company-info-container form input{
+
+  padding: 12px;
+  border: 1px rgb(149, 149, 149) solid;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.company-info-container form button{
+
+  width: 10rem;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  background-color: #0a65cc;
+
+}
+
 .company-info-image-text-container{
 
   display: flex;
@@ -143,4 +161,68 @@ body {
 
 .custom-file-upload input[type="file"] {
   display: none;
+}
+
+
+/* ----responsivnes------ */
+
+@media(max-width: 768px){
+
+  .company-info-container form{
+
+    margin-inline: 1rem;
+
+  }
+
+  .insert-company-headline-setup-progress-1{
+
+    display: none;
+
+  }
+
+  .insert-company-headline{
+
+    display: flex;
+    justify-content: start;
+
+    margin-inline: 1rem;
+
+  }
+
+  .insert-company-headline-setup-progress p{
+
+    display: none;
+
+  }
+
+  .insert-company-nav{
+
+    margin-inline: 1rem;
+
+  }
+
+  .custom-file-upload{
+
+    padding: 1rem;
+
+  }
+
+  .company-info-image-text-container p{
+
+    font-size: 16px;
+
+  }
+
+  .insert-company-nav i{
+
+    display: none;
+
+  }
+
+  .insert-company-nav{
+
+    gap: 1.5rem;
+
+  }
+
 }

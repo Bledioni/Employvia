@@ -24,7 +24,9 @@ function CompanyNav({ step }) {
 // 🔹 Step 1
 function Step1({ companyData, setCompanyData, nextStep }) {
   return (
-    <form onSubmit={(e) => { e.preventDefault(); nextStep(); }}>
+
+    <div className="company-info-container">
+      <form onSubmit={(e) => { e.preventDefault(); nextStep(); }}>
       <label className="custom-file-upload">
         <div className="company-info-image-text-container">
           <p><i className="fa-solid fa-cloud-arrow-up"></i></p>
@@ -59,6 +61,8 @@ function Step1({ companyData, setCompanyData, nextStep }) {
       />
       <button type="submit">Save & Next</button>
     </form>
+    </div>
+
   );
 }
 

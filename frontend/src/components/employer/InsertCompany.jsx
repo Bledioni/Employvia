@@ -3,6 +3,7 @@ import axios from "axios";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { useNavigate } from "react-router-dom";
 import "./style/insertcompany.css";
+import "./style/insertcompany2.css";
 
 // 🔹 Navigation Component
 function CompanyNav({ step }) {
@@ -69,58 +70,63 @@ function Step1({ companyData, setCompanyData, nextStep }) {
 // 🔹 Step 2
 function Step2({ companyData, setCompanyData, prevStep, nextStep }) {
   return (
-    <form onSubmit={(e) => { e.preventDefault(); nextStep(); }}>
-      <input
-        type="text"
-        placeholder="Organization Type"
-        value={companyData.organizationType}
-        onChange={(e) =>
-          setCompanyData({ ...companyData, organizationType: e.target.value })
-        }
-      />
-      <input
-        type="text"
-        placeholder="Industry Types"
-        value={companyData.industryType}
-        onChange={(e) =>
-          setCompanyData({ ...companyData, industryType: e.target.value })
-        }
-      />
-      <input
-        type="text"
-        placeholder="Team Size"
-        value={companyData.teamSize}
-        onChange={(e) =>
-          setCompanyData({ ...companyData, teamSize: e.target.value })
-        }
-      />
-      <input
-        type="text"
-        placeholder="Year of Establishment"
-        value={companyData.yearOfEstablishment}
-        onChange={(e) =>
-          setCompanyData({ ...companyData, yearOfEstablishment: e.target.value })
-        }
-      />
-      <input
-        type="text"
-        placeholder="Company Website"
-        value={companyData.companyWebsite}
-        onChange={(e) =>
-          setCompanyData({ ...companyData, companyWebsite: e.target.value })
-        }
-      />
-      <input
-        type="text"
-        placeholder="Company Vision"
-        value={companyData.companyVision}
-        onChange={(e) =>
-          setCompanyData({ ...companyData, companyVision: e.target.value })
-        }
-      />
-      <button type="button" onClick={prevStep}>Previous</button>
-      <button type="submit">Save & Next</button>
-    </form>
+    <div className="company-info-container-1">
+      <form onSubmit={(e) => { e.preventDefault(); nextStep(); }}>
+
+        <div className="company-info-container-1-input">
+          <input
+          type="text"
+          placeholder="Organization Type"
+          value={companyData.organizationType}
+          onChange={(e) =>
+            setCompanyData({ ...companyData, organizationType: e.target.value })
+          }
+        />
+        <input
+          type="text"
+          placeholder="Industry Types"
+          value={companyData.industryType}
+          onChange={(e) =>
+            setCompanyData({ ...companyData, industryType: e.target.value })
+          }
+        />
+        <input
+          type="text"
+          placeholder="Team Size"
+          value={companyData.teamSize}
+          onChange={(e) =>
+            setCompanyData({ ...companyData, teamSize: e.target.value })
+          }
+        />
+        <input
+          type="text"
+          placeholder="Year of Establishment"
+          value={companyData.yearOfEstablishment}
+          onChange={(e) =>
+            setCompanyData({ ...companyData, yearOfEstablishment: e.target.value })
+          }
+        />
+        <input
+          type="text"
+          placeholder="Company Website"
+          value={companyData.companyWebsite}
+          onChange={(e) =>
+            setCompanyData({ ...companyData, companyWebsite: e.target.value })
+          }
+        />
+        <input
+          type="text"
+          placeholder="Company Vision"
+          value={companyData.companyVision}
+          onChange={(e) =>
+            setCompanyData({ ...companyData, companyVision: e.target.value })
+          }
+        />
+        </div>        
+        <button type="button" onClick={prevStep}>Previous</button>
+        <button type="submit">Save & Next</button>
+      </form>
+      </div>
   );
 }
 

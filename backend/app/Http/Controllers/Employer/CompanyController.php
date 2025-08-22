@@ -18,24 +18,25 @@ class CompanyController extends Controller
                 $logoPath = $request->file('logo')->store('logo', 'public');
             }
 
-            Companies::create([
-                'user_id' => $request->user_id,
-                'company_name' => $request->company_name,
-                'company_info' => $request->company_info,
-                'organization_type' => $request->organization_type,
-                'industry_type' => $request->industry_type,
-                'team_size' => $request->team_size,
-                'year_of_establishment' => $request->year_of_establishment,
-                'company_website' => $request->company_website,
-                'company_vision' => $request->company_vision,
-                'map_location' => $request->map_location,
-                'phone' => $request->phone,
-                'email' => $request->email,
-                'logo' => $logoPath,
-            ]);
+            $company = Companies::create([
+                    'user_id' => $request->user_id,
+                    'company_name' => $request->company_name,
+                    'company_info' => $request->company_info,
+                    'organization_type' => $request->organization_type,
+                    'industry_type' => $request->industry_type,
+                    'team_size' => $request->team_size,
+                    'year_of_establishment' => $request->year_of_establishment,
+                    'company_website' => $request->company_website,
+                    'company_vision' => $request->company_vision,
+                    'map_location' => $request->map_location,
+                    'phone' => $request->phone,
+                    'email' => $request->email,
+                    'logo' => $logoPath,
+                ]);
 
             return response()->json([
                 'message' => 'Company has been successfully saved',
+                'company_id' => $company->id,
             ], 200);
 
         } catch (\Throwable $th) {
@@ -44,4 +45,19 @@ class CompanyController extends Controller
             ], 500);
         }
     }
+
+
+    public function checkCompany($user_id){
+    $company = Companies::where('user_id', $user_id)->first();
+
+    if ($company) {
+        return response()->json([
+            'hasCompany' => true,
+            'company_id' => $company->id,
+        ]);
+    }
+
+    return response()->json(['hasCompany' => false]);
+}
+
 }

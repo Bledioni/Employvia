@@ -18,7 +18,7 @@ function CompanyRegistered(){
         <i class="fa-solid fa-check-double"></i>
         <h3>🎉Congratulations, Your profile is 100% complete!</h3>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate dicta hic eos mollitia in explicabo iure non tempore maiores accusantium.</p>
-        <Link to='/postjob'><button>Post Job</button></Link>
+        <Link to='/jobsdashboard'><button>Post Job</button></Link>
       </div>
     </div>
       

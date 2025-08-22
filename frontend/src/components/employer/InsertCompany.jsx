@@ -218,6 +218,8 @@ function InsertCompany() {
       },
     })
     .then((response) => {
+      
+      localStorage.setItem('company_id', response.data.company_id);
       console.log("Company inserted successfully", response.data);
       navigate("/companyregistered");
     })

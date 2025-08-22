@@ -58,6 +58,11 @@ Route::middleware(['auth:sanctum'])->get('/employeer/dashboard', [CompanyControl
 //SetUp Company API
 Route::middleware(['auth:sanctum'])->post('/insertcompany', [CompanyController::class, 'InsertCompany']);
 
+//Check User Company API
+
+Route::get('/check-company/{user_id}', [CompanyController::class, 'checkCompany']);
+
+
 //Insert Job API 
 Route::middleware(['auth:sanctum'])->post('/insertjob' , [JobController:: class , 'InsertJob']); 
 

@@ -5,8 +5,10 @@ import { useNavigate } from "react-router-dom";
 import "./style/insertcompany.css";
 import "./style/insertcompany2.css";
 
+
 // 🔹 Navigation Component
 function CompanyNav({ step }) {
+  
   return (
     <div className="insert-company-nav">
       <h4 className={step === 1 ? "active" : ""}>
@@ -211,6 +213,7 @@ function InsertCompany() {
     formData.append("email", companyData.email);
     formData.append("logo", companyData.logo);
 
+  
     axios.post("/insertcompany", formData, {
       headers: {
         "Content-Type": "multipart/form-data",
@@ -222,6 +225,7 @@ function InsertCompany() {
       localStorage.setItem('company_id', response.data.company_id);
       console.log("Company inserted successfully", response.data);
       navigate("/companyregistered");
+      
     })
     .catch((error) => {
       let message = "Something went wrong.";
@@ -233,6 +237,7 @@ function InsertCompany() {
     });
   };
 
+  
   return (
     <div>
       <div className="insert-company-headline">

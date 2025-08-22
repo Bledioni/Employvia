@@ -219,7 +219,6 @@ function InsertCompany() {
     })
     .then((response) => {
       console.log("Company inserted successfully", response.data);
-      alert("Company registered successfully!");
       navigate("/companyregistered");
     })
     .catch((error) => {

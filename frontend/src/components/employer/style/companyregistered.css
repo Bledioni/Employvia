@@ -1,0 +1,81 @@
+.company-registered-dashboard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 90%; 
+  max-width: 30rem; 
+  margin: auto;
+  margin-top: 10rem;
+  padding: 1rem;
+  text-align: center;
+  gap: 1rem;
+}
+
+.company-registered-dashboard h3,
+.company-registered-dashboard p,
+.company-registered-dashboard button {
+  margin: 0;
+}
+
+.company-registered-dashboard i {
+  width: 80px;  
+  height: 80px; 
+  display: flex; 
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%; 
+  background-color: #d7eaff;
+  color: #0a65cc;
+  font-size: 28px;
+}
+
+.company-registered-dashboard button {
+  background-color: #0a65cc;
+  color: white;
+  width: 100%;
+  width: 10rem;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* Tablet screens */
+@media (max-width: 768px) {
+  .company-registered-dashboard {
+    width: 95%;
+    margin-top: 5rem;
+  }
+
+  .company-registered-dashboard i {
+    width: 70px;
+    height: 70px;
+    font-size: 24px;
+  }
+}
+
+/* Mobile screens */
+@media (max-width: 500px) {
+  .company-registered-dashboard {
+    padding: 0.8rem;
+    margin-top: 10rem;
+  }
+
+  .company-registered-dashboard h3,
+  .company-registered-dashboard p {
+    font-size: 14px;
+  }
+
+  .company-registered-dashboard i {
+    width: 60px;
+    height: 60px;
+    font-size: 20px;
+  }
+
+  .company-registered-dashboard button {
+    width: 8rem;
+    padding: 0.6rem;
+    font-size: 14px;
+  }
+}

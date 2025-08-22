@@ -114,6 +114,8 @@ body {
   border: none;
   border-radius: 5px;
   background-color: #0a65cc;
+  padding: 0.8rem;
+  cursor: pointer;
 
 }
 

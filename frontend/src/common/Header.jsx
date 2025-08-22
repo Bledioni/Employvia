@@ -7,6 +7,7 @@ import ForgetPassword from "../components/auth/ForgetPassword";
 import ResetPassword from "../components/auth/ResetPassword";
 import InsertCompany from "../components/employer/InsertCompany";
 import ProtectedRoute from "./ProtectedRoute";
+import CompanyRegistered from "../components/employer/CompanyRegistered";
 
 function Header(){
 
@@ -18,7 +19,8 @@ return(
         <Route path="/logout" element={<Logout />} />
         <Route path="/forgetpassword" element={<ForgetPassword />} />
         <Route path="/resetpassword/:token" element={<ResetPassword />} />
-        <Route path="/insertcompany" element={<InsertCompany />} />
+        <Route path="/insertcompany" element={<ProtectedRoute><InsertCompany /></ProtectedRoute>} />
+        <Route path="/companyregistered" element={<ProtectedRoute><CompanyRegistered /></ProtectedRoute>} />
     </Routes>
 </Router>
     )

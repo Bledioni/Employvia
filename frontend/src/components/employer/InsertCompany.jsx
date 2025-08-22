@@ -99,12 +99,14 @@ function Step2({ companyData, setCompanyData, prevStep, nextStep }) {
           }
         />
         <input
-          type="text"
+          type="number"
           placeholder="Year of Establishment"
           value={companyData.yearOfEstablishment}
           onChange={(e) =>
             setCompanyData({ ...companyData, yearOfEstablishment: e.target.value })
           }
+          min="1900"
+          max={new Date().getFullYear()}
         />
         <input
           type="text"
@@ -116,15 +118,16 @@ function Step2({ companyData, setCompanyData, prevStep, nextStep }) {
         />
         <input
           type="text"
-          placeholder="Company Vision"
+          placeholder="Tell us about your company vision..."
+          id="company-info-container-company-vision"
           value={companyData.companyVision}
           onChange={(e) =>
             setCompanyData({ ...companyData, companyVision: e.target.value })
           }
         />
         </div>        
-        <button type="button" onClick={prevStep}>Previous</button>
-        <button type="submit">Save & Next</button>
+        <button id="company-info-container-previos-button" type="button" onClick={prevStep}>Previous</button>
+        <button id="company-info-container-save-button" type="submit">Save & Next</button>
       </form>
       </div>
   );
@@ -133,6 +136,7 @@ function Step2({ companyData, setCompanyData, prevStep, nextStep }) {
 // 🔹 Step 3
 function Step3({ companyData, setCompanyData, prevStep, handleSubmit }) {
   return (
+    <div className="company-info-container">
     <form onSubmit={handleSubmit}>
       <input
         type="text"
@@ -158,9 +162,12 @@ function Step3({ companyData, setCompanyData, prevStep, handleSubmit }) {
           setCompanyData({ ...companyData, email: e.target.value })
         }
       />
-      <button type="button" onClick={prevStep}>Previous</button>
-      <button type="submit">Finish Editing</button>
+      <div className="company-info-container-buttons">
+        <button id="company-info-container-previos-button" type="button" onClick={prevStep}>Previous</button>
+        <button id="company-info-container-save-button" type="submit">Finish Editing</button>
+      </div>
     </form>
+    </div>
   );
 }
 
@@ -213,7 +220,7 @@ function InsertCompany() {
     .then((response) => {
       console.log("Company inserted successfully", response.data);
       alert("Company registered successfully!");
-      navigate("/dashboard");
+      navigate("/companyregistered");
     })
     .catch((error) => {
       let message = "Something went wrong.";

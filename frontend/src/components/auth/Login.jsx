@@ -31,27 +31,27 @@ function Login(){
             const role = response.data.user.role;
 
             if (role === "employer") {
-  const userId = localStorage.getItem("user_id");
+            const userId = localStorage.getItem("user_id");
 
-    axios.get(`/check-company/${userId}`, {
-        headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`
-        }
-    })
-    .then((res) => {
-        if (res.data.hasCompany === true) {
-        localStorage.setItem("company_id", res.data.company_id);
-        navigate("/jobsdashboard");
-        } else {
-        localStorage.removeItem("company_id");
-        navigate("/insertcompany");
-        }
-    })
-    .catch((err) => {
-        console.error("Error checking company", err);
-        localStorage.removeItem("company_id");
-        navigate("/insertcompany");
-    });
+            axios.get(`/check-company/${userId}`, {
+                headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`
+                }
+            })
+            .then((res) => {
+                if (res.data.hasCompany === true) {
+                localStorage.setItem("company_id", res.data.company_id);
+                navigate("/jobsdashboard");
+                } else {
+                localStorage.removeItem("company_id");
+                navigate("/insertcompany");
+                }
+            })
+            .catch((err) => {
+                console.error("Error checking company", err);
+                localStorage.removeItem("company_id");
+                navigate("/insertcompany");
+            });
     }
 
 

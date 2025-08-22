@@ -9,6 +9,7 @@ import InsertCompany from "../components/employer/InsertCompany";
 import ProtectedRoute from "./ProtectedRoute";
 import CompanyRegistered from "../components/employer/CompanyRegistered";
 import JobsDashboard from '../components/employer/jobs/JobsDashboard';
+import ProtectedInsertCompany from "./ProtectedInsertCompany";
 
 function Header(){
 
@@ -20,7 +21,7 @@ return(
         <Route path="/logout" element={<Logout />} />
         <Route path="/forgetpassword" element={<ForgetPassword />} />
         <Route path="/resetpassword/:token" element={<ResetPassword />} />
-        <Route path="/insertcompany" element={<ProtectedRoute><InsertCompany /></ProtectedRoute>} />
+        <Route path="/insertcompany" element={<ProtectedInsertCompany><InsertCompany /></ProtectedInsertCompany>} />
         <Route path="/companyregistered" element={<ProtectedRoute><CompanyRegistered /></ProtectedRoute>} />
         <Route path="/jobsdashboard" element={<ProtectedRoute><JobsDashboard /></ProtectedRoute>} />
     </Routes>

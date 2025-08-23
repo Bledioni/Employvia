@@ -1,14 +1,17 @@
 import axios from "axios";
-import react, { useState } from "react";
+import react, { use, useEffect, useState } from "react";
 
 function JobsDashboard(){
 
     const companyName = localStorage.getItem('company_name')
     const companyId = localStorage.getItem('company_id');
     const token = localStorage.getItem('token');
-    const [jobsCount , setJobsCount] = useState(0);
+    
+    const [jobs , setJobs] = useState([]);
 
-    axios.get(`getalljobs/${companyId}` , {
+    useEffect(() => {
+
+        axios.get(`getalljobs/${companyId}` , {
 
         headers:  {
             
@@ -18,9 +21,9 @@ function JobsDashboard(){
     })
     .then(res => {
 
-        setJobsCount(res.data.length);
+        setJobs(res.data);
 
-        console.log(jobsCount);
+        console.log(res.data);
 
     })
     .catch(err => {
@@ -29,11 +32,32 @@ function JobsDashboard(){
 
     })
 
+    }, [companyId , token])
+
     return(
 
         <div className="jobs-dashboard-container">
             <h1>Hello {companyName}</h1>
-            <p>Total Job Post {jobsCount}</p>
+            <p>Total Job Post {jobs.length}</p>
+            {jobs.map((job) => {
+
+                const expireDate = new Date(job.expiration_date);
+                const today = new Date();
+
+                const diffTime = expireDate-today;
+
+                const daysRemaining = Math.ceil(diffTime / (1000 * 60 *60 *24));
+
+                return(
+
+                    <div key={job.id}>
+                    <h3>{job.job_title}</h3>
+                    <p>{daysRemaining} days remainings</p>
+                </div>
+
+                )
+
+                })}
         </div>
 
     )

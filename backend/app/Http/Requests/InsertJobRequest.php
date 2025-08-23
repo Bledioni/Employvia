@@ -32,7 +32,7 @@ class InsertJobRequest extends FormRequest
             'education' => 'required|string|max:100',
             'experience' => 'required|string|max:100',
             'vacancies' => 'required|integer|min:1',
-            'expiration_date' => 'required|date|after:today',
+            'expiration_date' => 'required|date',
             'job_level' => 'required|string|max:50',
             'country' => 'required|string|max:100',
             'city' => 'required|string|max:100',

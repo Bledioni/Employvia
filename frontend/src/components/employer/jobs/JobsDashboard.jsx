@@ -47,12 +47,15 @@ function JobsDashboard(){
                 const diffTime = expireDate-today;
 
                 const daysRemaining = Math.ceil(diffTime / (1000 * 60 *60 *24));
-
+                
+                const status = daysRemaining > 0 ? 'Active' : 'Expired';
                 return(
 
                     <div key={job.id}>
                     <h3>{job.job_title}</h3>
                     <p>{daysRemaining} days remainings</p>
+                    <p>{status}</p>
+                    
                 </div>
 
                 )

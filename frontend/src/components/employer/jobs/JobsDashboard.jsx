@@ -18,7 +18,9 @@ function JobsDashboard(){
     })
     .then(res => {
 
-        console.log(res.data);
+        setJobsCount(res.data.length);
+
+        console.log(jobsCount);
 
     })
     .catch(err => {
@@ -31,6 +33,7 @@ function JobsDashboard(){
 
         <div className="jobs-dashboard-container">
             <h1>Hello {companyName}</h1>
+            <p>Total Job Post {jobsCount}</p>
         </div>
 
     )

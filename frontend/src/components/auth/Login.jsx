@@ -40,7 +40,10 @@ function Login(){
             })
             .then((res) => {
                 if (res.data.hasCompany === true) {
-                localStorage.setItem("company_id", res.data.company_id);
+                    
+                    localStorage.setItem("company_id", res.data.company_id);
+                    console.log(res.data);
+                localStorage.setItem("company_name", res.data.company_name);
                 navigate("/jobsdashboard");
                 } else {
                 localStorage.removeItem("company_id");

@@ -37,6 +37,7 @@ class CompanyController extends Controller
             return response()->json([
                 'message' => 'Company has been successfully saved',
                 'company_id' => $company->id,
+                'company_name' => $company->company_name,
             ], 200);
 
         } catch (\Throwable $th) {
@@ -54,6 +55,8 @@ class CompanyController extends Controller
         return response()->json([
             'hasCompany' => true,
             'company_id' => $company->id,
+            'company_name' => $company->company_name,
+
         ]);
     }
 

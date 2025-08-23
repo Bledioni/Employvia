@@ -11,7 +11,8 @@ function Logout(){
         localStorage.removeItem('token');
         localStorage.removeItem('user_id');
         localStorage.removeItem('role');
-        localStorage.removeItem('company_id')
+        localStorage.removeItem('company_id');
+        localStorage.removeItem('company_name');
         navigate('/login');
     } ,[])
 

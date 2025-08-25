@@ -1,0 +1,24 @@
+.jobs-dashboard-nav-container{
+
+    margin-inline: 8rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.jobs-dashboard-nav-container-logo{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.jobs-dashboard-nav-container-logo img {
+    width: 5rem;
+    height: 5rem;
+    object-fit: cover;   
+    border-radius: 50%;  
+}

@@ -1,6 +1,7 @@
 import axios from "axios";
 import react, { useEffect, useState } from "react";
 import LoadingSpinner from "../../../common/LoadingSpinner";
+import JobsDashboardNav from "./common/JobsDashboardNav";
 
 function JobsDashboard(){
 
@@ -45,7 +46,11 @@ function JobsDashboard(){
 
     return(
 
-        <div className="jobs-dashboard-container">
+        <div>
+            <div>
+                <JobsDashboardNav />
+            </div>
+            <div className="jobs-dashboard-container">
             <h1>Hello {companyName}</h1>
             <p>Total Job Post {jobs.length}</p>
                 {jobs.map((job) => {
@@ -70,6 +75,7 @@ function JobsDashboard(){
                 )
 
                 })}
+        </div>
         </div>
 
     )

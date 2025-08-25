@@ -60,7 +60,8 @@ Route::middleware(['auth:sanctum'])->post('/insertcompany', [CompanyController::
 
 //Check User Company API
 
-Route::get('/check-company/{user_id}', [CompanyController::class, 'checkCompany']);
+Route::middleware(['auth:sanctum'])->get('/check-company/{user_id}', [CompanyController::class, 'checkCompany']);
+
 
 
 //Insert Job API 

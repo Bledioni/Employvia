@@ -56,6 +56,7 @@ class CompanyController extends Controller
             'hasCompany' => true,
             'company_id' => $company->id,
             'company_name' => $company->company_name,
+            'logo' => $company->logo,
 
         ]);
     }

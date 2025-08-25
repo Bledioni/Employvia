@@ -43,10 +43,12 @@ function Login(){
                     
                     localStorage.setItem("company_id", res.data.company_id);
                     console.log(res.data);
+                localStorage.setItem('logo' , res.data.logo);
                 localStorage.setItem("company_name", res.data.company_name);
                 navigate("/jobsdashboard");
                 } else {
                 localStorage.removeItem("company_id");
+                localStorage.removeItem('logo');
                 navigate("/insertcompany");
                 }
             })

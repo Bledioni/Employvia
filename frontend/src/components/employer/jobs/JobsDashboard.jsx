@@ -1,5 +1,6 @@
 import axios from "axios";
-import react, { use, useEffect, useState } from "react";
+import react, { useEffect, useState } from "react";
+import LoadingSpinner from "../../../common/LoadingSpinner";
 
 function JobsDashboard(){
 
@@ -8,6 +9,7 @@ function JobsDashboard(){
     const token = localStorage.getItem('token');
     
     const [jobs , setJobs] = useState([]);
+    const [loading , setLoading] = useState(true);
 
     useEffect(() => {
 
@@ -22,24 +24,31 @@ function JobsDashboard(){
     .then(res => {
 
         setJobs(res.data);
-
         console.log(res.data);
+        setLoading(false);
 
     })
     .catch(err => {
 
         console.log("Error" , err.res.data);
+        setLoading(false);
 
     })
 
     }, [companyId , token])
+
+    if(loading){
+
+        return <LoadingSpinner />
+
+    }
 
     return(
 
         <div className="jobs-dashboard-container">
             <h1>Hello {companyName}</h1>
             <p>Total Job Post {jobs.length}</p>
-            {jobs.map((job) => {
+                {jobs.map((job) => {
 
                 const expireDate = new Date(job.expiration_date);
                 const today = new Date();

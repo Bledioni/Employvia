@@ -64,7 +64,7 @@ Route::get('/check-company/{user_id}', [CompanyController::class, 'checkCompany'
 
 
 //Insert Job API 
-Route::middleware(['auth:sanctum'])->post('/insertjob' , [JobController:: class , 'InsertJob']); 
+Route::middleware(['auth:sanctum'])->post('/insertjob' , [JobController::class , 'InsertJob']); 
 
 //Get Jobs API
 Route::middleware(['auth:sanctum'])->get('/getalljobs/{company_id}', [JobController::class , 'getAllJobs']);

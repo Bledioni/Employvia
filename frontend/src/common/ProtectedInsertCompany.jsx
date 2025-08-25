@@ -25,7 +25,7 @@ function ProtectedInsertCompany() {
         if (res.data.hasCompany) {
           navigate("/jobsdashboard");
         } else {
-          setShowForm(true); // show InsertCompany if no company
+          setShowForm(true);
         }
       })
       .catch((err) => {

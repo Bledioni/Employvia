@@ -1,51 +1,54 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import jobsdashboardnav from '../../style/jobsdashboardnav.css';
+import "../../style/jobsdashboardnav.css"; // make sure path is correct
+import BluredProfileImage from '../../../../common/BluredProfileImage';
 
 function JobsDashboardNav() {
-    const [companies, setCompanies] = useState([]); 
-    const userId = localStorage.getItem("user_id");
-    const logo = localStorage.getItem('logo');
+  const userId = localStorage.getItem("user_id");
 
-    console.log(logo);
+  const [companies, setCompanies] = useState([]);
+  const [loading, setLoading] = useState(true);
 
+  useEffect(() => {
+    axios
+      .get(`/api/check-company/${userId}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+      .then((res) => {
+        setCompanies(res.data);
+        console.log(res.data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.log("Error", err.response?.data || err.message);
+        setLoading(false);
+      });
+  }, [userId]);
+  
 
-    useEffect(() => {
-        axios
-            .get(`check-company/${userId}`, {
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem("token")}`,
-                },
-            })
-            .then((res) => {
-                const data = Array.isArray(res.data) ? res.data : [res.data];
-                setCompanies(data);
-            })
-            .catch((err) => {
-                console.log("Error", err.response?.data || err.message);
-            });
-    }, [userId]);
+  return (
+    <div className="jobs-dashboard-nav-container-logo">
+  {loading ? (
+    <div className="profile-placeholder">
+      <BluredProfileImage />
+    </div>
+  ) : (
+    companies.map((company) => (
+      <div key={company.id}>
+        <img
+          src={`${axios.defaults.baseURL}/storage/${company.logo}`}
+          alt="Company Logo"
+        />
+      </div>
+    ))
+  )}
 
-    return (
-        <div className="jobs-dashboard-nav-container">
-            <div className="jobs-dashboard-nav-container-companyName">
-                <h4>EmployVia</h4>
-            </div>
-            
-            <div className="jobs-dashboard-nav-container-logo">
-                <button>Post A Job</button>
-            
-            {companies.map((company, index) => (
-                <img 
-                    key={index} 
-                    src={`http://localhost:8000/storage/${logo}`} 
-                    alt={`${company.name || "Company"} Logo`} 
-                />
+  <button>Post A Job</button>
+</div>
 
-            ))}
-            </div>
-        </div>
-    );
+  );
 }
 
 export default JobsDashboardNav;

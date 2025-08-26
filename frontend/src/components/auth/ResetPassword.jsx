@@ -30,7 +30,7 @@ function ResetPassword(){
             setSuccessMessage("Password has been successfully changed");
 
              setTimeout(() => {
-        navigate('/login'); // replace '/login' with your login route
+        navigate('api/login'); // replace '/login' with your login route
     }, 2000);
 
         })

@@ -19,7 +19,7 @@ function Register(){
 
         e.preventDefault();
 
-        axios.post('/register' ,{
+        axios.post('api/register' ,{
 
             role:role,
             name:name,

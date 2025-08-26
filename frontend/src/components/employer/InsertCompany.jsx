@@ -214,7 +214,7 @@ function InsertCompany() {
     formData.append("logo", companyData.logo);
 
   
-    axios.post("/insertcompany", formData, {
+    axios.post("api/insertcompany", formData, {
       headers: {
         "Content-Type": "multipart/form-data",
         "Authorization": `Bearer ${localStorage.getItem("token")}`,

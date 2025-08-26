@@ -16,7 +16,7 @@ function JobsDashboard(){
 
     useEffect(() => {
 
-        axios.get(`getalljobs/${companyId}` , {
+        axios.get(`api/getalljobs/${companyId}` , {
 
         headers:  {
             

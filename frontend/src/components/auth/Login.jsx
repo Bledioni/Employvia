@@ -16,7 +16,7 @@ function Login(){
         
         e.preventDefault();
 
-        axios.post('login' ,{
+        axios.post('api/login' ,{
 
             email:email,
             password:password,
@@ -33,7 +33,7 @@ function Login(){
             if (role === "employer") {
             const userId = localStorage.getItem("user_id");
 
-            axios.get(`/check-company/${userId}`, {
+            axios.get(`api/check-company/${userId}`, {
                 headers: {
                 Authorization: `Bearer ${localStorage.getItem("token")}`
                 }

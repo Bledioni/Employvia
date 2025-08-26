@@ -2,6 +2,8 @@ import axios from "axios";
 import react, { useEffect, useState } from "react";
 import LoadingSpinner from "../../../common/LoadingSpinner";
 import JobsDashboardNav from "./common/JobsDashboardNav";
+import JobsDashboardSideBar from "./common/JobsDashboardSideBar";
+import jobsdashboard from '../style/jobsdashboard.css';
 
 function JobsDashboard(){
 
@@ -51,6 +53,11 @@ function JobsDashboard(){
                 <JobsDashboardNav />
             </div>
             <div className="jobs-dashboard-container">
+
+            <div className="jobs-dashboard-side-bar-container">
+                <JobsDashboardSideBar/>
+            </div>
+            
             <h1>Hello {companyName}</h1>
             <p>Total Job Post {jobs.length}</p>
                 {jobs.map((job) => {

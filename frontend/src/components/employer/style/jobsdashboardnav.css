@@ -13,12 +13,24 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 2rem;
+
+}
+
+.jobs-dashboard-nav-container-logo button{
+
+    width: 10rem;
+    border: 2px  #0a65cc solid;
+    border-radius: 3px;
+    background-color: white;
+    cursor: pointer;
 
 }
 
 .jobs-dashboard-nav-container-logo img {
-    width: 5rem;
-    height: 5rem;
+    width: 3rem;
+    height: 3rem;
     object-fit: cover;   
     border-radius: 50%;  
+    cursor: pointer;
 }

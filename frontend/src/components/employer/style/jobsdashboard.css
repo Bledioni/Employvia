@@ -1,0 +1,8 @@
+.jobs-dashboard-container{
+
+    display: flex;
+    flex-direction: row;
+    margin-inline: 8rem;
+    justify-content: space-between;
+
+}

@@ -7,6 +7,8 @@ function JobsDashboardNav() {
     const userId = localStorage.getItem("user_id");
     const logo = localStorage.getItem('logo');
 
+    console.log(logo);
+
 
     useEffect(() => {
         axios
@@ -35,9 +37,9 @@ function JobsDashboardNav() {
             
             {companies.map((company, index) => (
                 <img 
-                key={index} 
-                src={`http://localhost:8000/storage/${company.logo}`} 
-                alt={`${company.name || "Company"} Logo`} 
+                    key={index} 
+                    src={`http://localhost:8000/storage/${logo}`} 
+                    alt={`${company.name || "Company"} Logo`} 
                 />
 
             ))}

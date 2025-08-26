@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import "../../style/jobsdashboardnav.css"; // make sure path is correct
-import BluredProfileImage from '../../../../common/BluredProfileImage';
+import "../../style/JobsDashboardNavLoader.css"; // we'll create a small CSS file for loader
 
 function JobsDashboardNav() {
   const userId = localStorage.getItem("user_id");
@@ -18,7 +18,6 @@ function JobsDashboardNav() {
       })
       .then((res) => {
         setCompanies(res.data);
-        console.log(res.data);
         setLoading(false);
       })
       .catch((err) => {
@@ -26,28 +25,24 @@ function JobsDashboardNav() {
         setLoading(false);
       });
   }, [userId]);
-  
 
   return (
     <div className="jobs-dashboard-nav-container-logo">
-  {loading ? (
-    <div className="profile-placeholder">
-      <BluredProfileImage />
+      {loading ? (
+        <div className="profile-placeholder blur-loader"></div>
+      ) : (
+        companies.map((company) => (
+          <div key={company.id}>
+            <img
+              src={`${axios.defaults.baseURL}/storage/${company.logo}`}
+              alt="Company Logo"
+            />
+          </div>
+        ))
+      )}
+
+      <button>Post A Job</button>
     </div>
-  ) : (
-    companies.map((company) => (
-      <div key={company.id}>
-        <img
-          src={`${axios.defaults.baseURL}/storage/${company.logo}`}
-          alt="Company Logo"
-        />
-      </div>
-    ))
-  )}
-
-  <button>Post A Job</button>
-</div>
-
   );
 }
 

@@ -9,7 +9,7 @@ function JobsDashboardSideBar(){
             
             <h5>Overview</h5>
             <h5>Employers Profile</h5>
-            <h5>Post a Job</h5>
+            
             <h5>My Jobs</h5>
             <h5>Saved Candidates</h5>
             <h5>Plans & Billing</h5>

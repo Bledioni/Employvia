@@ -1,7 +1,8 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
-import "../../style/jobsdashboardnav.css"; // make sure path is correct
-import "../../style/JobsDashboardNavLoader.css"; // we'll create a small CSS file for loader
+import "../../style/jobsdashboardnav.css"; 
+import "../../style/JobsDashboardNavLoader.css"; 
+import BluredProfileImage from "../../../../common/BluredProfileImage";
+import { backend, api } from "../../../../index.js";
 
 function JobsDashboardNav() {
   const userId = localStorage.getItem("user_id");
@@ -10,38 +11,49 @@ function JobsDashboardNav() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios
-      .get(`/api/check-company/${userId}`, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      })
+    if (!userId) return;
+
+    api
+      .get(`check-company/${userId}`)
       .then((res) => {
-        setCompanies(res.data);
+        if (res.data.hasCompany) {
+          setCompanies(res.data.companies || []);
+        } else {
+          setCompanies([]);
+        }
         setLoading(false);
       })
       .catch((err) => {
-        console.log("Error", err.response?.data || err.message);
+        console.error("Error fetching companies:", err.response?.data || err.message);
+        setCompanies([]);
         setLoading(false);
       });
   }, [userId]);
 
   return (
-    <div className="jobs-dashboard-nav-container-logo">
-      {loading ? (
-        <div className="profile-placeholder blur-loader"></div>
-      ) : (
-        companies.map((company) => (
-          <div key={company.id}>
-            <img
-              src={`${axios.defaults.baseURL}/storage/${company.logo}`}
-              alt="Company Logo"
-            />
-          </div>
-        ))
-      )}
+    <div className="jobs-dashboard-nav-main-container">
+      <div className="jobs-dashboard-nav-container">  
+        <h2>EmployVia</h2>
 
-      <button>Post A Job</button>
+        <div className="jobs-dashboard-nav-container-logo">
+          <button>Post A Job</button>
+
+          {loading ? (
+            <BluredProfileImage />
+          ) : companies.length > 0 ? (
+            companies.map((company) => (
+              <div key={company.id}>
+                <img
+                  src={`${backend.defaults.baseURL}storage/${company.logo}`}
+                  alt={company.company_name || "Company Logo"}
+                />
+              </div>
+            ))
+          ) : (
+            <p>No company found</p>
+          )}
+        </div>
+      </div>
     </div>
   );
 }

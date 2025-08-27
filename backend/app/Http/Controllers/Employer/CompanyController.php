@@ -36,11 +36,7 @@ class CompanyController extends Controller
                 'logo' => $logoPath,
             ]);
 
-            // Add this block to save the logo path to the cache
-            if ($logoPath) {
-                // The cache key must match the one used in checkCompany
-                Cache::put('company_logo_' . $company->id, $logoPath, 3600);
-            }
+            
 
             return response()->json([
                 'message' => 'Company has been successfully saved',
@@ -56,9 +52,12 @@ class CompanyController extends Controller
     }
 
     public function checkCompany($user_id)
-    {
-        $companies = Companies::where('user_id', $user_id)->get();
+{
+    $companies = Companies::where('user_id', $user_id)->get();
 
-        return response()->json($companies);
-    }
+    return response()->json([
+        'hasCompany' => $companies->isNotEmpty(), // true if at least one company exists
+        'companies' => $companies          
+    ]);
+}
 }

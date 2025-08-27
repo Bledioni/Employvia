@@ -4,6 +4,7 @@ import LoadingSpinner from "../../../common/LoadingSpinner";
 import JobsDashboardNav from "./common/JobsDashboardNav";
 import JobsDashboardSideBar from "./common/JobsDashboardSideBar";
 import jobsdashboard from '../style/jobsdashboard.css';
+import { api } from "../../../index.js";
 
 function JobsDashboard(){
 
@@ -13,10 +14,14 @@ function JobsDashboard(){
     
     const [jobs , setJobs] = useState([]);
     const [loading , setLoading] = useState(true);
+    const [companis , setCompanies] = useState([]);
+
+    console.log(companyId);
 
     useEffect(() => {
 
-        axios.get(`api/getalljobs/${companyId}` , {
+        api.get(`getalljobs/${companyId}` , {
+
 
         headers:  {
             
@@ -24,19 +29,22 @@ function JobsDashboard(){
 
         }    
     })
-    .then(res => {
+    .then((res) => {
 
         setJobs(res.data);
-        console.log(res.data);
+
+        if (res.data.hasCompany) {
+          setCompanies(res.data.companies || []);
+        } else {
+          setCompanies([]);
+        }
         setLoading(false);
-
-    })
-    .catch(err => {
-
-        console.log("Error" , err.res.data);
+      })
+      .catch((err) => {
+        console.error("Error fetching companies:", err.response?.data || err.message);
+        setCompanies([]);
         setLoading(false);
-
-    })
+      });
 
     }, [companyId , token])
 

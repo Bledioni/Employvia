@@ -3,6 +3,7 @@ import React, { use, useState } from "react";
 import { Link , useNavigate} from "react-router-dom";
 import login from '../auth/style/login.css';
 import staffTalking from '../../images/login/staffTalking.png';
+import { api } from '../../index.js';
 
 
 function Login(){
@@ -16,7 +17,7 @@ function Login(){
         
         e.preventDefault();
 
-        axios.post('api/login' ,{
+        api.post('login' ,{
 
             email:email,
             password:password,
@@ -27,13 +28,14 @@ function Login(){
             console.log("Login Successfully" , response.data);
             localStorage.setItem("token" , response.data.token);
             localStorage.setItem("user_id" , response.data.user.id);
+            
 
             const role = response.data.user.role;
 
             if (role === "employer") {
             const userId = localStorage.getItem("user_id");
 
-            axios.get(`api/check-company/${userId}`, {
+            api.get(`check-company/${userId}`, {
                 headers: {
                 Authorization: `Bearer ${localStorage.getItem("token")}`
                 }
@@ -41,10 +43,8 @@ function Login(){
             .then((res) => {
                 if (res.data.hasCompany === true) {
                     
-                    localStorage.setItem("company_id", res.data.company_id);
-                    console.log(res.data);
-                localStorage.setItem('logo' , res.data.logo);
-                localStorage.setItem("company_name", res.data.company_name);
+                localStorage.setItem("company_id", res.data.companies[0].id);
+                localStorage.setItem("company_name", res.data.companies[0].company_name);
                 navigate("/jobsdashboard");
                 } else {
                 localStorage.removeItem("company_id");

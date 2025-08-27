@@ -1,34 +1,22 @@
-.profile-photo-container {
-  /* This is the container for both images */
+#blured-profile-image {
+  font-size: 3rem;
+  width: 3rem;
+  height: 3rem;
+  color: transparent; 
   position: relative;
-  width: 3rem;  /* Adjust the size here */
-  height: 3rem; /* Adjust the size here */
-  border-radius: 50%; /* This makes the container rounded */
-  overflow: hidden; /* This hides any part of the image that goes outside the circle */
+  
+  background: linear-gradient(90deg, #e0e0e0 25%, #f5f5f5 50%, #e0e0e0 75%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text; 
+  background-clip: text;
+  animation: shimmer 1.5s infinite linear;
 }
 
-.profile-photo {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Ensures the image covers the container without being stretched */
-  transition: opacity 0.5s ease-in-out;
-  border-radius: 50%; /* This makes the image itself rounded */
-}
-
-/* Styles for the blurred placeholder image */
-.placeholder {
-  filter: blur(20px);
-  transform: scale(1.1); /* To ensure the blur fills the entire circle */
-}
-
-/* Utility classes for showing/hiding images */
-.hidden {
-  opacity: 0;
-}
-
-.visible {
-  opacity: 1;
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
 }

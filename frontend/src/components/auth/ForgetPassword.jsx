@@ -15,7 +15,7 @@ function ForgetPassword(){
 
         e.preventDefault();
 
-        axios.post('api/forgetpassword' , {
+        axios.post('/forgetpassword' , {
 
             email:email,
 

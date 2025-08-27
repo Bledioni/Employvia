@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import InsertCompany from "../components/employer/InsertCompany";
+import { api } from "../index.js";
 
 function ProtectedInsertCompany() {
   const navigate = useNavigate();
@@ -15,13 +16,16 @@ function ProtectedInsertCompany() {
       return;
     }
 
-    axios
+    api
       .get(`/check-company/${userId}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       })
       .then((res) => {
+
+        console.log(res.data);
+
         if (res.data.hasCompany) {
           navigate("/jobsdashboard");
         } else {

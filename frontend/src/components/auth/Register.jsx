@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import staffTalking from '../../images/login/staffTalking.png';
 import register from '../auth/style/register.css';
 import { Link , useNavigate} from "react-router-dom";
+import { api } from "../../index";
+
 
 function Register(){
 
@@ -15,11 +17,13 @@ function Register(){
     const[confirmPassword , setConfirmPassword] = useState('');
     const[errorMessage , setErrorMessage] = useState('');
 
+    const userId = localStorage.getItem('user_id')
+
     function handleSubmit(e){
 
         e.preventDefault();
 
-        axios.post('api/register' ,{
+        api.post('/register' ,{
 
             role:role,
             name:name,
@@ -31,6 +35,28 @@ function Register(){
         .then(response => {
 
             console.log("Registration Succesfull" , response.data);
+                        api.get(`check-company/${userId}`, {
+                            headers: {
+                            Authorization: `Bearer ${localStorage.getItem("token")}`
+                            }
+                        })
+                        .then((res) => {
+                            if (res.data.hasCompany === true) {
+                                
+                            localStorage.setItem("company_id", res.data.companies[0].id);
+                            localStorage.setItem("company_name", res.data.companies[0].company_name);
+                            navigate("/jobsdashboard");
+                            } else {
+                            localStorage.removeItem("company_id");
+                            localStorage.removeItem('logo');
+                            navigate("/insertcompany");
+                            }
+                        })
+                        .catch((err) => {
+                            console.error("Error checking company", err);
+                            localStorage.removeItem("company_id");
+                            navigate("/insertcompany");
+                        });
             navigate('/login')
 
         })

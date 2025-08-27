@@ -7,14 +7,14 @@ function JobsDashboardSideBar(){
 
         <div className="jobs-dashboard-side-bar-container">
             
-            <h5>Overview</h5>
-            <h5>Employers Profile</h5>
-            <h5>Post a Job</h5>
-            <h5>My Jobs</h5>
-            <h5>Saved Candidates</h5>
-            <h5>Plans & Billing</h5>
-            <h5>All Companies</h5>
-            <h5>Settings</h5>
+            <h4><i class="fa-solid fa-layer-group"></i> Overview</h4>
+            <h4><i class="fa-solid fa-user"></i> Employers Profile</h4>
+            <h4><i class="fa-solid fa-plus"></i> Post a Job</h4>
+            <h4><i class="fa-solid fa-briefcase"></i> My Jobs</h4>
+            <h4><i class="fa-solid fa-bookmark"></i> Saved Candidates</h4>
+            <h4><i class="fa-solid fa-book"></i> Plans & Billing</h4>
+            <h4>All Companies</h4>
+            <h4>Settings</h4>
 
         </div>
 

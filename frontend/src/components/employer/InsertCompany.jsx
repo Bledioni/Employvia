@@ -4,7 +4,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import { useNavigate } from "react-router-dom";
 import "./style/insertcompany.css";
 import "./style/insertcompany2.css";
-
+import { api } from "../../index";
 
 // 🔹 Navigation Component
 function CompanyNav({ step }) {
@@ -214,7 +214,7 @@ function InsertCompany() {
     formData.append("logo", companyData.logo);
 
   
-    axios.post("api/insertcompany", formData, {
+    api.post("insertcompany", formData, {
       headers: {
         "Content-Type": "multipart/form-data",
         "Authorization": `Bearer ${localStorage.getItem("token")}`,

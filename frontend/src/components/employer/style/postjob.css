@@ -1,0 +1,29 @@
+.post-job-main-container{
+
+    display: flex;
+    flex-direction: row;
+    margin-inline: 8rem;
+
+}
+
+.post-job-form-container {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left:2rem;
+
+}
+
+.post-job-form-container form{
+
+    display: flex;
+    flex-direction: column;
+
+}
+
+.post-job-form-container form input{
+
+    width: 30rem;
+
+}

@@ -56,7 +56,7 @@ function JobsDashboard(){
 
     return(
 
-        <div>
+        <div className="jobs-dashboard">
             <div>
                 <JobsDashboardNav />
             </div>
@@ -66,8 +66,24 @@ function JobsDashboard(){
                 <JobsDashboardSideBar/>
             </div>
             
-            <h1>Hello {companyName}</h1>
-            <p>Total Job Post {jobs.length}</p>
+           <div className="jobs-dashboard-main-container">
+             <h5>Hello, {companyName}</h5>
+             <p id="jobs-dashboard-main-container-paragraph">Here is your daily activities and applications</p>
+
+            <div className="jobs-dashboard-main-container-jobs-counter">
+                
+                <div className="jobs-dashboard-counter-container">
+                    <h4>{jobs.length}</h4>
+                    <p>Total Job Post</p>
+                </div>
+
+                <div className="jobs-dashboard-main-container-jobs-counter-bag">
+                    <i class="fa-solid fa-briefcase"></i>
+                </div>
+                
+            </div>
+            <p>Recently Job Posted</p>
+
                 {jobs.map((job) => {
 
                 const expireDate = new Date(job.expiration_date);
@@ -77,20 +93,53 @@ function JobsDashboard(){
 
                 const daysRemaining = Math.ceil(diffTime / (1000 * 60 *60 *24));
                 
-                const status = daysRemaining > 0 ? 'Active' : 'Expired';
-                return(
+                const status = daysRemaining > 0 
+                ? (
+                    <span style={{color:'#228B22'}}>
+                        <i className="fa-solid fa-circle-check"></i> Active
+                    </span>
+                    ) 
+                : (
+                    <span style={{color: '#e74c3c'}}>
+                        <i className="fa-solid fa-circle-xmark"></i> Expired
+                    </span>
+                    );                return(
 
-                    <div key={job.id}>
-                    <h3>{job.job_title}</h3>
-                    <p>{daysRemaining} days remainings</p>
-                    <p>{status}</p>
+                <div key={job.id}>
+                <div className="job-table-wrapper">    
+                    <table className="job-table">
+                        <thead>
+                        <tr>
+                            <th>JOBS</th>
+                            <th>STATUS</th>
+                            <th>ACTION</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>
+                            <h3>{job.job_title}</h3>
+                            <p>{daysRemaining} days remaining</p>
+                            </td>
+                            <td>
+                            <p>{status}</p>
+                            </td>
+                            <td>
+                            <button>View Application</button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    </div>
+
                     
                 </div>
 
                 )
-
                 })}
+                </div>
         </div>
+        
         </div>
 
     )

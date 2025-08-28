@@ -3,6 +3,7 @@ import "../../style/jobsdashboardnav.css";
 import "../../style/JobsDashboardNavLoader.css"; 
 import BluredProfileImage from "../../../../common/BluredProfileImage";
 import { backend, api } from "../../../../index.js";
+import { Link } from "react-router-dom";
 
 function JobsDashboardNav() {
   const userId = localStorage.getItem("user_id");
@@ -36,7 +37,7 @@ function JobsDashboardNav() {
         <h2>EmployVia</h2>
 
         <div className="jobs-dashboard-nav-container-logo">
-          <button>Post A Job</button>
+          <Link to='/post-job'><button>Post A Job</button></Link>
 
           {loading ? (
             <BluredProfileImage />

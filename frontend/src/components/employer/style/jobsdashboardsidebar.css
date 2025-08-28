@@ -1,4 +1,36 @@
+
 .jobs-dashboard-side-bar-container{
 
-    width: 10rem;
+    width: 15rem;
+    border-right: 1px solid rgb(149, 149, 149);
+    height: 100%;
+    
+}
+
+
+.jobs-dashboard-side-bar-container .sidebar-link:last-child {
+  margin-top: auto;
+}
+
+.jobs-dashboard-side-bar-container h4{
+
+    width: 100%;
+    color: rgb(126, 126, 126);
+    font-size: 16px;
+    font-weight: 500;
+
+}
+
+.sidebar-link {
+  text-decoration: none;
+  color: black; /* default text color */
+  display: block;
+}
+
+.sidebar-link.active h4 {
+    color: white;
+    background-color: #d7eaff;
+    color: #007bff;
+    padding: 8px;
+    border-left: 2px solid#007bff;
 }

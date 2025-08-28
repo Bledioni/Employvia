@@ -15,15 +15,59 @@
 
 }
 
+.post-job-tags-jobrole-container input:first-child{
+
+    width: 70%;
+
+
+}
+
 .post-job-form-container form{
 
     display: flex;
     flex-direction: column;
+    width: 50rem;
 
 }
 
-.post-job-form-container form input{
+.post-job-salary-input-container{
 
-    width: 30rem;
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+
+}
+
+.post-job-salary-input-container input{
+
+    width: 100%;
+
+}
+
+.post-job-advanced-information-first-container , .post-job-advanced-information-second-container{
+
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+
+}
+
+.post-job-advanced-information-first-container input, .post-job-advanced-information-second-container input{
+
+    width: 100%;
+
+}
+
+.post-job-location-input-container{
+
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+
+}
+
+.post-job-location-input-container input{
+
+    width: 100%;
 
 }

@@ -28,6 +28,7 @@ class JobController extends Controller
                 'salary_type' => $request->salary_type,
                 'education' => $request->education,
                 'experience' => $request->experience,
+                'job_type' => $request->job_type,
                 'vacancies' => $request->vacancies,
                 'expiration_date' => $request->expiration_date,
                 'job_level' => $request->job_level,

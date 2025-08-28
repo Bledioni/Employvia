@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('salary_type');
             $table->string('education');
             $table->string('experience');
+            $table->string('job_type');
             $table->integer('vacancies');
             $table->date('expiration_date');
             $table->string('job_level');

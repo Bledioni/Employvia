@@ -139,7 +139,6 @@ function JobsDashboard(){
                 })}
                 </div>
         </div>
-        
         </div>
 
     )

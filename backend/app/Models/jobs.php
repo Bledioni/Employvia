@@ -19,6 +19,7 @@ class Jobs extends Model
         'salary_type',
         'education',
         'experience',
+        'job_type',
         'vacancies',
         'expiration_date',
         'job_level',

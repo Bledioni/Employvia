@@ -75,123 +75,170 @@ function PostJob(){
                 <JobsDashboardSideBar />
             <div className="post-job-form-container">
                 <form onSubmit={handleSubmit}>
-                <h4>Post a job</h4>
+    <h4>Post a job</h4>
+    <label>
+        Job Title
+        <input 
+            type="text"
+            placeholder="Job Title"
+            value={job_title}
+            onChange={(e) => setJobTitle(e.target.value)} 
+        />
+    </label>
+
+    <div className="post-job-tags-jobrole-container">
+        <label>
+            Tags
+            <input 
+                type="text"
+                placeholder="Tags"
+                value={tags}
+                onChange={(e) => setTags(e.target.value)} 
+            />
+        </label>
+        <label>
+            Job Role
+            <input 
+                type="text"
+                placeholder="Job Role"
+                value={job_role}
+                onChange={(e) => setJobRole(e.target.value)} 
+            />
+        </label>
+    </div>
+
+    <div className="post-job-salary-container">
+        <h4>Salary</h4>
+        <div className="post-job-salary-input-container">
+            <label>
+                Minimum Salary
+                <input 
+                    type="number"
+                    placeholder="Minimum Salary"
+                    value={min_salary}
+                    onChange={(e) => setMinSalary(e.target.value)} 
+                />
+            </label>
+            <label>
+                Maximum Salary
+                <input 
+                    type="number"
+                    placeholder="Max Salary"
+                    value={max_salary}
+                    onChange={(e) => setMaxSalary(e.target.value)} 
+                />
+            </label>
+            <label>
+                Salary Type
                 <input 
                     type="text"
-                    placeholder="Job Title"
-                    value={job_title}
-                    onChange={(e) => setJobTitle(e.target.value)} 
+                    placeholder="Salary Type"
+                    value={salary_type}
+                    onChange={(e) => setSalaryType(e.target.value)} 
                 />
-                <div className="post-job-tags-jobrole-container">
-                    <input 
-                        type="text"
-                        placeholder="Tags"
-                        value={tags}
-                        onChange={(e) => setTags(e.target.value)} 
-                    />
-                    <input 
-                        type="text"
-                        placeholder="Job Role"
-                        value={job_role}
-                        onChange={(e) => setJobRole(e.target.value)} 
-                    />
-                </div>
+            </label>
+        </div>
+    </div>
 
-                <div className="post-job-salary-container">
-                    <h4>Salary</h4>
-                    <div className="post-job-salary-input-container">
-                        <input 
-                            type="number"
-                            placeholder="Minimum Salary"
-                            value={min_salary}
-                            onChange={(e) => setMinSalary(e.target.value)} 
-                        />
-                        <input 
-                            type="number"
-                            placeholder="Max Salary"
-                            value={max_salary}
-                            onChange={(e) => setMaxSalary(e.target.value)} 
-                        />
-                        <input 
-                            type="text"
-                            placeholder="Salary Type"
-                            value={salary_type}
-                            onChange={(e) => setSalaryType(e.target.value)} 
-                        />
-                    </div>
-                </div>
-
-                <div className="post-job-advanced-information-container">
-                    <h4>Advance Information</h4>
-                    <div className="post-job-advanced-information-first-container">
-                        <input 
-                            type="text"
-                            placeholder="Education"
-                            value={education}
-                            onChange={(e) => setEducation(e.target.value)} 
-                        />
-                        <input 
-                            type="text"
-                            placeholder="Experience"
-                            value={experience}
-                            onChange={(e) => setExperience(e.target.value)} 
-                        />
-                        <input 
-                            type="text"
-                            placeholder="Job Type"
-                            value={job_type}
-                            onChange={(e) => setJobType(e.target.value)} 
-                        />
-                    </div>
-                    <div className="post-job-advanced-information-second-container">
-                        <input 
-                            type="number"
-                            placeholder="Vacanies"
-                            value={vacancies}
-                            onChange={(e) => setVacancies(e.target.value)} 
-                        />
-                        <input 
-                            type="date"
-                            placeholder="Expiration Date"
-                            value={expiration_date}
-                            onChange={(e) => setExpirationDate(e.target.value)} 
-                        />
-                        <input 
-                            type="text"
-                            placeholder="Job Level"
-                            value={job_level}
-                            onChange={(e) => setJobLevel(e.target.value)} 
-                        />
-                    </div>
-
-                </div>
-                <div className="post-job-location-container">
-                    <h4>Location</h4>
-                    <div className="post-job-location-input-container">
-                        <input 
-                            type="text"
-                            placeholder="Country"
-                            value={country}
-                            onChange={(e) => setCountry(e.target.value)} 
-                        />
-                        <input 
-                            type="text"
-                            placeholder="City"
-                            value={city}
-                            onChange={(e) => setCity(e.target.value)} 
-                        />
-                    </div>
-                </div>
+    <div className="post-job-advanced-information-container">
+        <h4>Advance Information</h4>
+        <div className="post-job-advanced-information-first-container">
+            <label>
+                Education
                 <input 
                     type="text"
-                    placeholder="Description"
-                    value={job_description}
-                    onChange={(e) => setJobDescription(e.target.value)} 
+                    placeholder="Education"
+                    value={education}
+                    onChange={(e) => setEducation(e.target.value)} 
                 />
-                <button type="Submit">Submit</button>
-                
-                
-            </form>
+            </label>
+            <label>
+                Experience
+                <input 
+                    type="text"
+                    placeholder="Experience"
+                    value={experience}
+                    onChange={(e) => setExperience(e.target.value)} 
+                />
+            </label>
+            <label>
+                Job Type
+                <input 
+                    type="text"
+                    placeholder="Job Type"
+                    value={job_type}
+                    onChange={(e) => setJobType(e.target.value)} 
+                />
+            </label>
+        </div>
+        <div className="post-job-advanced-information-second-container">
+            <label>
+                Vacancies
+                <input 
+                    type="number"
+                    placeholder="Vacanies"
+                    value={vacancies}
+                    onChange={(e) => setVacancies(e.target.value)} 
+                />
+            </label>
+            <label>
+                Expiration Date
+                <input 
+                    type="date"
+                    placeholder="Expiration Date"
+                    value={expiration_date}
+                    onChange={(e) => setExpirationDate(e.target.value)} 
+                />
+            </label>
+            <label>
+                Job Level
+                <input 
+                    type="text"
+                    placeholder="Job Level"
+                    value={job_level}
+                    onChange={(e) => setJobLevel(e.target.value)} 
+                />
+            </label>
+        </div>
+    </div>
+
+    <div className="post-job-location-container">
+        <h4>Location</h4>
+        <div className="post-job-location-input-container">
+            <label>
+                Country
+                <input 
+                    type="text"
+                    placeholder="Country"
+                    value={country}
+                    onChange={(e) => setCountry(e.target.value)} 
+                />
+            </label>
+            <label>
+                City
+                <input 
+                    type="text"
+                    placeholder="City"
+                    value={city}
+                    onChange={(e) => setCity(e.target.value)} 
+                />
+            </label>
+        </div>
+    </div>
+
+    <label>
+        Description
+        <input 
+            type="text"
+            placeholder="Description"
+            value={job_description}
+            onChange={(e) => setJobDescription(e.target.value)} 
+        />
+    </label>
+
+    <button type="Submit">Submit</button>
+</form>
+
             </div>
             </div>
 

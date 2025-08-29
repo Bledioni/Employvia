@@ -1,3 +1,13 @@
+/* ============================================================
+   Post Job Page Styles
+   ------------------------------------------------------------
+   Handles layout, form styling, and responsive adjustments
+   for the Post Job page.
+   ============================================================ */
+
+/* ========================
+   Main Layout Containers
+   ======================== */
 .post-job-main-container {
   display: flex;
   flex-direction: row;
@@ -18,6 +28,9 @@
   width: 60rem;
 }
 
+/* ========================
+   Form Fields
+   ======================== */
 .post-job-form-container form input {
   border: none;
   padding: 0.5rem;
@@ -35,7 +48,11 @@
   font-weight: 500;
 }
 
-/* tags and job role container */
+/* ========================
+   Grouped Inputs (Side by Side)
+   ======================== */
+
+/* Tags & Job Role */
 .post-job-tags-jobrole-container {
   display: flex;
   flex-direction: row;
@@ -48,7 +65,7 @@
   width: 30%;
 }
 
-/* job salary container */
+/* Salary */
 .post-job-salary-input-container {
   display: flex;
   flex-direction: row;
@@ -58,7 +75,7 @@
   width: 100%;
 }
 
-/* advanced information container */
+/* Advanced Information */
 .post-job-advanced-information-first-container,
 .post-job-advanced-information-second-container {
   display: flex;
@@ -70,7 +87,7 @@
   width: 100%;
 }
 
-/* post job location container */
+/* Location */
 .post-job-location-input-container {
   display: flex;
   flex-direction: row;
@@ -80,12 +97,14 @@
   width: 100%;
 }
 
-/* post job description container */
+/* Description */
 .job-post-description-container input {
   height: 10rem;
 }
 
-/* button container */
+/* ========================
+   Button
+   ======================== */
 .post-job-form-container form button {
   width: 10rem;
   background-color: #0a65cc;
@@ -97,19 +116,18 @@
   cursor: pointer;
 }
 
-/* 📱 Responsive adjustments */
+/* ========================
+   Responsive Adjustments
+   ======================== */
 
+/* Large screens down to ~1400px */
 @media(max-width: 1400px){
-
-    .post-job-main-container{
-
-        margin-inline: 1rem;
-
-    }
-
+  .post-job-main-container{
+      margin-inline: 1rem;
+  }
 }
 
-/* Tablet screens */
+/* Tablets */
 @media (max-width: 1180px) {
   .post-job-form-container form {
     width: 45rem;
@@ -123,6 +141,7 @@
     margin-inline: 1rem;
   }
 
+  /* Stack grouped inputs vertically */
   .post-job-tags-jobrole-container,
   .post-job-salary-input-container,
   .post-job-advanced-information-first-container,
@@ -133,9 +152,7 @@
   }
 
   .post-job-form-container form{
-
     width: 30rem;
-
   }
 
   .post-job-tags-jobrole-container label:first-child,
@@ -144,14 +161,13 @@
   }
 }
 
-/* Mobile screens */
+/* Mobile */
 @media (max-width: 600px) {
   .post-job-main-container {
     margin-inline: 1rem;
   }
 
   .post-job-form-container {
-    
     margin: auto;
   }
 
@@ -159,6 +175,7 @@
     width: 20rem;
   }
 
+  /* Full-width button for mobile */
   .post-job-form-container form button {
     width: 100%;
   }

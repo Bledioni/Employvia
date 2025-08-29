@@ -29,7 +29,7 @@ return(
         {/* ----------Employer Routes---------- */}
         <Route path="/insertcompany" element={<ProtectedInsertCompany><InsertCompany /></ProtectedInsertCompany>} />
         <Route path="/companyregistered" element={<ProtectedRoute><CompanyRegistered /></ProtectedRoute>} />
-        <Route path="/jobsdashboard" element={<ProtectedRoute><JobsDashboard /></ProtectedRoute>} />
+        <Route path="/jobsdashboard" element={<><JobsDashboard /></>} />
         <Route path="/employer-profile" element={<ProtectedRoute><EmployerProfile/></ProtectedRoute>} />
         <Route path="/post-job" element={<PostJob/>} />
         {/* ------------------------------------------ */}

@@ -82,7 +82,7 @@ function Register(){
                     
             <div className="register-form">
             
-            <h2>Create account.</h2>
+            <h2>Start Your Journey</h2>
             <p>Already have account? <Link to="/login">Log In</Link></p>
             
             <form onSubmit={handleSubmit}>

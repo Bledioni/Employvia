@@ -1,110 +1,84 @@
-.jobs-dashboard-container{
-
-    display: flex;
-    flex-direction: row;
-    margin-inline: 8rem;
-
-}
-.jobs-dashboard-main-container{
-
-    margin-left: 2rem;
-
+/* Base styles for all screen sizes */
+.jobs-dashboard-container {
+  display: flex;
+  flex-direction: row;
+  margin-inline: 8rem;
 }
 
-.jobs-dashboard-main-container h5{
-
-    font-weight: 500;
-    font-size: 20px;
-    margin-bottom:0 ;
-
+.jobs-dashboard-main-container {
+  margin-left: 2rem;
+  flex-grow: 1; /* Allows it to take up available space */
 }
 
-#jobs-dashboard-main-container-paragraph{
-
-    font-size: 16px;
-    color: rgb(126, 126, 126);
-    margin-top: 0;
-
+/* Adjustments for the main content heading and paragraph */
+.jobs-dashboard-main-container h5,
+#jobs-dashboard-main-container-paragraph,
+.jobs-dashboard p {
+  margin: 0;
 }
 
-.jobs-dashboard p{
+.jobs-dashboard-main-container h5 {
+  font-weight: 500;
+  font-size: 20px;
+}
 
+#jobs-dashboard-main-container-paragraph {
+  font-size: 16px;
+  color: rgb(126, 126, 126);
+}
+
+.jobs-dashboard p {
   font-weight: 600;
   margin-bottom: 1rem;
-
 }
 
-.jobs-dashboard-main-container-jobs-counter{
-
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    border: 1px solid;
-    padding: 1rem;
-    padding-inline: 1rem;
-    background-color:  #d7eaff;
-    border-radius: 5px;
-    border: none;
-    margin-top:1rem;
-    width: 20rem;
-    margin-bottom: 2re;
-
+/* Job counter styling */
+.jobs-dashboard-main-container-jobs-counter {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  background-color: #d7eaff;
+  border-radius: 5px;
+  border: none;
+  margin-top: 1rem;
+  width: 20rem; /* Consider changing to a relative unit for flexibility */
+  margin-bottom: 2re;
 }
 
-.jobs-dashboard-counter-container p{
-
-    margin: 0;
-    color: rgb(126, 126, 126);
-    font-weight: 600;
-
+.jobs-dashboard-counter-container p {
+  margin: 0;
+  color: rgb(126, 126, 126);
+  font-weight: 600;
 }
 
-.jobs-dashboard-counter-container h4{
-
-    margin: 0;
-    font-size: 20px;
-
+.jobs-dashboard-counter-container h4 {
+  margin: 0;
+  font-size: 20px;
 }
 
-
-
-.jobs-dashboard-main-container-jobs-counter-bag i{
-    
-    font-size: 30px;
-    color: #007bff;
-
+.jobs-dashboard-main-container-jobs-counter-bag i {
+  font-size: 30px;
+  color: #007bff;
 }
 
+/* Job table wrapper */
 .job-table-wrapper {
   width: 100%;
-  overflow-x: auto; 
-  
-}
-
-.job-table-wrapper p{
-
-  margin-bottom: 1rem;
-  font-weight: 600;
-
+  overflow-x: auto; /* Enables horizontal scrolling on small screens */
 }
 
 .job-table {
-  width: 60rem;  
+  width: 100%; /* Make the table take up full width of its container */
   border-collapse: collapse;
 }
 
-.job-table th, 
+.job-table th,
 .job-table td {
   padding: 12px 15px;
   text-align: left;
-  white-space: nowrap; 
-}
-
-tr{
-
-  border-radius: 10px;
-
+  white-space: nowrap;
 }
 
 .job-table th {
@@ -121,26 +95,49 @@ tr{
   margin: 3px 0;
 }
 
+/* --- Media Queries for various screen sizes --- */
 
+/* Small devices (e.g., phones) */
 @media (max-width: 768px) {
-  .job-table th, 
+  .jobs-dashboard-container {
+    flex-direction: row; /* Stacks items vertically */
+    margin-inline: 1rem; /* Reduces horizontal margin */
+  }
+
+  .jobs-dashboard-side-bar-container {
+    width: 5rem; /* Sidebar takes full width */
+  }
+
+  .jobs-dashboard-main-container {
+    margin-left: 0; /* Remove left margin for better flow */
+    margin-top: 2rem; /* Add top margin to separate from sidebar */
+  }
+
+  .jobs-dashboard-main-container-jobs-counter {
+    width: 100%; /* Counter takes up full width on smaller screens */
+  }
+
+  .job-table th,
   .job-table td {
     padding: 8px 10px;
+    font-size: 14px; /* Adjust font size for better readability */
   }
 
   .job-table h3 {
     font-size: 14px;
   }
-
-  .job-table p {
-    font-size: 13px;
-  }
 }
 
+/* Extra small devices (e.g., small phones) */
 @media (max-width: 480px) {
-  .job-table th, 
+  .jobs-dashboard-container {
+    margin-inline: 0.5rem; /* Even smaller margins for very small screens */
+  }
+
+  .job-table th,
   .job-table td {
     padding: 6px 8px;
+    font-size: 12px;
   }
 
   .job-table h3 {
@@ -148,7 +145,12 @@ tr{
   }
 
   .job-table p {
-    font-size: 12px;
+    font-size: 11px;
+  }
+
+  /* Make button text smaller on very small screens */
+  .job-table button {
+    font-size: 10px;
+    padding: 6px;
   }
 }
-

@@ -82,7 +82,7 @@ function Login(){
 
         <div className="login-form-main-container">
             <div className="login-form">
-                <h2>Sign In</h2>
+                <h2>Nice To See You Again</h2>
                 <p>Don't have an account? <Link to="/register">Create account</Link></p>
                 <form onSubmit={handleSubmit}>
                     <input 

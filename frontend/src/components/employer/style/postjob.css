@@ -1,104 +1,169 @@
-.post-job-main-container{
-
-    display: flex;
-    flex-direction: row;
-    margin-inline: 8rem;
-
+.post-job-main-container {
+  display: flex;
+  flex-direction: row;
+  margin-inline: 8rem;
+  gap: 2rem;
 }
 
 .post-job-form-container {
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left:2rem;
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 2rem;
 }
 
-.post-job-form-container form{
-
-    display: flex;
-    flex-direction: column;
-    width: 50rem;
-
+.post-job-form-container form {
+  display: flex;
+  flex-direction: column;
+  width: 60rem;
 }
 
-.post-job-form-container form input{
+.post-job-form-container form input {
+  border: none;
+  padding: 0.5rem;
+  border: 1px solid rgb(149, 149, 149);
+  padding-inline: 1rem;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+}
 
-    border: none;
-    padding: 0.5rem;
-    border: 1px solid;
-    padding-inline: 1rem;
-    border-radius: 5px;
-    margin-bottom: 1rem;
-
+.post-job-form-container form label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: rgb(68, 68, 68);
+  font-weight: 500;
 }
 
 /* tags and job role container */
-
-.post-job-tags-jobrole-container{
-
-    display: flex;
-    flex-direction: row;
-    gap: 2rem;
-
+.post-job-tags-jobrole-container {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
 }
-
-.post-job-tags-jobrole-container input:first-child{
-
-    width: 70%;
-
-
+.post-job-tags-jobrole-container label:first-child {
+  width: 70%;
 }
-
-.post-job-tags-jobrole-container input:nth-child(2){
-
-    width: 30%;
-
+.post-job-tags-jobrole-container label:nth-child(2) {
+  width: 30%;
 }
 
 /* job salary container */
-
-.post-job-salary-input-container{
-
-    display: flex;
-    flex-direction: row;
-    gap: 2rem;
-
+.post-job-salary-input-container {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
 }
-
-.post-job-salary-input-container input{
-
-    width: 100%;
-
+.post-job-salary-input-container label {
+  width: 100%;
 }
 
 /* advanced information container */
+.post-job-advanced-information-first-container,
+.post-job-advanced-information-second-container {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
+.post-job-advanced-information-first-container label,
+.post-job-advanced-information-second-container label {
+  width: 100%;
+}
 
-.post-job-advanced-information-first-container , .post-job-advanced-information-second-container{
+/* post job location container */
+.post-job-location-input-container {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
+.post-job-location-input-container label {
+  width: 100%;
+}
 
-    display: flex;
+/* post job description container */
+.job-post-description-container input {
+  height: 10rem;
+}
+
+/* button container */
+.post-job-form-container form button {
+  width: 10rem;
+  background-color: #0a65cc;
+  color: white;
+  font-weight: 500;
+  border: none;
+  border-radius: 6px;
+  padding: 0.7rem;
+  cursor: pointer;
+}
+
+/* 📱 Responsive adjustments */
+
+@media(max-width: 1400px){
+
+    .post-job-main-container{
+
+        margin-inline: 1rem;
+
+    }
+
+}
+
+/* Tablet screens */
+@media (max-width: 1180px) {
+  .post-job-form-container form {
+    width: 45rem;
+  }
+}
+
+/* Small tablets & large phones */
+@media (max-width: 900px) {
+  .post-job-main-container {
     flex-direction: row;
-    gap: 2rem;
+    margin-inline: 1rem;
+  }
 
-}
+  .post-job-tags-jobrole-container,
+  .post-job-salary-input-container,
+  .post-job-advanced-information-first-container,
+  .post-job-advanced-information-second-container,
+  .post-job-location-input-container {
+    flex-direction: column;
+    gap: 1rem;
+  }
 
-.post-job-advanced-information-first-container input, .post-job-advanced-information-second-container input{
+  .post-job-form-container form{
 
+    width: 30rem;
+
+  }
+
+  .post-job-tags-jobrole-container label:first-child,
+  .post-job-tags-jobrole-container label:nth-child(2) {
     width: 100%;
-
+  }
 }
 
-.post-job-location-input-container{
+/* Mobile screens */
+@media (max-width: 600px) {
+  .post-job-main-container {
+    margin-inline: 1rem;
+  }
 
-    display: flex;
-    flex-direction: row;
-    gap: 2rem;
+  .post-job-form-container {
+    
+    margin: auto;
+  }
 
-}
+  .post-job-form-container form {
+    width: 20rem;
+  }
 
-.post-job-location-input-container input{
-
+  .post-job-form-container form button {
     width: 100%;
+  }
 
+  .job-post-description-container input {
+    height: 8rem;
+  }
 }

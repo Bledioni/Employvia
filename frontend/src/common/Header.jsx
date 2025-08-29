@@ -31,7 +31,7 @@ return(
         <Route path="/companyregistered" element={<ProtectedRoute><CompanyRegistered /></ProtectedRoute>} />
         <Route path="/jobsdashboard" element={<ProtectedRoute><JobsDashboard /></ProtectedRoute>} />
         <Route path="/employer-profile" element={<ProtectedRoute><EmployerProfile/></ProtectedRoute>} />
-        <Route path="/post-job" element={<ProtectedRoute><PostJob/></ProtectedRoute>} />
+        <Route path="/post-job" element={<PostJob/>} />
         {/* ------------------------------------------ */}
 
     </Routes>

@@ -226,7 +226,7 @@ function PostJob(){
         </div>
     </div>
 
-    <label>
+    <label className="job-post-description-container">
         Description
         <input 
             type="text"

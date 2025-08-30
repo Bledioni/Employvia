@@ -11,6 +11,7 @@ use App\Http\Controllers\api\ForgetPasswordController;
 use App\Http\Controllers\api\UserDashboard;
 use App\Http\Controllers\Employer\CompanyController;
 use App\Http\Controllers\Employer\JobController;
+use App\Http\Controllers\admin\JobRolesController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -70,3 +71,12 @@ Route::middleware(['auth:sanctum'])->post('/insertjob' , [JobController::class ,
 //Get Jobs API
 Route::middleware(['auth:sanctum'])->get('/getalljobs/{company_id}', [JobController::class , 'getAllJobs']);
 
+
+
+//Admin Dashboard
+
+//Insert Job Roles
+Route::middleware(['auth:sanctum'])->post('/insertrole' , [JobRolesController::class, 'InsertRole']);
+
+//Get All Job Roles
+Route::middleware(['auth:sanctum'])->get('/jobroles' , [JobRolesController::class, 'GetRoles']);

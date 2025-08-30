@@ -12,6 +12,10 @@ import JobsDashboard from '../components/employer/jobs/JobsDashboard';
 import ProtectedInsertCompany from "./ProtectedInsertCompany";
 import EmployerProfile from "../components/employer/jobs/EmployerProfile";
 import PostJob from "../components/employer/jobs/PostJob";
+import JobRoles from "../components/employer/jobs/common/JobRoles";
+import MyJobs from "../components/employer/jobs/MyJobs";
+
+
 
 function Header(){
 
@@ -29,9 +33,11 @@ return(
         {/* ----------Employer Routes---------- */}
         <Route path="/insertcompany" element={<ProtectedInsertCompany><InsertCompany /></ProtectedInsertCompany>} />
         <Route path="/companyregistered" element={<ProtectedRoute><CompanyRegistered /></ProtectedRoute>} />
-        <Route path="/jobsdashboard" element={<><JobsDashboard /></>} />
+        <Route path="/jobsdashboard" element={<ProtectedRoute><JobsDashboard /></ProtectedRoute>} />
         <Route path="/employer-profile" element={<ProtectedRoute><EmployerProfile/></ProtectedRoute>} />
-        <Route path="/post-job" element={<PostJob/>} />
+        <Route path="/post-job" element={<ProtectedRoute><PostJob/></ProtectedRoute>} />
+        <Route path="/jobroles" element={<ProtectedRoute><JobRoles/></ProtectedRoute>} />
+        <Route path="/my-jobs" element={<ProtectedRoute><MyJobs/></ProtectedRoute>} />
         {/* ------------------------------------------ */}
 
     </Routes>

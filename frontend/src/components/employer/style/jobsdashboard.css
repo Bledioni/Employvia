@@ -20,6 +20,7 @@
 .jobs-dashboard-main-container h5 {
   font-weight: 500;
   font-size: 20px;
+  margin-top: 1rem;
 }
 
 #jobs-dashboard-main-container-paragraph {
@@ -30,6 +31,7 @@
 .jobs-dashboard p {
   font-weight: 600;
   margin-bottom: 1rem;
+  margin-top: 1rem;
 }
 
 /* Job counter styling */
@@ -63,39 +65,76 @@
   color: #007bff;
 }
 
-/* Job table wrapper */
 .job-table-wrapper {
   width: 100%;
-  overflow-x: auto; /* Enables horizontal scrolling on small screens */
+  overflow-x: auto;
 }
 
 .job-table {
-  width: 100%; /* Make the table take up full width of its container */
+  width: 100%;
   border-collapse: collapse;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-.job-table th,
-.job-table td {
+.job-table thead th {
+  background-color: #d3d3d3; /* light gray header */
+  color: #333;
+  font-weight: 600;
   padding: 12px 15px;
   text-align: left;
-  white-space: nowrap;
+  letter-spacing: 0.5px;
 }
 
-.job-table th {
-  background-color: #f4f4f4;
-  font-weight: bold;
+.job-table td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #ddd;
+  width: 10rem;
+
 }
+
+
 
 .job-table h3 {
-  margin: 0;
+  margin: 0 0 4px 0; /* small margin for spacing */
   font-size: 16px;
+  color: #333;
 }
 
 .job-table p {
-  margin: 3px 0;
+  margin: 0; /* remove extra spacing */
+  color: #666;
+  font-size: 14px;
 }
 
-/* --- Media Queries for various screen sizes --- */
+.job-table button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  margin-top: 8px; /* space from other content in cell */
+}
+
+.job-table button:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+
+@media(max-width: 1280px){
+
+  .jobs-dashboard-container{
+
+    margin-inline: 1rem;
+
+  }
+
+}
 
 /* Small devices (e.g., phones) */
 @media (max-width: 768px) {

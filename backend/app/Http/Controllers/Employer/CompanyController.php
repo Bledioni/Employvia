@@ -6,7 +6,7 @@ use App\Models\Companies;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\InsertCompanyRequest;
-use Illuminate\Support\Facades\Cache; // Make sure this is present
+use Illuminate\Support\Facades\Cache;
 
 class CompanyController extends Controller
 {

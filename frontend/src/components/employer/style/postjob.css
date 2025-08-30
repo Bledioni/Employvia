@@ -31,7 +31,7 @@
 /* ========================
    Form Fields
    ======================== */
-.post-job-form-container form input {
+.post-job-form-container form input ,.post-job-form-container form  select {
   border: none;
   padding: 0.5rem;
   border: 1px solid rgb(149, 149, 149);
@@ -63,6 +63,8 @@
 }
 .post-job-tags-jobrole-container label:nth-child(2) {
   width: 30%;
+  
+  
 }
 
 /* Salary */
@@ -125,6 +127,16 @@
   .post-job-main-container{
       margin-inline: 1rem;
   }
+}
+
+@media(max-width: 1280px){
+
+    .post-job-form-container{
+
+        margin-inline: 1rem;
+
+    }
+
 }
 
 /* Tablets */

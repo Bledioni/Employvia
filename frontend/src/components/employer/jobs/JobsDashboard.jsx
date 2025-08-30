@@ -93,7 +93,7 @@ function JobsDashboard(){
 
                 const daysRemaining = Math.ceil(diffTime / (1000 * 60 *60 *24));
                 
-                const status = daysRemaining > 0 
+                const status = daysRemaining > 0
                 ? (
                     <span style={{color:'#228B22'}}>
                         <i className="fa-solid fa-circle-check"></i> Active
@@ -105,21 +105,22 @@ function JobsDashboard(){
                     </span>
                     );                return(
 
+                        
+
                 <div key={job.id}>
                 <div className="job-table-wrapper">    
                     <table className="job-table">
                         <thead>
-                        <tr>
-                            <th>JOBS</th>
-                            <th>STATUS</th>
-                            <th>ACTION</th>
-                        </tr>
+                
                         </thead>
                         <tbody>
                         <tr>
                             <td>
                             <h3>{job.job_title}</h3>
-                            <p>{daysRemaining} days remaining</p>
+                            {daysRemaining > 0 && <p>{daysRemaining} days remaining</p>}
+                            </td>
+                            <td>
+                                <p>{job.job_type}</p>
                             </td>
                             <td>
                             <p>{status}</p>

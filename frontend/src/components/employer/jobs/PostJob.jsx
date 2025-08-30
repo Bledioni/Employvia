@@ -1,251 +1,254 @@
-import react, { useState } from "react";
+import React, { useState } from "react";
 import { api } from "../../../index";
 import JobsDashboardNav from "./common/JobsDashboardNav";
 import JobsDashboardSideBar from "./common/JobsDashboardSideBar";
+import JobRoles from "./common/JobRoles.jsx";
+import CountryCitySelector from "./common/CountryCitySelector.jsx";
 import '../style/postjob.css';
 
-
-
-function PostJob(){
-
+function PostJob() {
     const companyId = localStorage.getItem('company_id');
 
-    const [company_id , setCompanyId] = useState('');
-    const [job_title , setJobTitle] = useState('');
-    const [tags , setTags] = useState('');
-    const [job_role , setJobRole] = useState('');
-    const [min_salary , setMinSalary] = useState('');
-    const [max_salary , setMaxSalary] = useState('');
-    const [salary_type , setSalaryType] = useState('');
-    const [education , setEducation] = useState('');
-    const [experience , setExperience] = useState('');
-    const [job_type , setJobType] = useState('');
-    const [vacancies , setVacancies] = useState('');
-    const [expiration_date , setExpirationDate] = useState('');
-    const [job_level , setJobLevel] = useState('');
-    const [country , setCountry] = useState('');
-    const [city , setCity] = useState('');
-    const [job_description , setJobDescription] = useState('');
+    const [job_title, setJobTitle] = useState('');
+    const [tags, setTags] = useState('');
+    const [job_role, setJobRole] = useState('');
+    const [min_salary, setMinSalary] = useState('');
+    const [max_salary, setMaxSalary] = useState('');
+    const [salary_type, setSalaryType] = useState('');
+    const [education, setEducation] = useState('');
+    const [experience, setExperience] = useState('');
+    const [job_type, setJobType] = useState('');
+    const [vacancies, setVacancies] = useState('');
+    const [expiration_date, setExpirationDate] = useState('');
+    const [job_level, setJobLevel] = useState('');
+    const [country, setCountry] = useState('');
+    const [city, setCity] = useState('');
+    const [job_description, setJobDescription] = useState('');
 
-    function handleSubmit(e){
-
+    const handleSubmit = (e) => {
         e.preventDefault();
-
-        api
-        .post('insertjob' , {
-
-            company_id:companyId,
-            job_title:job_title,
-            tags:tags,
-            job_role:job_role,
-            min_salary:min_salary,
-            max_salary:max_salary,
-            salary_type:salary_type,
-            education:education,
-            experience:experience,
-            job_type:job_type,
-            vacancies:vacancies,
-            expiration_date:expiration_date,
-            job_level:job_level,
-            country:country,
-            city:city,
-            job_description:job_description,
-
+        api.post('insertjob', {
+            company_id: companyId,
+            job_title,
+            tags,
+            job_role,
+            min_salary,
+            max_salary,
+            salary_type,
+            education,
+            experience,
+            job_type,
+            vacancies,
+            expiration_date,
+            job_level,
+            country,
+            city,
+            job_description,
         })
         .then(res => {
-
-            console.log('Job Inserted Successfully' , res.data);
-
+            console.log('Job Inserted Successfully', res.data);
         })
         .catch(error => {
+            console.log("Error", error.response?.data || error.message);
+        });
+    };
 
-            console.log("Error" , error.res.data);
-
-        })
-
-    }
-
-    return(
-
-
+    return (
         <div>
             <JobsDashboardNav />
-            
             <div className="post-job-main-container">
                 <JobsDashboardSideBar />
-            <div className="post-job-form-container">
-                <form onSubmit={handleSubmit}>
-    <h4>Post a job</h4>
-    <label>
-        Job Title
-        <input 
-            type="text"
-            placeholder="Job Title"
-            value={job_title}
-            onChange={(e) => setJobTitle(e.target.value)} 
-        />
-    </label>
+                <div className="post-job-form-container">
+                    <form onSubmit={handleSubmit}>
+                        <h4>Post a Job</h4>
 
-    <div className="post-job-tags-jobrole-container">
-        <label>
-            Tags
-            <input 
-                type="text"
-                placeholder="Tags"
-                value={tags}
-                onChange={(e) => setTags(e.target.value)} 
-            />
-        </label>
-        <label>
-            Job Role
-            <input 
-                type="text"
-                placeholder="Job Role"
-                value={job_role}
-                onChange={(e) => setJobRole(e.target.value)} 
-            />
-        </label>
-    </div>
+                        <label>
+                            Job Title
+                            <input 
+                                type="text"
+                                placeholder="Enter the job title, e.g. Frontend Developer"
+                                value={job_title}
+                                onChange={(e) => setJobTitle(e.target.value)}
+                                required
+                            />
+                        </label>
 
-    <div className="post-job-salary-container">
-        <h4>Salary</h4>
-        <div className="post-job-salary-input-container">
-            <label>
-                Minimum Salary
-                <input 
-                    type="number"
-                    placeholder="Minimum Salary"
-                    value={min_salary}
-                    onChange={(e) => setMinSalary(e.target.value)} 
-                />
-            </label>
-            <label>
-                Maximum Salary
-                <input 
-                    type="number"
-                    placeholder="Max Salary"
-                    value={max_salary}
-                    onChange={(e) => setMaxSalary(e.target.value)} 
-                />
-            </label>
-            <label>
-                Salary Type
-                <input 
-                    type="text"
-                    placeholder="Salary Type"
-                    value={salary_type}
-                    onChange={(e) => setSalaryType(e.target.value)} 
-                />
-            </label>
-        </div>
-    </div>
+                        <div className="post-job-tags-jobrole-container">
+                            <label>
+                                Tags
+                                <input 
+                                    type="text"
+                                    placeholder="Enter tags separated by commas, e.g. React, JavaScript"
+                                    value={tags}
+                                    onChange={(e) => setTags(e.target.value)}
+                                    required
+                                />
+                            </label>
+                            <label>
+                                Job Role
+                                <JobRoles 
+                                    value={job_role} 
+                                    onChange={setJobRole} 
+                                />
+                            </label>
+                        </div>
 
-    <div className="post-job-advanced-information-container">
-        <h4>Advance Information</h4>
-        <div className="post-job-advanced-information-first-container">
-            <label>
-                Education
-                <input 
-                    type="text"
-                    placeholder="Education"
-                    value={education}
-                    onChange={(e) => setEducation(e.target.value)} 
-                />
-            </label>
-            <label>
-                Experience
-                <input 
-                    type="text"
-                    placeholder="Experience"
-                    value={experience}
-                    onChange={(e) => setExperience(e.target.value)} 
-                />
-            </label>
-            <label>
-                Job Type
-                <input 
-                    type="text"
-                    placeholder="Job Type"
-                    value={job_type}
-                    onChange={(e) => setJobType(e.target.value)} 
-                />
-            </label>
-        </div>
-        <div className="post-job-advanced-information-second-container">
-            <label>
-                Vacancies
-                <input 
-                    type="number"
-                    placeholder="Vacanies"
-                    value={vacancies}
-                    onChange={(e) => setVacancies(e.target.value)} 
-                />
-            </label>
-            <label>
-                Expiration Date
-                <input 
-                    type="date"
-                    placeholder="Expiration Date"
-                    value={expiration_date}
-                    onChange={(e) => setExpirationDate(e.target.value)} 
-                />
-            </label>
-            <label>
-                Job Level
-                <input 
-                    type="text"
-                    placeholder="Job Level"
-                    value={job_level}
-                    onChange={(e) => setJobLevel(e.target.value)} 
-                />
-            </label>
-        </div>
-    </div>
+                        <div className="post-job-salary-container">
+                            <h4>Salary</h4>
+                            <div className="post-job-salary-input-container">
+                                <label>
+                                    Minimum Salary
+                                    <input 
+                                        type="number"
+                                        placeholder="Enter minimum salary"
+                                        value={min_salary}
+                                        onChange={(e) => setMinSalary(e.target.value)}
+                                        required
+                                    />
+                                </label>
+                                <label>
+                                    Maximum Salary
+                                    <input 
+                                        type="number"
+                                        placeholder="Enter maximum salary"
+                                        value={max_salary}
+                                        onChange={(e) => setMaxSalary(e.target.value)}
+                                        required
+                                    />
+                                </label>
+                                <label>
+                                    Salary Type
+                                    <select 
+                                        value={salary_type} 
+                                        onChange={(e) => setSalaryType(e.target.value)}
+                                        required
+                                    >
+                                        <option value="">Select Salary Type</option>
+                                        <option value="hourly">Hourly</option>
+                                        <option value="monthly">Monthly</option>
+                                        <option value="yearly">Yearly</option>
+                                        <option value="fixed">Fixed / Contract</option>
+                                    </select>
+                                </label>
+                            </div>
+                        </div>
 
-    <div className="post-job-location-container">
-        <h4>Location</h4>
-        <div className="post-job-location-input-container">
-            <label>
-                Country
-                <input 
-                    type="text"
-                    placeholder="Country"
-                    value={country}
-                    onChange={(e) => setCountry(e.target.value)} 
-                />
-            </label>
-            <label>
-                City
-                <input 
-                    type="text"
-                    placeholder="City"
-                    value={city}
-                    onChange={(e) => setCity(e.target.value)} 
-                />
-            </label>
-        </div>
-    </div>
+                        <div className="post-job-advanced-information-container">
+                            <h4>Advanced Information</h4>
+                            <div className="post-job-advanced-information-first-container">
+                                <label>
+                                    Education
+                                    <select 
+                                        value={education} 
+                                        onChange={(e) => setEducation(e.target.value)}
+                                        required
+                                    >
+                                        <option value="">Select Education</option>
+                                        <option value="none">No Education Required</option>
+                                        <option value="high_school">High School / Secondary</option>
+                                        <option value="diploma">Diploma / Certificate</option>
+                                        <option value="bachelor">Bachelor's Degree</option>
+                                        <option value="master">Master's Degree</option>
+                                        <option value="phd">PhD / Doctorate</option>
+                                    </select>
+                                </label>
+                                <label>
+                                    Experience
+                                    <select 
+                                        value={experience} 
+                                        onChange={(e) => setExperience(e.target.value)}
+                                        required
+                                    >
+                                        <option value="">Select Experience</option>
+                                        <option value="none">No Experience</option>
+                                        <option value="less1">Less than 1 Year</option>
+                                        <option value="1-2">1 - 2 Years</option>
+                                        <option value="3-5">3 - 5 Years</option>
+                                        <option value="5plus">5+ Years</option>
+                                    </select>
+                                </label>
+                                <label>
+                                    Job Type
+                                    <select 
+                                        value={job_type} 
+                                        onChange={(e) => setJobType(e.target.value)}
+                                        required
+                                    >
+                                        <option value="">Select Job Type</option>
+                                        <option value="full_time">Full-Time</option>
+                                        <option value="part_time">Part-Time</option>
+                                        <option value="freelance">Freelance</option>
+                                        <option value="contract">Contract</option>
+                                        <option value="internship">Internship</option>
+                                        <option value="temporary">Temporary</option>
+                                    </select>
+                                </label>
+                            </div>
+                            <div className="post-job-advanced-information-second-container">
+                                <label>
+                                    Vacancies
+                                    <input 
+                                        type="number"
+                                        placeholder="Enter number of vacancies"
+                                        value={vacancies}
+                                        onChange={(e) => setVacancies(e.target.value)}
+                                        min="1"
+                                        required
+                                    />
+                                </label>
+                                <label>
+                                    Expiration Date
+                                    <input 
+                                        type="date"
+                                        value={expiration_date}
+                                        onChange={(e) => setExpirationDate(e.target.value)}
+                                        required
+                                    />
+                                </label>
+                                <label>
+                                    Job Level
+                                    <select 
+                                        value={job_level} 
+                                        onChange={(e) => setJobLevel(e.target.value)}
+                                        required
+                                    >
+                                        <option value="">Select Job Level</option>
+                                        <option value="entry">Entry Level</option>
+                                        <option value="junior">Junior</option>
+                                        <option value="mid">Mid Level</option>
+                                        <option value="senior">Senior</option>
+                                        <option value="lead">Lead</option>
+                                    </select>
+                                </label>
+                            </div>
+                        </div>
 
-    <label className="job-post-description-container">
-        Description
-        <input 
-            type="text"
-            placeholder="Description"
-            value={job_description}
-            onChange={(e) => setJobDescription(e.target.value)} 
-        />
-    </label>
+                        <div className="post-job-location-container">
+                            <h4>Location</h4>
+                            <CountryCitySelector 
+                                country={country} 
+                                setCountry={setCountry} 
+                                city={city} 
+                                setCity={setCity} 
+                            />
+                        </div>
 
-    <button type="Submit">Submit</button>
-</form>
+                        <label className="job-post-description-container">
+                            Description
+                            <input
+                                placeholder="Enter full job description, responsibilities, and requirements"
+                                value={job_description}
+                                onChange={(e) => setJobDescription(e.target.value)}
+                                required
+                            />
+                        </label>
 
+                        <button type="submit">Submit</button>
+                    </form>
+                </div>
             </div>
-            </div>
-
         </div>
-
     )
-
 }
 
 export default PostJob;

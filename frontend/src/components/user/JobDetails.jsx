@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { api } from "../..";
+import LoadingSpinner from "../../common/LoadingSpinner";
 
 function JobDetails() {
   const { id } = useParams();
-  const [job, setJob] = useState(null);
+  const [jobs, setJobs] = useState([]);
 
   useEffect(() => {
     api.get(`getjob/${id}`, {
@@ -12,17 +13,31 @@ function JobDetails() {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     })
-      .then((res) => setJob(res.data))
+      .then(res => {
+
+        setJobs(res.data)
+        console.log(res.data);
+
+      }) 
       .catch((err) => console.log(err.response?.data || err.message));
   }, [id]);
 
-  if (!job) return <p>Loading...</p>;
+  if (!jobs) return <LoadingSpinner/>;
 
   return (
     <div>
-      <h2>{job.job_title}</h2>
-      <p>Type: {job.job_type}</p>
-      <p>Description: {job.description}</p>
+      {jobs.map((job) => {
+        
+        return(
+
+            <div key={job.id}>
+
+            <h1>{job.job_title}</h1>
+        </div>
+
+        )
+
+      })}
     </div>
   );
 }

@@ -14,6 +14,7 @@ function UserJobsDashboard() {
     })
       .then((res) => {
         setJobs(res.data.data);
+        console.log(res.data.data);
       })
       .catch((error) => {
         console.log(error.response?.data || error.message);

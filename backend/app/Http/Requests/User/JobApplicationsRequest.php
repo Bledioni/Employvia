@@ -3,7 +3,6 @@
 namespace App\Http\Requests\User;
 
 use Illuminate\Foundation\Http\FormRequest;
-use
 
 class JobApplicationsRequest extends FormRequest
 {
@@ -27,4 +26,5 @@ class JobApplicationsRequest extends FormRequest
             'job_id' => 'required|exists:jobs,id',
         ];
     }
+    
 }

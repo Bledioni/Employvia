@@ -5,6 +5,7 @@ import JobsDashboardSideBar from "./common/JobsDashboardSideBar";
 import JobRoles from "./common/JobRoles.jsx";
 import CountryCitySelector from "./common/CountryCitySelector.jsx";
 import '../style/postjob.css';
+import Footer from "../../../common/Footer.jsx";
 
 function PostJob() {
     const companyId = localStorage.getItem('company_id');
@@ -247,6 +248,7 @@ function PostJob() {
                     </form>
                 </div>
             </div>
+            <Footer/>
         </div>
     )
 }

@@ -12,6 +12,9 @@ use App\Http\Controllers\api\UserDashboard;
 use App\Http\Controllers\Employer\CompanyController;
 use App\Http\Controllers\Employer\JobController;
 use App\Http\Controllers\admin\JobRolesController;
+
+//User Controller
+use App\Http\Controllers\User\JobApplicationsController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -80,3 +83,7 @@ Route::middleware(['auth:sanctum'])->post('/insertrole' , [JobRolesController::c
 
 //Get All Job Roles
 Route::middleware(['auth:sanctum'])->get('/jobroles' , [JobRolesController::class, 'GetRoles']);
+
+
+//User Routes API
+Route::middleware(['auth:sanctum'])->post('/jobapply' , [JobApplicationsController::class , 'JobApply']);

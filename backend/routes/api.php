@@ -87,3 +87,9 @@ Route::middleware(['auth:sanctum'])->get('/jobroles' , [JobRolesController::clas
 
 //User Routes API
 Route::middleware(['auth:sanctum'])->post('/jobapply' , [JobApplicationsController::class , 'JobApply']);
+
+Route::middleware(['auth:sanctum'])->get('/getalljobs', [JobApplicationsController::class , 'getAllJobs']);
+
+Route::middleware(['auth:sanctum'])->get('/getjob/{id}', [JobApplicationsController::class , 'GetJobID']);
+
+

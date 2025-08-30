@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\User\JobApplicationsRequest;
 use App\Models\JobApplications;
+use App\Models\Jobs;
 use Exception;
 
 class JobApplicationsController extends Controller
@@ -22,35 +23,79 @@ class JobApplicationsController extends Controller
                 'success' => true,
                 'message' => 'Job application created successfully',
                 'data'    => $jobApply
-            ], 201); // ✅ Created
+            ], 201); 
         } 
         catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
             return response()->json([
                 'success' => false,
                 'message' => 'Related model not found',
                 'error'   => $e->getMessage()
-            ], 404); // ✅ Not Found
+            ], 404); 
         } 
         catch (\Illuminate\Validation\ValidationException $e) {
             return response()->json([
                 'success' => false,
                 'message' => 'Validation failed',
                 'errors'  => $e->errors()
-            ], 422); // ✅ Unprocessable Entity
+            ], 422);
         } 
         catch (\Illuminate\Database\QueryException $e) {
             return response()->json([
                 'success' => false,
                 'message' => 'Database error',
                 'error'   => $e->getMessage()
-            ], 500); // ✅ Internal Server Error
+            ], 500);
         } 
         catch (Exception $e) {
             return response()->json([
                 'success' => false,
                 'message' => 'Something went wrong',
                 'error'   => $e->getMessage()
-            ], 500); // ✅ Fallback Server Error
+            ], 500); 
         }
     }
+
+    public function getAllJobs()
+{
+    try {
+        $jobs = Jobs::all();
+
+        if ($jobs->isEmpty()) {
+            return response()->json([
+                'success' => true,
+                'message' => 'No jobs found',
+                'data'    => []
+            ], 200);
+        }
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Jobs retrieved successfully',
+            'data'    => $jobs
+        ], 200); 
+    } 
+    catch (\Illuminate\Database\QueryException $e) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Database query error',
+            'error'   => $e->getMessage()
+        ], 500); 
+    } 
+    catch (\Exception $e) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Something went wrong',
+            'error'   => $e->getMessage()
+        ], 500); 
+    }
+    }
+
+    public function GetJobID($id){
+
+        $jobs = Jobs::where('id' , $id)->get();
+        return response()->json([$jobs]);
+
+    }
+
+
 }

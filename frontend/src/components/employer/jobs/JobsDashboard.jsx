@@ -8,7 +8,7 @@ import { api } from "../../../index.js";
 
 function JobsDashboard(){
 
-    const companyName = localStorage.getItem('company_name')
+    const companyName = localStorage.getItem('company_name');
     const companyId = localStorage.getItem('company_id');
     const token = localStorage.getItem('token');
     

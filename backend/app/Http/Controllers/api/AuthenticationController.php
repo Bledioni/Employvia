@@ -97,4 +97,36 @@ class AuthenticationController extends Controller
         ], 401);
 
     }
+
+    function GetAllUsers($user_id)
+{
+    try {
+        $user = User::where('id', $user_id)->get();
+
+        if ($user->isEmpty()) {
+            return response()->json([
+                'message' => 'User not found',
+            ], 404); 
+        }
+
+        return response()->json([
+            'message' => 'User retrieved successfully',
+            'data' => $user
+        ], 200); 
+
+    } catch (\Illuminate\Database\QueryException $e) {
+        Log::error($e->getMessage());
+
+        return response()->json([
+            'message' => 'Database query error',
+        ], 500); 
+
+    } catch (\Exception $e) {
+        Log::error($e->getMessage());
+
+        return response()->json([
+            'message' => 'Something went wrong',
+        ], 500);
+    }
+}
 }

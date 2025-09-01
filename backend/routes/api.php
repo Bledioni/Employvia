@@ -54,6 +54,9 @@ Route::post('/resetpassword' , [ResetPasswordController::class , 'ResetPassword'
 //ForgetPassword API
 Route::post('/forgetpassword' , [ForgetPasswordController::class , 'ForgetPassword']);
 
+//Get All Users
+Route::middleware(['auth:sanctum'])->get('/get-all-info/{user_id}' , [AuthenticationController::class, 'GetAllUsers']);
+
 // ------------------------------------------------------
 
 // Employer Dashboard
@@ -63,9 +66,7 @@ Route::middleware(['auth:sanctum'])->get('/employeer/dashboard', [CompanyControl
 Route::middleware(['auth:sanctum'])->post('/insertcompany', [CompanyController::class, 'InsertCompany']);
 
 //Check User Company API
-
 Route::middleware(['auth:sanctum'])->get('/check-company/{user_id}', [CompanyController::class, 'checkCompany']);
-
 
 
 //Insert Job API 

@@ -15,6 +15,7 @@ import PostJob from "../components/employer/jobs/PostJob";
 import JobRoles from "../components/employer/jobs/common/JobRoles";
 import MyJobs from "../components/employer/jobs/MyJobs";
 import UserJobsDashboard from '../components/user/UserJobsDashboard';
+import RoleProtectedRoute from "./RoleProtectedRoute";
 import JobDetails from "../components/user/JobDetails";
 
 
@@ -32,18 +33,21 @@ return(
         {/* ------------------------------------------ */}
 
         {/* ----------Employer Routes---------- */}
-        <Route path="/insertcompany" element={<ProtectedInsertCompany><InsertCompany /></ProtectedInsertCompany>} />
-        <Route path="/companyregistered" element={<ProtectedRoute><CompanyRegistered /></ProtectedRoute>} />
-        <Route path="/jobsdashboard" element={<ProtectedRoute><JobsDashboard /></ProtectedRoute>} />
-        <Route path="/employer-profile" element={<ProtectedRoute><EmployerProfile/></ProtectedRoute>} />
-        <Route path="/post-job" element={<ProtectedRoute><PostJob/></ProtectedRoute>} />
-        <Route path="/jobroles" element={<ProtectedRoute><JobRoles/></ProtectedRoute>} />
-        <Route path="/my-jobs" element={<ProtectedRoute><MyJobs/></ProtectedRoute>} />
+        <Route path="/insertcompany" element={<ProtectedRoute><ProtectedInsertCompany><InsertCompany /></ProtectedInsertCompany></ProtectedRoute>} />
+        <Route path="/jobsdashboard" element={<ProtectedRoute><RoleProtectedRoute requiredRole="employer"><JobsDashboard /></RoleProtectedRoute></ProtectedRoute>} />
+        <Route path="/companyregistered" element={<ProtectedRoute><RoleProtectedRoute requiredRole="employer"><CompanyRegistered /></RoleProtectedRoute></ProtectedRoute>} />
+        <Route path="/employer-profile" element={<ProtectedRoute><RoleProtectedRoute requiredRole="employer"><EmployerProfile /></RoleProtectedRoute></ProtectedRoute>} />
+        <Route path="/post-job" element={<ProtectedRoute><RoleProtectedRoute requiredRole="employer"><PostJob /></RoleProtectedRoute></ProtectedRoute>} />
+        <Route path="/jobroles" element={<ProtectedRoute><RoleProtectedRoute requiredRole="employer"><JobRoles /></RoleProtectedRoute></ProtectedRoute>} />
+        <Route path="/my-jobs" element={<ProtectedRoute><RoleProtectedRoute requiredRole="employer"><MyJobs /></RoleProtectedRoute></ProtectedRoute>} />
+
+        
         {/* ------------------------------------------ */}
         
         {/* ---------------User Routes--------------- */}
-        <Route path="/user-jobs" element={<ProtectedRoute><UserJobsDashboard/></ProtectedRoute>} />
-        <Route path="/jobs/:id" element={<ProtectedRoute><JobDetails /></ProtectedRoute>} />
+        
+        <Route path="/user-jobs" element={<ProtectedRoute><RoleProtectedRoute requiredRole="user"><UserJobsDashboard /></RoleProtectedRoute></ProtectedRoute>} />
+        <Route path="/jobs/:id" element={<ProtectedRoute><RoleProtectedRoute requiredRole="user"><JobDetails /></RoleProtectedRoute></ProtectedRoute>} />
         {/* ------------------------------------------ */}
 
     </Routes>

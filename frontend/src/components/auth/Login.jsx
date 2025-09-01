@@ -58,6 +58,11 @@ function Login(){
                 navigate("/insertcompany");
             });
     }
+    else if(role === 'user'){
+
+        navigate('/user-jobs');
+
+    }
 
 
 

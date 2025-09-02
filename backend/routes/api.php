@@ -94,6 +94,6 @@ Route::middleware(['auth:sanctum'])->get('/getalljobs', [JobApplicationsControll
 
 Route::middleware(['auth:sanctum'])->get('/getjob/{id}', [JobApplicationsController::class , 'GetJobID']);
 
-Route::middleware(['auth:sanctum'])->post('/user-set-up/{id}' ,[UserAccountController::class , 'UserSetUp']);
+Route::middleware(['auth:sanctum'])->post('/user-set-up' ,[UserAccountController::class , 'UserSetUp']);
 
 

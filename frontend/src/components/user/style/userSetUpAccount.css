@@ -1,0 +1,108 @@
+.user-set-up-account-main-container{
+
+    margin: 4rem;
+    margin-inline: 8rem;
+
+}
+
+.user-set-up-account-basic-info-image-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 300px;
+  font-family: Arial, sans-serif;
+  margin-right: 4rem;
+  
+}
+
+.user-set-up-account-basic-info-container-custom-file-upload {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3rem 3rem;
+  border: 2px dashed rgb(117, 117, 117);
+  border-radius: 8px;
+  background-color: #f9fafb;
+  color: rgb(78, 78, 78);
+  cursor: pointer;
+  transition: background 0.3s, border-color 0.3s;
+  text-align: center;
+}
+
+
+.user-set-up-account-basic-info-container-custom-file-upload input[type="file"] {
+  display: none; /* hide the default file input */
+}
+
+.file-button {
+  background-color: #4f46e5;
+  color: #fff;
+  padding: 5px 12px;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  margin-left: 10px;
+}
+
+
+.user-set-up-account-basic-info-container{
+
+    display: flex;
+    flex-direction: row;
+
+}
+
+.user-set-up-account-basic-info-text-container{
+
+    display: flex;
+    flex-direction: column;
+
+}
+
+.user-set-up-account-basic-info-container-custom-file-placeholder i{
+
+    font-size: 50px;
+    margin: auto;
+
+}
+
+.user-set-up-account-basic-info-text-container{
+
+    width: 100%;
+
+}
+
+.user-set-up-account-basic-info-text-container label{
+
+    color: rgb(71, 71, 71);
+
+}
+
+.user-set-up-account-basic-info-text-container input , .user-set-up-account-basic-info-text-container-experience-education input{
+
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid rgb(117, 117, 117);
+    color: rgb(0, 0, 0);
+    font-size: 16px;
+    margin-bottom: 1rem;
+}
+
+.user-set-up-account-basic-info-text-container-name-title label, .user-set-up-account-basic-info-text-container-experience-education label{
+
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+}
+
+
+.user-set-up-account-basic-info-text-container-name-title, .user-set-up-account-basic-info-text-container-experience-education{
+
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+
+}
+
+
+

@@ -62,13 +62,13 @@ class UserAccountController extends Controller
 
     function GetAccounts($id){
 
-        $hasAccount = UserAccount::where('user_id' , $id)->get();
+        $userAccount = UserAccount::where('user_id' , $id)->get();
 
-        if($hasAccount){
+        if($userAccount){
 
             return response()->json([
-                $hasAccount
-                
+                'hasAccount' => $userAccount->isNotEmpty(), 
+                'user'=> $userAccount
             ]);
 
         }

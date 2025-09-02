@@ -48,10 +48,11 @@ return(
         
         {/* ---------------User Routes--------------- */}
         
-        <Route path="/user-jobs" element={<ProtectedRoute><RoleProtectedRoute requiredRole="user"><UserJobsDashboard /></RoleProtectedRoute></ProtectedRoute>} />
+        <Route path="/user-jobs" element={<ProtectedRoute><RoleProtectedRoute requiredRole="user"><HasAccountProtectedRoute><UserJobsDashboard /></HasAccountProtectedRoute></RoleProtectedRoute></ProtectedRoute>} />
         <Route path="/jobs/:id" element={<ProtectedRoute><RoleProtectedRoute requiredRole="user"><JobDetails /></RoleProtectedRoute></ProtectedRoute>} />
-        <Route path="/user-set-up" element={<ProtectedRoute><RoleProtectedRoute requiredRole="user"><UserSetUpAccount /></RoleProtectedRoute></ProtectedRoute>} />
-        <Route path="/has-account" element={<ProtectedRoute><RoleProtectedRoute requiredRole="user"><HasAccountProtectedRoute /></RoleProtectedRoute></ProtectedRoute>} />
+        <Route path="/user-set-up" element={<ProtectedRoute><RoleProtectedRoute requiredRole="user"><HasAccountProtectedRoute><UserSetUpAccount /></HasAccountProtectedRoute></RoleProtectedRoute></ProtectedRoute>} />
+        <Route path="/has-account" element={<HasAccountProtectedRoute></HasAccountProtectedRoute>} />
+        
         {/* ------------------------------------------ */}
 
     </Routes>

@@ -60,7 +60,7 @@ function Login(){
     }
     else if(role === 'user'){
 
-        navigate('/user-set-up');
+        navigate('/user-jobs');
 
     }
 

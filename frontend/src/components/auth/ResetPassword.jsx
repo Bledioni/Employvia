@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Link  , useNavigate} from "react-router-dom";
 import resetpassword from './style/resetpassword.css';
+import { api } from "../../index";
 
 function ResetPassword(){
 
@@ -17,7 +18,7 @@ function ResetPassword(){
 
         e.preventDefault();
 
-        axios.post('/resetpassword' ,{
+        api.post('/resetpassword' ,{
 
             token:token,
             email:email,

@@ -3,21 +3,19 @@
   margin-inline: 8rem;
 }
 
-.user-set-up-account-main-container button{
-
-    margin-top: 2rem;
-    background-color:#0a65cc;
-    color: white;
-    padding: 1rem 4rem;
-    cursor: pointer;
-
+.user-set-up-account-main-container button {
+  margin-top: 2rem;
+  background-color: #0a65cc;
+  color: white;
+  padding: 1rem 4rem;
+  cursor: pointer;
 }
 
 .user-set-up-account-basic-info-image-container {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  max-width: 300px;
+  width: 300px;
   font-family: Arial, sans-serif;
   margin-right: 4rem;
 }
@@ -102,39 +100,77 @@
   gap: 2rem;
 }
 
-.user-set-up-account-basic-info-text-cv-container{
+.user-set-up-account-basic-info-text-cv-container {
+  margin-top: 4rem;
+  width: 100%;
+  margin: 0;
+}
 
-    margin-top: 4rem;
+.user-set-up-account-basic-info-text-cv-container label {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-set-up-account-basic-info-text-cv-container-custom-file-upload
+  input[type="file"] {
+  display: none;
+}
+
+.user-set-up-account-basic-info-text-cv-container-custom-file-upload {
+  padding: 1rem;
+  border: 1px dashed;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+  border: 2px dashed rgb(117, 117, 117);
+  border-radius: 5px;
+  background-color: #f9fafb;
+  color: rgb(78, 78, 78);
+}
+
+@media (max-width: 1000px) {
+  .user-set-up-account-basic-info-container {
+    flex-direction: column;
+  }
+
+  .user-set-up-account-basic-info-image-container {
+    margin: auto;
     width: 100%;
+  }
+
+  .user-set-up-account-basic-info-container-custom-file-upload {
+    width: 100%;
+  }
+}
+
+@media (max-width: 680px) {
+  .user-set-up-account-main-container {
+    margin-inline: 1rem;
+  }
+}
+
+@media (max-width: 470px) {
+  .user-set-up-account-basic-info-text-container-experience-education,
+  .user-set-up-account-basic-info-text-container-name-title {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .user-set-up-account-basic-info-text-container{
+
+    gap: 1rem;
+
+  }
+
+  .user-set-up-account-basic-info-text-container-experience-education select,
+  .user-set-up-account-basic-info-text-container-name-title select{
     margin: 0;
     
+  }
 
-}
+  .user-set-up-account-basic-info-text-container-name-title input{
 
-.user-set-up-account-basic-info-text-cv-container label{
+    margin: 0;
 
-    display: flex;
-    flex-direction: column;
-
-}
-
-
-.user-set-up-account-basic-info-text-cv-container-custom-file-upload input[type='file']{
-
-    display: none;
-
-}
-
-.user-set-up-account-basic-info-text-cv-container-custom-file-upload{
-
-    padding: 1rem;
-    border: 1px dashed;
-    border-radius: 5px;
-    text-align: center;
-    cursor: pointer;
-    border: 2px dashed rgb(117, 117, 117);
-    border-radius: 5px;
-    background-color: #f9fafb;
-    color: rgb(78, 78, 78);
-
+  }
 }

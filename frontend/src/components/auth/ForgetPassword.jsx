@@ -3,6 +3,8 @@ import axios from "axios";
 import staffTalking from '../../images/login/staffTalking.png';
 import forgetpassword from '../auth/style/forgetpassword.css';
 import { Link } from "react-router-dom";
+import { api } from "../../index";
+
 
 
 
@@ -15,7 +17,7 @@ function ForgetPassword(){
 
         e.preventDefault();
 
-        axios.post('/forgetpassword' , {
+        api.post('/forgetpassword' , {
 
             email:email,
 

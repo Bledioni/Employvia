@@ -12,6 +12,7 @@ use App\Http\Controllers\api\UserDashboard;
 use App\Http\Controllers\Employer\CompanyController;
 use App\Http\Controllers\Employer\JobController;
 use App\Http\Controllers\admin\JobRolesController;
+use App\Http\Controllers\User\UserAccountController;
 
 //User Controller
 use App\Http\Controllers\User\JobApplicationsController;
@@ -92,5 +93,7 @@ Route::middleware(['auth:sanctum'])->post('/jobapply' , [JobApplicationsControll
 Route::middleware(['auth:sanctum'])->get('/getalljobs', [JobApplicationsController::class , 'getAllJobs']);
 
 Route::middleware(['auth:sanctum'])->get('/getjob/{id}', [JobApplicationsController::class , 'GetJobID']);
+
+Route::middleware(['auth:sanctum'])->post('/user-set-up/{id}' ,[UserAccountController::class , 'UserSetUp']);
 
 

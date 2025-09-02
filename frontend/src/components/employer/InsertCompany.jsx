@@ -8,7 +8,6 @@ import { api } from "../../index";
 
 // 🔹 Navigation Component
 function CompanyNav({ step }) {
-  
   return (
     <div className="insert-company-nav">
       <h4 className={step === 1 ? "active" : ""}>
@@ -27,45 +26,52 @@ function CompanyNav({ step }) {
 // 🔹 Step 1
 function Step1({ companyData, setCompanyData, nextStep }) {
   return (
-
     <div className="company-info-container">
-      <form onSubmit={(e) => { e.preventDefault(); nextStep(); }}>
-      <label className="custom-file-upload">
-        <div className="company-info-image-text-container">
-          <p><i className="fa-solid fa-cloud-arrow-up"></i></p>
-          <p><strong>Browse photo</strong> or drop here</p>
-          <p>A photo larger than 400 pixels works best. Max 5 MB.</p>
-        </div>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          nextStep();
+        }}
+      >
+        <label className="custom-file-upload">
+          <div className="company-info-image-text-container">
+            <p>
+              <i className="fa-solid fa-cloud-arrow-up"></i>
+            </p>
+            <p>
+              <strong>Browse photo</strong> or drop here
+            </p>
+            <p>A photo larger than 400 pixels works best. Max 5 MB.</p>
+          </div>
+          <input
+            type="file"
+            onChange={(e) =>
+              setCompanyData({ ...companyData, logo: e.target.files[0] })
+            }
+          />
+        </label>
+
         <input
-          type="file"
+          type="text"
+          placeholder="Enter Company Name"
+          value={companyData.companyName}
           onChange={(e) =>
-            setCompanyData({ ...companyData, logo: e.target.files[0] })
+            setCompanyData({ ...companyData, companyName: e.target.value })
           }
+          required
         />
-      </label>
-
-      <input
-        type="text"
-        placeholder="Enter Company Name"
-        value={companyData.companyName}
-        onChange={(e) =>
-          setCompanyData({ ...companyData, companyName: e.target.value })
-        }
-        required
-      />
-      <input
-        type="text"
-        placeholder="About Us"
-        value={companyData.companyInfo}
-        onChange={(e) =>
-          setCompanyData({ ...companyData, companyInfo: e.target.value })
-        }
-        required
-      />
-      <button type="submit">Save & Next</button>
-    </form>
+        <input
+          type="text"
+          placeholder="About Us"
+          value={companyData.companyInfo}
+          onChange={(e) =>
+            setCompanyData({ ...companyData, companyInfo: e.target.value })
+          }
+          required
+        />
+        <button type="submit">Save & Next</button>
+      </form>
     </div>
-
   );
 }
 
@@ -73,65 +79,83 @@ function Step1({ companyData, setCompanyData, nextStep }) {
 function Step2({ companyData, setCompanyData, prevStep, nextStep }) {
   return (
     <div className="company-info-container-1">
-      <form onSubmit={(e) => { e.preventDefault(); nextStep(); }}>
-
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          nextStep();
+        }}
+      >
         <div className="company-info-container-1-input">
           <input
-          type="text"
-          placeholder="Organization Type"
-          value={companyData.organizationType}
-          onChange={(e) =>
-            setCompanyData({ ...companyData, organizationType: e.target.value })
-          }
-        />
-        <input
-          type="text"
-          placeholder="Industry Types"
-          value={companyData.industryType}
-          onChange={(e) =>
-            setCompanyData({ ...companyData, industryType: e.target.value })
-          }
-        />
-        <input
-          type="text"
-          placeholder="Team Size"
-          value={companyData.teamSize}
-          onChange={(e) =>
-            setCompanyData({ ...companyData, teamSize: e.target.value })
-          }
-        />
-        <input
-          type="number"
-          placeholder="Year of Establishment"
-          value={companyData.yearOfEstablishment}
-          onChange={(e) =>
-            setCompanyData({ ...companyData, yearOfEstablishment: e.target.value })
-          }
-          min="1900"
-          max={new Date().getFullYear()}
-        />
-        <input
-          type="text"
-          placeholder="Company Website"
-          value={companyData.companyWebsite}
-          onChange={(e) =>
-            setCompanyData({ ...companyData, companyWebsite: e.target.value })
-          }
-        />
-        <input
-          type="text"
-          placeholder="Tell us about your company vision..."
-          id="company-info-container-company-vision"
-          value={companyData.companyVision}
-          onChange={(e) =>
-            setCompanyData({ ...companyData, companyVision: e.target.value })
-          }
-        />
-        </div>        
-        <button id="company-info-container-previos-button" type="button" onClick={prevStep}>Previous</button>
-        <button id="company-info-container-save-button" type="submit">Save & Next</button>
+            type="text"
+            placeholder="Organization Type"
+            value={companyData.organizationType}
+            onChange={(e) =>
+              setCompanyData({
+                ...companyData,
+                organizationType: e.target.value,
+              })
+            }
+          />
+          <input
+            type="text"
+            placeholder="Industry Types"
+            value={companyData.industryType}
+            onChange={(e) =>
+              setCompanyData({ ...companyData, industryType: e.target.value })
+            }
+          />
+          <input
+            type="text"
+            placeholder="Team Size"
+            value={companyData.teamSize}
+            onChange={(e) =>
+              setCompanyData({ ...companyData, teamSize: e.target.value })
+            }
+          />
+          <input
+            type="number"
+            placeholder="Year of Establishment"
+            value={companyData.yearOfEstablishment}
+            onChange={(e) =>
+              setCompanyData({
+                ...companyData,
+                yearOfEstablishment: e.target.value,
+              })
+            }
+            min="1900"
+            max={new Date().getFullYear()}
+          />
+          <input
+            type="text"
+            placeholder="Company Website"
+            value={companyData.companyWebsite}
+            onChange={(e) =>
+              setCompanyData({ ...companyData, companyWebsite: e.target.value })
+            }
+          />
+          <input
+            type="text"
+            placeholder="Tell us about your company vision..."
+            id="company-info-container-company-vision"
+            value={companyData.companyVision}
+            onChange={(e) =>
+              setCompanyData({ ...companyData, companyVision: e.target.value })
+            }
+          />
+        </div>
+        <button
+          id="company-info-container-previos-button"
+          type="button"
+          onClick={prevStep}
+        >
+          Previous
+        </button>
+        <button id="company-info-container-save-button" type="submit">
+          Save & Next
+        </button>
       </form>
-      </div>
+    </div>
   );
 }
 
@@ -139,36 +163,44 @@ function Step2({ companyData, setCompanyData, prevStep, nextStep }) {
 function Step3({ companyData, setCompanyData, prevStep, handleSubmit }) {
   return (
     <div className="company-info-container">
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        placeholder="Map Location"
-        value={companyData.mapLocation}
-        onChange={(e) =>
-          setCompanyData({ ...companyData, mapLocation: e.target.value })
-        }
-      />
-      <input
-        type="number"
-        placeholder="Phone Number"
-        value={companyData.phone}
-        onChange={(e) =>
-          setCompanyData({ ...companyData, phone: e.target.value })
-        }
-      />
-      <input
-        type="email"
-        placeholder="Set Email"
-        value={companyData.email}
-        onChange={(e) =>
-          setCompanyData({ ...companyData, email: e.target.value })
-        }
-      />
-      <div className="company-info-container-buttons">
-        <button id="company-info-container-previos-button" type="button" onClick={prevStep}>Previous</button>
-        <button id="company-info-container-save-button" type="submit">Finish Editing</button>
-      </div>
-    </form>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder="Map Location"
+          value={companyData.mapLocation}
+          onChange={(e) =>
+            setCompanyData({ ...companyData, mapLocation: e.target.value })
+          }
+        />
+        <input
+          type="number"
+          placeholder="Phone Number"
+          value={companyData.phone}
+          onChange={(e) =>
+            setCompanyData({ ...companyData, phone: e.target.value })
+          }
+        />
+        <input
+          type="email"
+          placeholder="Set Email"
+          value={companyData.email}
+          onChange={(e) =>
+            setCompanyData({ ...companyData, email: e.target.value })
+          }
+        />
+        <div className="company-info-container-buttons">
+          <button
+            id="company-info-container-previos-button"
+            type="button"
+            onClick={prevStep}
+          >
+            Previous
+          </button>
+          <button id="company-info-container-save-button" type="submit">
+            Finish Editing
+          </button>
+        </div>
+      </form>
     </div>
   );
 }
@@ -213,31 +245,28 @@ function InsertCompany() {
     formData.append("email", companyData.email);
     formData.append("logo", companyData.logo);
 
-  
-    api.post("insertcompany", formData, {
-      headers: {
-        "Content-Type": "multipart/form-data",
-        "Authorization": `Bearer ${localStorage.getItem("token")}`,
-      },
-    })
-    .then((response) => {
-      
-      localStorage.setItem('company_id', response.data.company_id);
-      console.log("Company inserted successfully", response.data);
-      navigate("/companyregistered");
-      
-    })
-    .catch((error) => {
-      let message = "Something went wrong.";
-      if (error.response && error.response.data) {
-        message = error.response.data.message || message;
-      }
-      console.error("Error", message);
-      alert(message);
-    });
+    api
+      .post("insertcompany", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+      .then((response) => {
+        localStorage.setItem("company_id", response.data.company_id);
+        console.log("Company inserted successfully", response.data);
+        navigate("/companyregistered");
+      })
+      .catch((error) => {
+        let message = "Something went wrong.";
+        if (error.response && error.response.data) {
+          message = error.response.data.message || message;
+        }
+        console.error("Error", message);
+        alert(message);
+      });
   };
 
-  
   return (
     <div>
       <div className="insert-company-headline">

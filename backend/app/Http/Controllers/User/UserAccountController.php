@@ -59,4 +59,19 @@ class UserAccountController extends Controller
             ], 500);
         }
     }
+
+    function GetAccounts($id){
+
+        $hasAccount = UserAccount::where('user_id' , $id)->get();
+
+        if($hasAccount){
+
+            return response()->json([
+                $hasAccount
+                
+            ]);
+
+        }
+
+    }
 }

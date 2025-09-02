@@ -18,6 +18,8 @@ import UserJobsDashboard from '../components/user/UserJobsDashboard';
 import RoleProtectedRoute from "./RoleProtectedRoute";
 import JobDetails from "../components/user/JobDetails";
 import UserSetUpAccount from "../components/user/UserSetUpAccount";
+import HasAccountProtectedRoute from "./HasAccountProtectedRoute";
+
 
 function Header(){
 
@@ -49,6 +51,7 @@ return(
         <Route path="/user-jobs" element={<ProtectedRoute><RoleProtectedRoute requiredRole="user"><UserJobsDashboard /></RoleProtectedRoute></ProtectedRoute>} />
         <Route path="/jobs/:id" element={<ProtectedRoute><RoleProtectedRoute requiredRole="user"><JobDetails /></RoleProtectedRoute></ProtectedRoute>} />
         <Route path="/user-set-up" element={<ProtectedRoute><RoleProtectedRoute requiredRole="user"><UserSetUpAccount /></RoleProtectedRoute></ProtectedRoute>} />
+        <Route path="/has-account" element={<ProtectedRoute><RoleProtectedRoute requiredRole="user"><HasAccountProtectedRoute /></RoleProtectedRoute></ProtectedRoute>} />
         {/* ------------------------------------------ */}
 
     </Routes>

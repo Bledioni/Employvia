@@ -11,3 +11,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.Toastify__close-button {
+  font-size: 5px !important; 
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+}
+
+.Toastify__close-button > svg {
+  width: 14px;
+  height: 14px;
+}

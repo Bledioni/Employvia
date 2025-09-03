@@ -1,0 +1,51 @@
+.user-dashboard-main-container{
+
+    display: flex;
+    margin-inline: 8rem;
+
+}
+
+.user-jobs-table-wrapper{
+
+    display: flex;
+    flex-direction: column;
+    margin-left: 2rem;
+    width: 100%;
+    gap: 1rem;
+    
+
+}
+
+.user-jobs-table{
+
+    width: 100%;
+    border-bottom: 1px solid;
+    
+
+}
+
+.user-jobs-table tr{
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.user-jobs-table tr td{
+
+    width: 10rem;
+    
+}
+
+.user-jobs-table tr button{
+
+    padding-inline: 2rem;
+    background-color: #0a65cc;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+
+}

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\UserAccount;
 use App\Http\Requests\User\UserAccountRequest;
+use App\Models\Companies;
 
 class UserAccountController extends Controller
 {
@@ -72,6 +73,18 @@ class UserAccountController extends Controller
             ]);
 
         }
+
+    }
+
+    function GetCompany($id){
+
+        $company = Companies::where('id' , $id)->get();
+
+        return response()->json(    
+
+            $company,
+
+        ); 
 
     }
 }

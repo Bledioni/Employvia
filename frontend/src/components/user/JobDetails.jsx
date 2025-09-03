@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { api } from "../..";
+import { api, backend } from "../..";
 import LoadingSpinner from "../../common/LoadingSpinner";
 
 function JobDetails() {
   const { id } = useParams(); // job ID from URL
   const [jobs, setJobs] = useState([]);
+  const [companyLogo , setCompanyLogo] = useState('');
   const userId = localStorage.getItem("user_id");
-
+  const [companyId , setCompanyId] = useState('');
   useEffect(() => {
     api.get(`getjob/${id}`, {
       headers: {
@@ -15,8 +16,10 @@ function JobDetails() {
       },
     })
       .then(res => {
+
         setJobs(res.data); // assuming Laravel returns array
-        console.log(res.data);
+        setCompanyId(res.data[0].company_id);
+      
       })
       .catch(err => console.log(err.response?.data || err.message));
   }, [id]);
@@ -46,12 +49,26 @@ function JobDetails() {
     });
   };
 
+  api.get(`get-company/${companyId}` , {
+
+          headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+
+        })
+        .then(res => {
+
+          setCompanyLogo(res.data[0].logo);
+
+        })
+
   return (
     <div>
       {jobs.map(job => (
         <div key={job.id}>
           <h1>{job.job_title}</h1>
           <button onClick={() => handleApply(job.id)}>Apply</button>
+          <img src={`${backend.defaults.baseURL}storage/${companyLogo}`} alt="" />
         </div>
       ))}
     </div>

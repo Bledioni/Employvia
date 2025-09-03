@@ -21,7 +21,7 @@ function UserNav(){
     return(
         <div className="user-nav-main-container">
             <div className="user-nav-first-container">
-                <h4>EmployVia</h4>
+                <h2>EmployVia</h2>
                 <input type="text" placeholder="Job title, keyword, company"/>
             </div>
             <img src={`${backend.defaults.baseURL}storage/${userProfile}`} alt="User Profile" />

@@ -98,4 +98,6 @@ Route::middleware(['auth:sanctum'])->post('/user-set-up' ,[UserAccountController
 
 Route::middleware(['auth:sanctum'])->get('/get-accounts/{id}' , [UserAccountController:: class, 'GetAccounts']);
 
+Route::middleware(['auth:sanctum'])->get('/get-company/{id}' , [UserAccountController:: class, 'GetCompany']);
+
 

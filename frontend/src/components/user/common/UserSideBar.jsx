@@ -18,7 +18,7 @@ function JobsDashboardSideBar() {
 
       {/* Sidebar */}
       <div className={`jobs-dashboard-side-bar-container ${isOpen ? "open" : ""}`}>
-        <NavLink to="/jobsdashboard" className="sidebar-link">
+        <NavLink to="/user-jobs" className="sidebar-link">
           <h4>
             <i className="fa-solid fa-layer-group"></i>
             <span className="sidebar-text">Overview</span>

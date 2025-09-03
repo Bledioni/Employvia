@@ -1,6 +1,6 @@
 import react, { useState } from "react";
 import { api, backend } from "../../../index";
-
+import '../style/userNav.css';
 
 function UserNav(){
 
@@ -19,8 +19,11 @@ function UserNav(){
     })
 
     return(
-        <div>
-            <h4>EmployVia</h4>
+        <div className="user-nav-main-container">
+            <div className="user-nav-first-container">
+                <h4>EmployVia</h4>
+                <input type="text" placeholder="Job title, keyword, company"/>
+            </div>
             <img src={`${backend.defaults.baseURL}storage/${userProfile}`} alt="User Profile" />
         </div>
     )

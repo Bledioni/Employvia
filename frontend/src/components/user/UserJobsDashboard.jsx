@@ -3,7 +3,7 @@ import { api } from "../..";
 import { useNavigate } from "react-router-dom";
 import LoadingSpinner from "../../common/LoadingSpinner";
 import UserNav from "./common/UserNav";
-
+import UserSideBar from './common/UserSideBar';
 
 function UserJobsDashboard() {
   const [jobs, setJobs] = useState([]);
@@ -36,6 +36,7 @@ function UserJobsDashboard() {
   return (
     <div>
       <UserNav/>
+      <UserSideBar/>
       {jobs.map((job) => (
         <div key={job.id}>
           <h3>{job.job_title}</h3>

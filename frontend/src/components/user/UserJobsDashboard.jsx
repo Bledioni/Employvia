@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { api } from "../..";
 import { useNavigate } from "react-router-dom";
 import LoadingSpinner from "../../common/LoadingSpinner";
+import UserNav from "./common/UserNav";
 
 
 function UserJobsDashboard() {
@@ -34,6 +35,7 @@ function UserJobsDashboard() {
 
   return (
     <div>
+      <UserNav/>
       {jobs.map((job) => (
         <div key={job.id}>
           <h3>{job.job_title}</h3>

@@ -66,10 +66,7 @@ function UserSetUpAccount() {
   };
 
   return (
-    <div className="user-set-up-account-main-container">
-      <form onSubmit={handleSubmit} encType="multipart/form-data">
-        <div className="user-set-up-account-basic-info-container">
-          <div className="user-set-up-account-basic-info-image-container">
+   >
             <label>Profile Picture:</label>
             <label className="user-set-up-account-basic-info-container-custom-file-upload">
               {profilePicture ? (

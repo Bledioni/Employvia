@@ -28,7 +28,7 @@ function UserJobsDashboard() {
   }, []);
 
   if (loading) {
-   
+    return <LoadingSpinner />;
   }
 
   return (

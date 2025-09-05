@@ -141,7 +141,7 @@ function JobDetails() {
           </section>
 
           <section className="job-detail-job-info-second-container-second-type">
-            <h4>Contact Information</h4>
+            <h3>Contact Information</h3>
             <section className="job-detail-job-info-contact-info-container">
               <i class="fa-solid fa-globe"></i>
               <section className="job-detail-ingo-contact-info-inner-container">

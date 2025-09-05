@@ -160,3 +160,16 @@
     margin-inline: 8px;
 
 }
+
+.job-detail-job-info-second-container-second-type h3{
+
+    margin: 0;
+
+}
+
+.job-detail-ingo-contact-info-inner-container p:first-child{
+
+    color: rgb(192, 192, 192);
+    font-size: 16px;
+
+}

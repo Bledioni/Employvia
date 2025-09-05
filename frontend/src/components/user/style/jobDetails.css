@@ -173,3 +173,24 @@
     font-size: 16px;
 
 }
+
+@media(max-width:1440px){
+
+    .job-details-main-container , .job-details-job-info-main-container{
+    
+        margin-inline: 1rem;
+
+    }
+
+    .job-details-job-info-main-container{
+
+        flex-direction: column;
+
+    }
+    
+    .job-details-job-info-first-container , .job-details-job-info-second-container{
+
+        margin: auto;
+
+    }
+}

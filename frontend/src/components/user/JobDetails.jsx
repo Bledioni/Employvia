@@ -2,15 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { api, backend } from "../..";
 import LoadingSpinner from "../../common/LoadingSpinner";
-import './style/jobDetails.css';
+import "./style/jobDetails.css";
 
 function JobDetails() {
   const { id } = useParams();
   const [job, setJob] = useState(null);
-  const [companyLogo, setCompanyLogo] = useState("");
-  const [companyName, setCompanyName] = useState("");
-  const [logoLoaded, setLogoLoaded] = useState(false);
-  const [jobLoading, setJobLoading] = useState(true); // loading for job API only
+  const [company, setCompany] = useState(null);
+  const [jobLoading, setJobLoading] = useState(true);
+  const [companyLoading, setCompanyLoading] = useState(true);
   const userId = localStorage.getItem("user_id");
 
   // Fetch job details
@@ -32,23 +31,16 @@ function JobDetails() {
   useEffect(() => {
     if (!job?.company_id) return;
 
+    setCompanyLoading(true);
     api
       .get(`get-company/${job.company_id}`, {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       })
       .then((res) => {
-        const logoUrl = res.data[0].logo;
-        setCompanyName(res.data[0].company_name);
-
-        // Preload logo
-        const img = new Image();
-        img.src = `${backend.defaults.baseURL}storage/${logoUrl}`;
-        img.onload = () => {
-          setCompanyLogo(logoUrl);
-          setLogoLoaded(true);
-        };
+        setCompany(res.data[0]);
       })
-      .catch((err) => console.log(err.response?.data || err.message));
+      .catch((err) => console.log(err.response?.data || err.message))
+      .finally(() => setCompanyLoading(false));
   }, [job?.company_id]);
 
   const handleApply = () => {
@@ -76,36 +68,102 @@ function JobDetails() {
   return (
     <section className="job-details-main-container">
       <section className="job-details-company-header-main-container">
-        <section className="job-details-company-header-info">
-          {logoLoaded ? (
-            <img
-              src={`${backend.defaults.baseURL}storage/${companyLogo}`}
-              alt="Company Logo"
-              width={64}
-              height={64}
-              style={{ objectFit: 'contain' }}
-            />
-          ) : (
-            <section
-              style={{
-                width: '4rem',
-                height: '4rem',
-                borderRadius: '50%',
-                backgroundColor: "#ddd",
-              }}
-            />
-          )}
-          <h5>{companyName}</h5>
-        </section>
+        {companyLoading ? (
+          <section
+            style={{
+              width: "4rem",
+              height: "4rem",
+              borderRadius: "50%",
+              backgroundColor: "#ddd",
+            }}
+          />
+        ) : (
+          company && (
+            <section className="job-details-company-header-info">
+              {company.logo ? (
+                <img
+                  src={`${backend.defaults.baseURL}storage/${company.logo}`}
+                  alt={`${company.name} Logo`}
+                  width={64}
+                  height={64}
+                  style={{ objectFit: "contain" }}
+                />
+              ) : (
+                <section
+                  style={{
+                    width: "4rem",
+                    height: "4rem",
+                    borderRadius: "50%",
+                    backgroundColor: "#ddd",
+                  }}
+                />
+              )}
+              <h5>{company?.name}</h5>
+            </section>
+          )
+        )}
         <button onClick={handleApply}>Apply</button>
       </section>
+
       <h1>{job.job_title}</h1>
+
       <section className="job-details-job-info-main-container">
         <section className="job-details-job-info-first-container">
           <p>{job.job_description}</p>
         </section>
         <section className="job-details-job-info-second-container">
-          14 August
+          <section className="job-detail-job-info-second-container-first-type">
+            <section className="job-detail-job-info-second-container-first-type-first-half">
+              <section className="job-details-job-info-text-container">
+                <i class="fa-solid fa-calendar"></i>
+                <p>Founded In</p>
+                <h5>{company?.year_of_establishment}</h5>
+              </section>
+              <section className="job-details-job-info-text-container">
+                <i class="fa-solid fa-stopwatch"></i>
+                <p>Organization Type</p>
+                <h5>{company?.organization_type}</h5>
+              </section>
+            </section>
+
+            <section className="job-detail-job-info-second-container-first-type-first-half">
+              <section className="job-details-job-info-text-container">
+                <i class="fa-solid fa-wallet"></i>
+                <p>Team Size</p>
+                <h5>{company?.team_size}</h5>
+              </section>
+              <section className="job-details-job-info-text-container">
+                <i class="fa-solid fa-industry"></i>
+                <p>Industry Type</p>
+                <h5>{company?.industry_type}</h5>
+              </section>
+            </section>
+          </section>
+
+          <section className="job-detail-job-info-second-container-second-type">
+            <h4>Contact Information</h4>
+            <section className="job-detail-job-info-contact-info-container">
+              <i class="fa-solid fa-globe"></i>
+              <section className="job-detail-ingo-contact-info-inner-container">
+                <p>WEBSITE</p>
+                <p>{company?.company_website}</p>
+              </section>
+            </section>
+            <section className="job-detail-job-info-contact-info-container">
+              <i class="fa-solid fa-phone-volume"></i>
+              <section className="job-detail-ingo-contact-info-inner-container">
+                <p>PHONE</p>
+                <p>{company?.phone}</p>
+              </section>
+            </section>
+            <section className="job-detail-job-info-contact-info-container">
+              <i class="fa-solid fa-envelope"></i>
+              <section className="job-detail-ingo-contact-info-inner-container">
+                <p>EMAIL ADDRESS</p>
+                <p>{company?.email}</p>
+              </section>
+            </section>
+          </section>
         </section>
       </section>
     </section>

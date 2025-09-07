@@ -25,9 +25,10 @@ function Login(){
         })
         .then(response => {
 
-            console.log("Login Successfully" , response.data);
+            console.log("Login Successfully" , response.data.user);
             localStorage.setItem("token" , response.data.token);
             localStorage.setItem("user_id" , response.data.user.id);
+            sessionStorage.setItem('role' , response.data.user.role);
             
 
             const role = response.data.user.role;

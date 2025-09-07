@@ -41,24 +41,37 @@ function JobDetails() {
       })
       .catch((err) => console.log(err.response?.data || err.message))
       .finally(() => setCompanyLoading(false));
+
   }, [job?.company_id]);
 
   const handleApply = () => {
+      api
+        .post(
+          "jobapply",
+          { user_id: userId, job_id: job.id },
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          }
+        )
+        .then((res) => {
+          console.log("Applied successfully:", res.data);
+          alert("Application submitted!");
+        })
+        .catch((err) => {
+          console.log("Error applying:", err.response?.data || err.message);
+          alert("Failed to apply.");
+        });
+    };
+
+  const handleAddToFavorites = () => {
     api
-      .post(
-        "jobapply",
-        { user_id: userId, job_id: job.id },
-        {
-          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-        }
-      )
-      .then((res) => {
-        console.log("Applied successfully:", res.data);
-        alert("Application submitted!");
+      .post("add-to-favorites", {
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       })
-      .catch((err) => {
-        console.log("Error applying:", err.response?.data || err.message);
-        alert("Failed to apply.");
+      .then((res) => {
+        console.log(res.data);
       });
   };
 
@@ -104,7 +117,7 @@ function JobDetails() {
         )}
         <section className="job-details-company-header-info-apply-bookmark">
           <button onClick={handleApply}>Apply</button>
-          <i class="fa-solid fa-bookmark"></i>
+          <button></button>
         </section>
       </section>
 

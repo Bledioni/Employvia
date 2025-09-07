@@ -102,6 +102,6 @@ Route::middleware(['auth:sanctum'])->get('/get-accounts/{id}' , [UserAccountCont
 Route::middleware(['auth:sanctum'])->get('/get-company/{id}' , [UserAccountController:: class, 'GetCompany']);
 
 //Add To Favorites Route
-Route::middleware(['auth:sanctum'])->post('add-to-favorites' , [AddToFavoritesController::class , 'AddToFavorites']);
+Route::middleware(['auth:sanctum'])->post('/add-to-favorites' , [AddToFavoritesController::class , 'AddToFavorites']);
 
 

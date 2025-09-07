@@ -102,7 +102,10 @@ function JobDetails() {
             </section>
           )
         )}
-        <button onClick={handleApply}>Apply</button>
+        <section className="job-details-company-header-info-apply-bookmark">
+          <button onClick={handleApply}>Apply</button>
+          <i class="fa-solid fa-bookmark"></i>
+        </section>
       </section>
 
       <h1>{job.job_title}</h1>
@@ -144,21 +147,21 @@ function JobDetails() {
             <h3>Contact Information</h3>
             <section className="job-detail-job-info-contact-info-container">
               <i class="fa-solid fa-globe"></i>
-              <section className="job-detail-ingo-contact-info-inner-container">
+              <section className="job-detail-info-contact-info-inner-container">
                 <p>WEBSITE</p>
                 <p>{company?.company_website}</p>
               </section>
             </section>
             <section className="job-detail-job-info-contact-info-container">
-              <i class="fa-solid fa-phone-volume"></i>
-              <section className="job-detail-ingo-contact-info-inner-container">
+              <i className="fa-solid fa-phone-volume"></i>
+              <section className="job-detail-info-contact-info-inner-container">
                 <p>PHONE</p>
                 <p>{company?.phone}</p>
               </section>
             </section>
             <section className="job-detail-job-info-contact-info-container">
               <i class="fa-solid fa-envelope"></i>
-              <section className="job-detail-ingo-contact-info-inner-container">
+              <section className="job-detail-info-contact-info-inner-container">
                 <p>EMAIL ADDRESS</p>
                 <p>{company?.email}</p>
               </section>

@@ -13,6 +13,7 @@ use App\Http\Controllers\Employer\CompanyController;
 use App\Http\Controllers\Employer\JobController;
 use App\Http\Controllers\admin\JobRolesController;
 use App\Http\Controllers\User\UserAccountController;
+use App\Http\Controllers\User\AddToFavoritesController;
 
 //User Controller
 use App\Http\Controllers\User\JobApplicationsController;
@@ -99,5 +100,8 @@ Route::middleware(['auth:sanctum'])->post('/user-set-up' ,[UserAccountController
 Route::middleware(['auth:sanctum'])->get('/get-accounts/{id}' , [UserAccountController:: class, 'GetAccounts']);
 
 Route::middleware(['auth:sanctum'])->get('/get-company/{id}' , [UserAccountController:: class, 'GetCompany']);
+
+//Add To Favorites Route
+Route::middleware(['auth:sanctum'])->post('add-to-favorites' , [AddToFavoritesController::class , 'AddToFavorites']);
 
 

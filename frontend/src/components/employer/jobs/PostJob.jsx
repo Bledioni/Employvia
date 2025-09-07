@@ -236,7 +236,7 @@ function PostJob() {
 
                         <label className="job-post-description-container">
                             Description
-                            <input
+                            <textarea
                                 placeholder="Enter full job description, responsibilities, and requirements"
                                 value={job_description}
                                 onChange={(e) => setJobDescription(e.target.value)}

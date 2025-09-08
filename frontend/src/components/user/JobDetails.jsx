@@ -65,15 +65,25 @@ function JobDetails() {
         });
     };
 
-  const handleAddToFavorites = () => {
-    api
-      .post("add-to-favorites", {
-        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-      })
-      .then((res) => {
-        console.log(res.data);
-      });
-  };
+    const handleAddToFavorites = () => {
+
+      api.post('add-to-favorites' , {
+
+        user_id:userId,
+        job_id:job.id,
+
+        headers:{
+
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+
+        }
+
+      }
+    )
+
+    }
+
+    
 
   // Show spinner only if job API is loading
   if (jobLoading || !job) return <LoadingSpinner />;
@@ -117,7 +127,7 @@ function JobDetails() {
         )}
         <section className="job-details-company-header-info-apply-bookmark">
           <button onClick={handleApply}>Apply</button>
-          <button></button>
+          <button onClick={handleAddToFavorites}><i class="fa-solid fa-bookmark"></i></button>
         </section>
       </section>
 

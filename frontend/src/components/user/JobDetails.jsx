@@ -56,7 +56,7 @@ function JobDetails() {
           }
         )
         .then((res) => {
-          
+          console.log("Applied successfully:", res.data);
           alert("Application submitted!");
         })
         .catch((err) => {

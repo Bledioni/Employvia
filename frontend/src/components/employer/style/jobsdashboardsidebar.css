@@ -1,0 +1,76 @@
+.jobs-dashboard-side-bar-container {
+  width: 15rem;
+  border-right: 1px solid rgb(149, 149, 149);
+  height: 100vh;
+  transition: transform 0.3s ease-in-out;
+}
+
+.jobs-dashboard-side-bar-container h4 {
+  width: 100%;
+  color: rgb(126, 126, 126);
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.sidebar-link {
+  text-decoration: none;
+  color: black;
+  display: block;
+}
+
+.sidebar-link.active h4 {
+  background-color: #d7eaff;
+  color: #007bff;
+  padding: 8px;
+  border-left: 2px solid #007bff;
+}
+
+.hamburger-btn{
+
+  display: none;
+
+}
+
+/* Hide text on medium screens */
+@media (max-width: 1280px) {
+  .sidebar-text {
+    display: none;
+  }
+}
+
+/* 📱 Mobile behavior */
+@media (max-width: 600px) {
+  /* Sidebar hidden by default */
+  .jobs-dashboard-side-bar-container {
+    position: fixed;
+    left: 0;
+    transform: translateX(-100%);
+    background: white;
+    z-index: 1000;
+    width: 15rem;
+  }
+
+  .hamburger-btn{
+
+    display: block;
+
+  }
+
+  /* Sidebar open */
+  .jobs-dashboard-side-bar-container.open {
+    transform: translateX(0);
+  }
+
+  /* Hamburger button */
+  .hamburger-btn {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    z-index: 1100;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: #007bff;
+  }
+}

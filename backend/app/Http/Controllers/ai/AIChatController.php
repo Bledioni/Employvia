@@ -12,7 +12,7 @@ class AIChatController extends Controller
     public function chat(Request $request)
     {
         $request->validate([
-            'message' => 'required|string',
+            'message' => 'required',
         ]);
 
         $userMessage = $request->message;
@@ -56,6 +56,6 @@ class AIChatController extends Controller
             }
         }
 
-        return response()->json(['reply' => $reply]);
+        return response()->json(['reply' => $reply , 'job_id' => $job->id]);
     }
 }

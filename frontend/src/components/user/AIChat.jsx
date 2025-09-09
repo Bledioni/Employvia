@@ -1,32 +1,49 @@
 import { useState } from "react";
 import axios from "axios";
+import { api } from "../..";
 
 export default function AIChat() {
   const [messages, setMessages] = useState([]); // chat history
   const [input, setInput] = useState("");
+  const [jobId, setJobId] = useState(null);
+  const [jobs, setJobs] = useState([]);
 
-  const sendMessage = async () => {
+  const sendMessage = () => {
     if (!input) return;
 
     // Add user message to chat
-    setMessages([...messages, { sender: "user", text: input }]);
+    setMessages((prev) => [...prev, { sender: "user", text: input }]);
 
-    try {
-      const response = await axios.post("http://localhost:8000/api/ai-chat", {
-        message: input,
+    axios
+      .post("http://localhost:8000/api/ai-chat", { message: input })
+      .then((response) => {
+        // Add AI reply
+        setMessages((prev) => [
+          ...prev,
+          { sender: "ai", text: response.data.reply },
+        ]);
+
+        setInput(""); // clear input
+        setJobId(response.data.job_id); // save job_id
+
+        // Fetch job details if job_id exists
+        if (response.data.job_id) {
+          api
+            .get(`getjob/${response.data.job_id}`, {
+              headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+              },
+            })
+            .then((res) => {
+              console.log("Job details:", res.data);
+              setJobs(res.data); // save jobs in state if you want
+            })
+            .catch((err) => console.error("Error fetching job:", err));
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
       });
-
-      // Add AI reply to chat
-      setMessages(prev => [
-        ...prev,
-        { sender: "user", text: input },
-        { sender: "ai", text: response.data.reply },
-      ]);
-
-      setInput(""); // clear input
-    } catch (error) {
-      console.error("Error:", error);
-    }
   };
 
   const handleKeyPress = (e) => {
@@ -35,7 +52,7 @@ export default function AIChat() {
 
   return (
     <div style={{ maxWidth: 600, margin: "0 auto" }}>
-      <h2>Job Board AI Chat</h2>
+      <h2>EmployVia AI Chat</h2>
       <div
         style={{
           border: "1px solid #ccc",

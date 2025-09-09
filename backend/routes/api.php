@@ -14,6 +14,7 @@ use App\Http\Controllers\Employer\JobController;
 use App\Http\Controllers\admin\JobRolesController;
 use App\Http\Controllers\User\UserAccountController;
 use App\Http\Controllers\User\AddToFavoritesController;
+use App\Http\Controllers\ai\AIChatController;
 
 //User Controller
 use App\Http\Controllers\User\JobApplicationsController;
@@ -105,3 +106,5 @@ Route::middleware(['auth:sanctum'])->get('/get-company/{id}' , [UserAccountContr
 Route::middleware(['auth:sanctum'])->post('/add-to-favorites' , [AddToFavoritesController::class , 'AddToFavorites']);
 
 
+
+Route::post('/ai-chat', [AIChatController::class, 'chat']);

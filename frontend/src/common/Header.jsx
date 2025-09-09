@@ -19,6 +19,8 @@ import RoleProtectedRoute from "./RoleProtectedRoute";
 import JobDetails from "../components/user/JobDetails";
 import UserSetUpAccount from "../components/user/UserSetUpAccount";
 import HasAccountProtectedRoute from "./HasAccountProtectedRoute";
+import AIChat from "../components/user/AIChat";
+
 
 
 function Header(){
@@ -52,7 +54,11 @@ return(
         <Route path="/jobs/:id" element={<ProtectedRoute><RoleProtectedRoute requiredRole="user"><JobDetails /></RoleProtectedRoute></ProtectedRoute>} />
         <Route path="/user-set-up" element={<ProtectedRoute><RoleProtectedRoute requiredRole="user"><HasAccountProtectedRoute><UserSetUpAccount /></HasAccountProtectedRoute></RoleProtectedRoute></ProtectedRoute>} />
         <Route path="/has-account" element={<HasAccountProtectedRoute></HasAccountProtectedRoute>} />
+
+
+        <Route path="/ai-chat" element={<AIChat></AIChat>} />
         
+
         {/* ------------------------------------------ */}
 
     </Routes>

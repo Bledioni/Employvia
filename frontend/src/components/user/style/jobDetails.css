@@ -29,9 +29,17 @@
 
 }
 
+.job-details-company-header-info-apply-bookmark button:nth-child(2){
+
+    padding: 0;
+    background-color: white;
+    color: black;
+    
+}
+
 .job-details-company-header-info-apply-bookmark i{
 
-    font-size: 20px;
+    font-size: 24px;
     cursor: pointer;
 
 }

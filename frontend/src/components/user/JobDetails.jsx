@@ -67,6 +67,8 @@ function JobDetails() {
 
     const handleAddToFavorites = () => {
 
+      alert('Added to favorites');
+
       api.post('add-to-favorites' , {
 
         user_id:userId,

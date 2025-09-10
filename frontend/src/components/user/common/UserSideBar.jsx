@@ -45,6 +45,12 @@ function JobsDashboardSideBar() {
             <span className="sidebar-text">Job Alert</span>
           </h4>
         </NavLink>
+        <NavLink to="/ai-chat" className="sidebar-link">
+          <h4>
+            <i class="fa-solid fa-headset"></i>
+            <span className="sidebar-text">Chat</span>
+          </h4>
+        </NavLink>
 
         <NavLink to="/saved-candidates" className="sidebar-link">
           <h4>

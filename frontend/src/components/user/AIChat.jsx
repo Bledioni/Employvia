@@ -1,8 +1,9 @@
 import { useState } from "react";
 import axios from "axios";
 import { api } from "../..";
-import UserSideBar from '../user/common/UserSideBar'
-import './style/aiChat.css';
+import UserSideBar from "../user/common/UserSideBar";
+import "./style/aiChat.css";
+import UserNav from "./common/UserNav";
 
 export default function AIChat() {
   const [messages, setMessages] = useState([]);
@@ -18,7 +19,6 @@ export default function AIChat() {
     axios
       .post("http://localhost:8000/api/ai-chat", { message: input })
       .then((response) => {
-        
         setMessages((prev) => [
           ...prev,
           { sender: "ai", text: response.data.reply },
@@ -36,7 +36,7 @@ export default function AIChat() {
             })
             .then((res) => {
               console.log("Job details:", res.data);
-              setJobs(res.data);
+              // setJobs(res.data);
             })
             .catch((err) => console.error("Error fetching job:", err));
         }
@@ -51,44 +51,40 @@ export default function AIChat() {
   };
 
   return (
-    <div className="ai-chat-main-container">
-      <UserSideBar/>
-      <div style={{ maxWidth: 600, margin: "0 auto" }}>
-      <h2>EmployVia AI Chat</h2>
-      <div
-        style={{
-          border: "1px solid #ccc",
-          padding: 10,
-          minHeight: 300,
-          marginBottom: 10,
-          overflowY: "auto",
-        }}
-      >
-        {messages.map((msg, index) => (
-          <p
-            key={index}
-            style={{
-              textAlign: msg.sender === "user" ? "right" : "left",
-              margin: "5px 0",
-            }}
-          >
-            <strong>{msg.sender === "user" ? "You" : "AI"}:</strong> {msg.text}
-          </p>
-        ))}
-      </div>
+    <div className="ai-chat-main">
+      <UserNav />
+      <div className="ai-chat-main-container">
+        <UserSideBar />
+        <div className="chat-box">
+          <div className="chat-messages">
+            {messages.map((msg, index) => (
+              <p
+                key={index}
+                className={`chat-message ${
+                  msg.sender === "user" ? "user" : "ai"
+                }`}
+              >
+                <strong>{msg.sender === "user" ? "You" : "AI"}:</strong>{" "}
+                {msg.text}
+              </p>
+            ))}
+          </div>
 
-      <input
-        type="text"
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-        onKeyPress={handleKeyPress}
-        placeholder="Ask about jobs..."
-        style={{ width: "80%", padding: 8 }}
-      />
-      <button onClick={sendMessage} style={{ padding: 8 }}>
-        Send
-      </button>
-    </div>
+          <div className="chat-input-container">
+            <input
+              type="text"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              onKeyPress={handleKeyPress}
+              placeholder="Ask about jobs..."
+              className="chat-input"
+            />
+            <button onClick={sendMessage} className="chat-send-btn">
+              Send
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

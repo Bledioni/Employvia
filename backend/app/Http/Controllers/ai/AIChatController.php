@@ -26,7 +26,7 @@ class AIChatController extends Controller
             'json' => [
                 "model" => "gpt-4o-mini",
                 "messages" => [
-                    ["role" => "system", "content" => "Extract job title and city from user message in JSON like {\"job_title\": \"Front-End Developer\", \"city\": \"New York\"}"],
+                    ["role" => "system", "content" => "Extract job title and city from user message in JSON like {\"job_title\": \"Front-End Developer\", \"city\": \"New York\""],
                     ["role" => "user", "content" => $userMessage]
                 ],
             ],
@@ -35,18 +35,16 @@ class AIChatController extends Controller
         $result = json_decode($response->getBody(), true);
         $aiContent = $result['choices'][0]['message']['content'];
 
-        // Parse AI JSON
         $jobData = json_decode($aiContent, true);
         $jobTitle = $jobData['job_title'] ?? null;
         $city = $jobData['city'] ?? null;
+        $minSalary = $jobData['min_salary'] ?? null;
 
-        // Query database
         $query = Jobs::query();
         if ($jobTitle) $query->where('job_title', 'LIKE', "%$jobTitle%");
         if ($city) $query->where('city', 'LIKE', "%$city%");
         $jobs = $query->get();
 
-        // Prepare response
         if ($jobs->isEmpty()) {
             $reply = "Sorry, no jobs found matching your request.";
         } else {

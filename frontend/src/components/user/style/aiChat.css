@@ -1,6 +1,80 @@
-.ai-chat-main-container{
+.ai-chat-main {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
 
-    display: flex;
-    flex-direction: row;
+.ai-chat-main-container {
+  display: flex;
+  margin-inline: 8rem;
+}
 
+.chat-box {
+  width: 100%;
+  margin-left: 1rem;
+  padding: 20px;
+}
+
+.chat-box h2 {
+  text-align: center;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.chat-messages {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 10px;
+  min-height: 300px;
+  margin-bottom: 10px;
+  overflow-y: auto;
+  background: #fafafa;
+}
+
+.chat-message {
+  margin: 5px 0;
+  padding: 6px 10px;
+  border-radius: 8px;
+  display: inline-block;
+  max-width: 80%;
+}
+
+.chat-message.user {
+  background: #d1f0ff;
+  text-align: right;
+  float: right;
+  clear: both;
+}
+
+.chat-message.ai {
+  background: #f0f0f0;
+  text-align: left;
+  float: left;
+  clear: both;
+}
+
+.chat-input-container {
+  display: flex;
+  gap: 8px;
+}
+
+.chat-input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.chat-send-btn {
+  padding: 8px 5rem;
+  border: none;
+  border-radius: 6px;
+  background: #007bff;
+  color: white;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.chat-send-btn:hover {
+  background: #0056b3;
 }

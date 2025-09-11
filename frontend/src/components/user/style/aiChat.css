@@ -78,3 +78,8 @@
 .chat-send-btn:hover {
   background: #0056b3;
 }
+.ai-chat-table-wrapper{
+
+  transition: 0.5s ease-in-out;
+
+}

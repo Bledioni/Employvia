@@ -4,6 +4,7 @@ import UserSideBar from "../user/common/UserSideBar";
 import "./style/aiChat.css";
 import UserNav from "./common/UserNav";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 export default function AIChat() {
   const [messages, setMessages] = useState([]);
@@ -26,7 +27,7 @@ export default function AIChat() {
         ]);
 
         setInput("");
-        setJobIds(response.data.job_ids || []); 
+        setJobIds(response.data.job_ids || []);
 
         if (response.data.job_ids && response.data.job_ids.length > 0) {
           Promise.all(
@@ -55,7 +56,6 @@ export default function AIChat() {
   const handleKeyPress = (e) => {
     if (e.key === "Enter") sendMessage();
   };
-
 
   return (
     <div className="ai-chat-main">
@@ -89,37 +89,62 @@ export default function AIChat() {
               Send
             </button>
           </div>
+
           {/* Jobs list */}
           {jobs.length > 0 && (
-            <div className="user-jobs-table-wrapper">
-          <table className="user-jobs-table">
-            <tbody>
-              {jobs.map((job) => {
-                const expireDate = new Date(job.expiration_date);
-                const today = new Date();
-                const daysRemaining = Math.ceil((expireDate - today) / (1000 * 60 * 60 * 24));
-                const status = daysRemaining > 0
-                  ? <span style={{ color: '#228B22' }}><i className="fa-solid fa-circle-check"></i> Active</span>
-                  : <span style={{ color: '#e74c3c' }}><i className="fa-solid fa-circle-xmark"></i> Expired</span>;
+            <div className="ai-chat-table-wrapper">
+              <table className="user-jobs-table">
+                <tbody>
+                  {jobs.map((job, index) => {
+                    const expireDate = new Date(job.expiration_date);
+                    const today = new Date();
+                    const daysRemaining = Math.ceil(
+                      (expireDate - today) / (1000 * 60 * 60 * 24)
+                    );
+                    const status =
+                      daysRemaining > 0 ? (
+                        <span style={{ color: "#228B22" }}>
+                          <i className="fa-solid fa-circle-check"></i> Active
+                        </span>
+                      ) : (
+                        <span style={{ color: "#e74c3c" }}>
+                          <i className="fa-solid fa-circle-xmark"></i> Expired
+                        </span>
+                      );
 
-                return (
-                  <tr key={job.id}>
-                    <td>
-                      <h3 style={{fontSize: '20px'}}>{job.job_title}</h3>
-                      {daysRemaining > 0 && <p>{daysRemaining} days remaining</p>}
-                    </td>
-                    <td><p>{job.job_role}</p></td>
-                    <td><p>{job.city}</p></td>
-                    <td><p>{status}</p></td>
-                    <td>
-                      <button onClick={() => navigate(`/jobs/${job.id}`)}>Job Details</button>
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </div>
+                    return (
+                      <motion.tr
+                        key={job.id}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.4, delay: index * 0.1 }}
+                      >
+                        <td>
+                          <h3 style={{ fontSize: "20px" }}>{job.job_title}</h3>
+                          {daysRemaining > 0 && (
+                            <p>{daysRemaining} days remaining</p>
+                          )}
+                        </td>
+                        <td>
+                          <p>{job.job_role}</p>
+                        </td>
+                        <td>
+                          <p>{job.city}</p>
+                        </td>
+                        <td>
+                          <p>{status}</p>
+                        </td>
+                        <td>
+                          <button onClick={() => navigate(`/jobs/${job.id}`)}>
+                            Job Details
+                          </button>
+                        </td>
+                      </motion.tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
           )}
         </div>
       </div>

@@ -1,23 +1,24 @@
 import { useState } from "react";
-import axios from "axios";
-import { api } from "../..";
+import { api } from "../../index";
 import UserSideBar from "../user/common/UserSideBar";
 import "./style/aiChat.css";
 import UserNav from "./common/UserNav";
+import { useNavigate } from "react-router-dom";
 
 export default function AIChat() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
-  const [jobId, setJobId] = useState(null);
+  const [jobIds, setJobIds] = useState([]);
   const [jobs, setJobs] = useState([]);
+  const navigate = useNavigate();
 
   const sendMessage = () => {
     if (!input) return;
 
     setMessages((prev) => [...prev, { sender: "user", text: input }]);
 
-    axios
-      .post("http://localhost:8000/api/ai-chat", { message: input })
+    api
+      .post("ai-chat", { message: input })
       .then((response) => {
         setMessages((prev) => [
           ...prev,
@@ -25,20 +26,25 @@ export default function AIChat() {
         ]);
 
         setInput("");
-        setJobId(response.data.job_id);
+        setJobIds(response.data.job_ids || []); 
 
-        if (response.data.job_id) {
-          api
-            .get(`getjob/${response.data.job_id}`, {
-              headers: {
-                Authorization: `Bearer ${localStorage.getItem("token")}`,
-              },
+        if (response.data.job_ids && response.data.job_ids.length > 0) {
+          Promise.all(
+            response.data.job_ids.map((id) =>
+              api.get(`getjob/${id}`, {
+                headers: {
+                  Authorization: `Bearer ${localStorage.getItem("token")}`,
+                },
+              })
+            )
+          )
+            .then((results) => {
+              const fetchedJobs = results.map((res) => res.data[0]);
+              setJobs(fetchedJobs);
+
+              console.log("Fetched jobs:", fetchedJobs);
             })
-            .then((res) => {
-              console.log("Job details:", res.data);
-              // setJobs(res.data);
-            })
-            .catch((err) => console.error("Error fetching job:", err));
+            .catch((err) => console.error("Error fetching jobs:", err));
         }
       })
       .catch((error) => {
@@ -49,6 +55,7 @@ export default function AIChat() {
   const handleKeyPress = (e) => {
     if (e.key === "Enter") sendMessage();
   };
+
 
   return (
     <div className="ai-chat-main">
@@ -69,7 +76,6 @@ export default function AIChat() {
               </p>
             ))}
           </div>
-
           <div className="chat-input-container">
             <input
               type="text"
@@ -83,6 +89,38 @@ export default function AIChat() {
               Send
             </button>
           </div>
+          {/* Jobs list */}
+          {jobs.length > 0 && (
+            <div className="user-jobs-table-wrapper">
+          <table className="user-jobs-table">
+            <tbody>
+              {jobs.map((job) => {
+                const expireDate = new Date(job.expiration_date);
+                const today = new Date();
+                const daysRemaining = Math.ceil((expireDate - today) / (1000 * 60 * 60 * 24));
+                const status = daysRemaining > 0
+                  ? <span style={{ color: '#228B22' }}><i className="fa-solid fa-circle-check"></i> Active</span>
+                  : <span style={{ color: '#e74c3c' }}><i className="fa-solid fa-circle-xmark"></i> Expired</span>;
+
+                return (
+                  <tr key={job.id}>
+                    <td>
+                      <h3 style={{fontSize: '20px'}}>{job.job_title}</h3>
+                      {daysRemaining > 0 && <p>{daysRemaining} days remaining</p>}
+                    </td>
+                    <td><p>{job.job_role}</p></td>
+                    <td><p>{job.city}</p></td>
+                    <td><p>{status}</p></td>
+                    <td>
+                      <button onClick={() => navigate(`/jobs/${job.id}`)}>Job Details</button>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+          )}
         </div>
       </div>
     </div>

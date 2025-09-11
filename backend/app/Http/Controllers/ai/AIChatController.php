@@ -5,14 +5,14 @@ namespace App\Http\Controllers\ai;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
-use App\Models\Jobs; // corrected
+use App\Models\Jobs;
 
 class AIChatController extends Controller
 {
     public function chat(Request $request)
     {
         $request->validate([
-            'message' => 'required',
+            'message' => 'required|string',
         ]);
 
         $userMessage = $request->message;
@@ -26,7 +26,10 @@ class AIChatController extends Controller
             'json' => [
                 "model" => "gpt-4o-mini",
                 "messages" => [
-                    ["role" => "system", "content" => "Extract job title and city from user message in JSON like {\"job_title\": \"Front-End Developer\", \"city\": \"New York\""],
+                    [
+                        "role" => "system",
+                        "content" => "Extract job title and city from user message in JSON like {\"job_title\": \"Front-End Developer\", \"city\": \"New York\"}"
+                    ],
                     ["role" => "user", "content" => $userMessage]
                 ],
             ],
@@ -35,25 +38,41 @@ class AIChatController extends Controller
         $result = json_decode($response->getBody(), true);
         $aiContent = $result['choices'][0]['message']['content'];
 
+        // Decode AI response
         $jobData = json_decode($aiContent, true);
         $jobTitle = $jobData['job_title'] ?? null;
         $city = $jobData['city'] ?? null;
-        $minSalary = $jobData['min_salary'] ?? null;
 
+        // Build query
         $query = Jobs::query();
-        if ($jobTitle) $query->where('job_title', 'LIKE', "%$jobTitle%");
-        if ($city) $query->where('city', 'LIKE', "%$city%");
+        if ($jobTitle) {
+            $query->where('job_title', 'LIKE', "%$jobTitle%");
+        }
+        if ($city) {
+            $query->where('city', 'LIKE', "%$city%");
+        }
+
         $jobs = $query->get();
 
         if ($jobs->isEmpty()) {
-            $reply = "Sorry, no jobs found matching your request.";
-        } else {
-            $reply = "Here are some jobs I found:\n";
-            foreach ($jobs as $job) {
-                $reply .= "- {$job->job_title} ({$job->city}) - {$job->job_type} {$job->id}, Salary: {$job->min_salary}-{$job->max_salary}\n";
-            }
+            return response()->json([
+                'reply' => "Sorry, no jobs found matching your request.",
+                'job_ids' => []
+            ]);
         }
 
-        return response()->json(['reply' => $reply , 'job_id' => $job->id]);
+        // Prepare reply and job IDs
+        $reply = "Here are some jobs I found:\n";
+        $jobIds = [];
+
+        foreach ($jobs as $job) {
+            $reply .= "- {$job->job_title} ({$job->city}) - {$job->job_type} {$job->id}, Salary: {$job->min_salary}-{$job->max_salary}\n";
+            $jobIds[] = $job->id;
+        }
+
+        return response()->json([
+            'reply'   => $reply,
+            'job_ids' => $jobIds
+        ]);
     }
 }

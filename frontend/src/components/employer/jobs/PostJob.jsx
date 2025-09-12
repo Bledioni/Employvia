@@ -235,14 +235,24 @@ function PostJob() {
                         </div>
 
                         <label className="job-post-description-container">
-                            Description
-                            <textarea
-                                placeholder="Enter full job description, responsibilities, and requirements"
-                                value={job_description}
-                                onChange={(e) => setJobDescription(e.target.value)}
-                                required
-                            />
-                        </label>
+  <span>Description</span>
+  <textarea
+    placeholder="Enter full job description, responsibilities, and requirements"
+    value={job_description}
+    onChange={(e) => setJobDescription(e.target.value)}
+    required
+    rows={6}           // makes the textarea bigger by default
+    style={{
+      width: "100%",
+      padding: "10px",
+      borderRadius: "6px",
+      border: "1px solid #ccc",
+      fontSize: "14px",
+      resize: "vertical",
+    }}
+  />
+</label>
+
 
                         <button type="submit">Submit</button>
                     </form>

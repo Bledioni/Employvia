@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { api, backend } from "../..";
 import LoadingSpinner from "../../common/LoadingSpinner";
 import "./style/jobDetails.css";
+import ReactMarkdown from "react-markdown";
 
 function JobDetails() {
   const { id } = useParams();
@@ -41,51 +42,41 @@ function JobDetails() {
       })
       .catch((err) => console.log(err.response?.data || err.message))
       .finally(() => setCompanyLoading(false));
-
   }, [job?.company_id]);
 
   const handleApply = () => {
-      api
-        .post(
-          "jobapply",
-          { user_id: userId, job_id: job.id },
-          {
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
-            },
-          }
-        )
-        .then((res) => {
-          console.log("Applied successfully:", res.data);
-          alert("Application submitted!");
-        })
-        .catch((err) => {
-          console.log("Error applying:", err.response?.data || err.message);
-          alert("Failed to apply.");
-        });
-    };
-
-    const handleAddToFavorites = () => {
-
-      alert('Added to favorites');
-
-      api.post('add-to-favorites' , {
-
-        user_id:userId,
-        job_id:job.id,
-
-        headers:{
-
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-
+    api
+      .post(
+        "jobapply",
+        { user_id: userId, job_id: job.id },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
         }
+      )
+      .then((res) => {
+        console.log("Applied successfully:", res.data);
+        alert("Application submitted!");
+      })
+      .catch((err) => {
+        console.log("Error applying:", err.response?.data || err.message);
+        alert("Failed to apply.");
+      });
+  };
 
-      }
-    )
+  const handleAddToFavorites = () => {
+    alert("Added to favorites");
 
-    }
+    api.post("add-to-favorites", {
+      user_id: userId,
+      job_id: job.id,
 
-    
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
+  };
 
   // Show spinner only if job API is loading
   if (jobLoading || !job) return <LoadingSpinner />;
@@ -129,7 +120,9 @@ function JobDetails() {
         )}
         <section className="job-details-company-header-info-apply-bookmark">
           <button onClick={handleApply}>Apply</button>
-          <button onClick={handleAddToFavorites}><i class="fa-solid fa-bookmark"></i></button>
+          <button onClick={handleAddToFavorites}>
+            <i class="fa-solid fa-bookmark"></i>
+          </button>
         </section>
       </section>
 
@@ -137,7 +130,9 @@ function JobDetails() {
 
       <section className="job-details-job-info-main-container">
         <section className="job-details-job-info-first-container">
-          <p>{job.job_description}</p>
+          <ReactMarkdown>
+            {job.job_description.replace(/•/g, "-")}
+          </ReactMarkdown>
         </section>
         <section className="job-details-job-info-second-container">
           <section className="job-detail-job-info-second-container-first-type">

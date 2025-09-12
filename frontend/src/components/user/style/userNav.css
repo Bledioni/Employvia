@@ -4,8 +4,8 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    margin: 1rem;
     margin-inline: 8rem;
+    border-bottom: 1px rgb(149, 149, 149) solid;
 
 }
 

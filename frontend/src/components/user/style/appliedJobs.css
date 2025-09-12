@@ -1,0 +1,51 @@
+.applied-jobs-main-container{
+
+    display: flex;
+    flex-direction: row;
+    margin-inline: 8rem;
+    gap: 2rem;
+
+}
+
+.applied-jobs-table-wrapper {
+  overflow-x: auto;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.applied-jobs-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.applied-jobs-table th {
+  background-color: #ebebeb;
+  color: rgb(85, 85, 85);
+  text-align: left;
+  padding: 12px;
+}
+
+.applied-jobs-table td {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+}
+
+.applied-jobs-table tr:hover {
+  background-color: #f5f9ff;
+}
+
+.applied-jobs-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.applied-jobs-btn:hover {
+  background-color: #0056b3;
+}

@@ -1,0 +1,38 @@
+.user-nav-main-container{
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-inline: 8rem;
+    border-bottom: 1px rgb(149, 149, 149) solid;
+
+}
+
+.user-nav-main-container img{
+
+    width: 3rem;
+    object-fit: cover;
+    height: 3rem;
+    border-radius: 50%;
+
+}
+
+.user-nav-first-container{
+
+    display: flex;
+    justify-content:start;
+    align-items: center;
+    gap: 4rem;
+    width: 100%;
+
+}
+
+.user-nav-first-container input{
+
+    width: 60%;
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid rgb(117, 117, 117);
+
+}

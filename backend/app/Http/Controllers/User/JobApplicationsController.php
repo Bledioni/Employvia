@@ -91,10 +91,16 @@ class JobApplicationsController extends Controller
     }
 
     public function GetJobID($id){
-    $job = Jobs::where('id', $id)->first(); // get single job
-    return response()->json($job ? [$job] : []); // return as array
+    $job = Jobs::where('id', $id)->first();
+    return response()->json($job ? [$job] : []);
 }
 
+    function getAppliedJobs($user_id){
 
+        $jobs = JobApplications::where('user_id' , $user_id)->get();
+
+        return response()->json($jobs);
+
+    }
 
 }

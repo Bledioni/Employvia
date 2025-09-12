@@ -20,6 +20,8 @@ import JobDetails from "../components/user/JobDetails";
 import UserSetUpAccount from "../components/user/UserSetUpAccount";
 import HasAccountProtectedRoute from "./HasAccountProtectedRoute";
 import AIChat from "../components/user/AIChat";
+import AppliedJobs from "../components/user/AppliedJobs";
+
 
 
 
@@ -53,6 +55,7 @@ return(
         <Route path="/user-jobs" element={<ProtectedRoute><RoleProtectedRoute requiredRole="user"><HasAccountProtectedRoute><UserJobsDashboard /></HasAccountProtectedRoute></RoleProtectedRoute></ProtectedRoute>} />
         <Route path="/jobs/:id" element={<ProtectedRoute><RoleProtectedRoute requiredRole="user"><JobDetails /></RoleProtectedRoute></ProtectedRoute>} />
         <Route path="/user-set-up" element={<ProtectedRoute><RoleProtectedRoute requiredRole="user"><HasAccountProtectedRoute><UserSetUpAccount /></HasAccountProtectedRoute></RoleProtectedRoute></ProtectedRoute>} />
+        <Route path="/applied-jobs" element={<AppliedJobs />} />
         <Route path="/has-account" element={<HasAccountProtectedRoute></HasAccountProtectedRoute>} />
 
 

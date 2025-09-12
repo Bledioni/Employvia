@@ -25,7 +25,7 @@ function JobsDashboardSideBar() {
           </h4>
         </NavLink>
 
-        <NavLink to="/employer-profile" className="sidebar-link">
+        <NavLink to="/applied-jobs" className="sidebar-link">
           <h4>
             <i className="fa-solid fa-briefcase"></i>
             <span className="sidebar-text">Applied Jobs</span>

@@ -51,7 +51,6 @@ class JobController extends Controller
 
     }
 
-
     //Get All Jobs
 
     public function getAllJobs($company_id){
@@ -60,4 +59,17 @@ class JobController extends Controller
         return response()->json($jobs);
 
     }
+
+    public function GuestJob(Request $request)
+{
+    $jobTitle = $request->job_title;
+    $jobLocation = $request->city;
+
+    $jobs = Jobs::where('job_title', 'like', '%' . $jobTitle . '%')
+                ->where('city', 'like', '%' . $jobLocation . '%')
+                ->get();
+
+    return response()->json($jobs);
+}
+
 }

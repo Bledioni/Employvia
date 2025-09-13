@@ -78,6 +78,7 @@ Route::middleware(['auth:sanctum'])->post('/insertjob' , [JobController::class ,
 //Get Jobs API
 Route::middleware(['auth:sanctum'])->get('/getalljobs/{company_id}', [JobController::class , 'getAllJobs']);
 
+Route::middleware(['auth:sanctum'])->post('/get-guest-job' , [JobController:: class, 'GuestJob']);
 
 
 //Admin Dashboard

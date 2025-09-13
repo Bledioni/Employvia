@@ -21,6 +21,7 @@ import UserSetUpAccount from "../components/user/UserSetUpAccount";
 import HasAccountProtectedRoute from "./HasAccountProtectedRoute";
 import AIChat from "../components/user/AIChat";
 import AppliedJobs from "../components/user/AppliedJobs";
+import HomePage from "../components/home/HomePage";
 
 
 
@@ -30,6 +31,13 @@ function Header(){
 return(
 <Router>
     <Routes>
+
+        {/* HomePage */}
+
+        <Route path="/" element={<HomePage />} />
+        
+        {/* ----------- */}
+
         {/* ---------Authentication Routes--------- */}
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />

@@ -80,6 +80,14 @@
 }
 .ai-chat-table-wrapper{
 
-  transition: 0.5s ease-in-out;
+  margin-top: 2rem;
+
+}
+
+.user-jobs-table button{
+
+    background: #007bff;
+    padding-inline: 2rem;
+    color: white;
 
 }

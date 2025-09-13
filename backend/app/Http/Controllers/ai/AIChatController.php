@@ -61,12 +61,12 @@ class AIChatController extends Controller
             ]);
         }
 
-        // Prepare reply and job IDs
-        $reply = "Here are some jobs I found:\n";
+        // Prepare simplified reply and job IDs
+        $reply = "💼 **Jobs I Found:**\n\n";
         $jobIds = [];
 
         foreach ($jobs as $job) {
-            $reply .= "- {$job->job_title} ({$job->city}) - {$job->job_type} {$job->id}, Salary: {$job->min_salary}-{$job->max_salary}\n";
+            $reply .= "• **Location:** {$job->city} | **Type:** {$job->job_type}\n";
             $jobIds[] = $job->id;
         }
 

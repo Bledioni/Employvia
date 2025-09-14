@@ -1,0 +1,42 @@
+.home-page-nav-main-container{
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-inline: 8rem;
+
+}
+
+.home-page-nav-second-container{
+
+    display: flex;
+    gap: 1rem;
+
+}
+
+.home-page-nav-second-container button{
+
+    padding: 8px;
+    padding-inline: 2rem;
+    border-radius: 5px;
+    font-weight: 600;
+
+}
+
+.home-page-nav-second-container button:first-child{
+
+    border:1px solid#0A65CC;
+    color: #0A65CC;
+    background-color: white;
+
+}
+
+.home-page-nav-second-container button:nth-child(2){
+
+    background-color: #0A65CC;
+    border: none;
+    color: white;
+    
+
+}

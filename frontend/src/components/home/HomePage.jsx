@@ -1,5 +1,8 @@
 import react from "react";
 import NavBar from "./NavBar";
+import FindJobApi from "./api/FindJobApi";
+
+
 
 export default function HomePage(){
 
@@ -7,6 +10,7 @@ export default function HomePage(){
 
         <div>
             <NavBar/>
+            <FindJobApi/>
         </div>
 
     )

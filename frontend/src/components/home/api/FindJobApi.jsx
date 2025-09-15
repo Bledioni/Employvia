@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import {api} from "../../../index";
+import { useNavigate } from "react-router-dom";
 
 function FindJobApi() {
   const [jobTitle, setJobTitle] = useState("");
   const [city, setCity] = useState("");
+  const navigate = useNavigate();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -17,6 +19,7 @@ function FindJobApi() {
       },
     }).then((res) => {
       console.log(res.data);
+      navigate('/find-job-section', { state: { jobs: res.data } });
     });
   }
 

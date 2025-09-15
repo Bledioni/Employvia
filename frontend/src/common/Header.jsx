@@ -22,6 +22,8 @@ import HasAccountProtectedRoute from "./HasAccountProtectedRoute";
 import AIChat from "../components/user/AIChat";
 import AppliedJobs from "../components/user/AppliedJobs";
 import HomePage from "../components/home/HomePage";
+import FindJobSection from "../components/home/api/FindJobSection";
+
 
 
 
@@ -35,6 +37,7 @@ return(
         {/* HomePage */}
 
         <Route path="/" element={<HomePage />} />
+        <Route path="/find-job-section" element={<FindJobSection></FindJobSection>} />
         
         {/* ----------- */}
 
@@ -65,6 +68,7 @@ return(
         <Route path="/user-set-up" element={<ProtectedRoute><RoleProtectedRoute requiredRole="user"><HasAccountProtectedRoute><UserSetUpAccount /></HasAccountProtectedRoute></RoleProtectedRoute></ProtectedRoute>} />
         <Route path="/applied-jobs" element={<AppliedJobs />} />
         <Route path="/has-account" element={<HasAccountProtectedRoute></HasAccountProtectedRoute>} />
+        
 
 
         <Route path="/ai-chat" element={<AIChat></AIChat>} />

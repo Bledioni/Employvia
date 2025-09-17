@@ -3,6 +3,7 @@ import { api } from "../../../index";
 import { useNavigate } from "react-router-dom";
 import "../style/findJobApi.css";
 import guestImage from '../../../images/GuestPage/image.png'
+import GetAllJobs from "./GetAllJobs";
 
 function FindJobApi() {
   const [jobTitle, setJobTitle] = useState("");
@@ -59,6 +60,12 @@ function FindJobApi() {
         <div className="find-job-second-section">
           <img src={guestImage} alt="" />
         </div>
+      </div>
+      <div className="website-stats-main-container">
+        <GetAllJobs/>
+        <GetAllJobs/>
+        <GetAllJobs/>
+        <GetAllJobs/>
       </div>
     </div>
   );

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { api } from "../../..";
 import { div } from "framer-motion/client";
+import '../style/statsCounter.css';
 
 export default function GetAllJobs() {
   const [counter, setCounter] = useState("");
@@ -23,9 +24,15 @@ export default function GetAllJobs() {
 
   return(
 
-    <div>
-        <h1>{counter}</h1>
+    <div className="employvia-stats-counters-main-container">
+        <p className="employvia-stats-counter-icon"><i class="fa-solid fa-briefcase"></i></p>
+        <div className="employvia-stats-counters">
+          <p>{counter}</p>
+          <p>Live Jobs</p>
+        </div>
+        <style></style>
     </div>
+    
 
 )
 

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { api } from "../../../index";
 import { useNavigate } from "react-router-dom";
 import "../style/findJobApi.css";
+import guestImage from '../../../images/GuestPage/image.png'
 
 function FindJobApi() {
   const [jobTitle, setJobTitle] = useState("");
@@ -54,6 +55,9 @@ function FindJobApi() {
               <button type="submit">Find Job</button>
             </form>
           </div>
+        </div>
+        <div className="find-job-second-section">
+          <img src={guestImage} alt="" />
         </div>
       </div>
     </div>

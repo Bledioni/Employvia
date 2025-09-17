@@ -23,6 +23,8 @@ import AIChat from "../components/user/AIChat";
 import AppliedJobs from "../components/user/AppliedJobs";
 import HomePage from "../components/home/HomePage";
 import FindJobSection from "../components/home/api/FindJobSection";
+import GetAllJobs from "../components/home/api/GetAllJobs";
+
 
 
 
@@ -38,6 +40,7 @@ return(
 
         <Route path="/" element={<HomePage />} />
         <Route path="/find-job-section" element={<FindJobSection></FindJobSection>} />
+        <Route path="/get-jobs-counter" element={<GetAllJobs></GetAllJobs>} />
         
         {/* ----------- */}
 

@@ -59,6 +59,11 @@ class JobApplicationsController extends Controller
 {
     try {
         $jobs = Jobs::all();
+        $counter = 0;
+
+        for ($i = 0; $i < count($jobs); $i++) {
+            $counter++ ;
+        }
 
         if ($jobs->isEmpty()) {
             return response()->json([
@@ -71,7 +76,8 @@ class JobApplicationsController extends Controller
         return response()->json([
             'success' => true,
             'message' => 'Jobs retrieved successfully',
-            'data'    => $jobs
+            'data'    => $jobs,
+            'total_jobs' => $counter,
         ], 200); 
     } 
     catch (\Illuminate\Database\QueryException $e) {
@@ -88,6 +94,7 @@ class JobApplicationsController extends Controller
             'error'   => $e->getMessage()
         ], 500); 
     }
+
     }
 
     public function GetJobID($id){

@@ -63,6 +63,8 @@ Route::middleware(['auth:sanctum'])->get('/get-all-info/{user_id}' , [Authentica
 //Count all Users
 Route::middleware(['auth:sanctum'])->get('/count-all-users' , [AuthenticationController::class, 'CountAllUSers']);
 
+Route::middleware(['auth:sanctum'])->get('/get-all-popular-jobs' , [JobController::class, 'GetAllPopularJobs']);
+
 // ------------------------------------------------------
 
 // Employer Dashboard

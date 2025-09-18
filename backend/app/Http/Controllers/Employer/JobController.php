@@ -72,4 +72,17 @@ class JobController extends Controller
     return response()->json($jobs);
 }
 
+    public function GetAllPopularJobs(){
+
+        $jobs = Jobs::all();
+
+        return response()->json([
+
+            'all_jobs' => $jobs,
+
+        ]);
+
+    }
+
+
 }

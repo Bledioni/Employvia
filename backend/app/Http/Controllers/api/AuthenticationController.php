@@ -128,5 +128,27 @@ class AuthenticationController extends Controller
             'message' => 'Something went wrong',
         ], 500);
     }
+
 }
+
+    public function CountAllUSers(){
+
+        $users = User::where('role', 'user')->get();
+
+        $counter = 0;
+
+        for($i = 0; $i < count($users) ; $i++){
+
+            $counter++;
+
+        }
+
+        return response()->json([
+
+            'total_users' => $counter,
+
+        ]);
+
+    }
+
 }

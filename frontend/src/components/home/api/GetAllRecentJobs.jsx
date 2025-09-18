@@ -27,7 +27,7 @@ export default function GetAllJobs() {
         <p className="employvia-stats-counter-icon"><i class="fa-solid fa-briefcase"></i></p>
         <div className="employvia-stats-counters">
           <p>{counter}</p>
-          <p>Live Jobs</p>
+          <p>Recent Jobs</p>
         </div>
         <style></style>
     </div>

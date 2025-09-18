@@ -7,13 +7,13 @@ export default function GetAllJobs() {
 
   useEffect(() => {
     api
-      .get("getalljobs", {
+      .get("count-all-users", {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       })
       .then((res) => {
-        setCounter(res.data.total_jobs);
+        setCounter(res.data.total_users);
         
       })
       .catch((err) => {
@@ -27,7 +27,7 @@ export default function GetAllJobs() {
         <p className="employvia-stats-counter-icon"><i class="fa-solid fa-briefcase"></i></p>
         <div className="employvia-stats-counters">
           <p>{counter}</p>
-          <p>Live Jobs</p>
+          <p>Candidates</p>
         </div>
         <style></style>
     </div>

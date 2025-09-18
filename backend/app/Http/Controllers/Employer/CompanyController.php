@@ -60,4 +60,24 @@ class CompanyController extends Controller
         'companies' => $companies          
     ]);
 }
+
+    public function GetCompanies(){
+
+        $companies = Companies::all();
+        $counter = 0;
+
+        for($i = 0;$i< count($companies) ; $i++){
+
+            $counter++;
+
+        }
+
+        return response()->json([
+
+            'total_companies' => $counter,
+
+        ]);
+
+    }
+
 }

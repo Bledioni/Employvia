@@ -4,6 +4,9 @@ import { useNavigate } from "react-router-dom";
 import "../style/findJobApi.css";
 import guestImage from '../../../images/GuestPage/image.png'
 import GetAllJobs from "./GetAllJobs";
+import GetAllCompanies from './GetAllCompanies';
+import GetAllUsers from './GetAllUsers';
+import GetAllRecentJobs from './GetAllRecentJobs';
 
 function FindJobApi() {
   const [jobTitle, setJobTitle] = useState("");
@@ -63,9 +66,9 @@ function FindJobApi() {
       </div>
       <div className="website-stats-main-container">
         <GetAllJobs/>
-        <GetAllJobs/>
-        <GetAllJobs/>
-        <GetAllJobs/>
+        <GetAllCompanies/>
+        <GetAllUsers/>
+        <GetAllRecentJobs/>
       </div>
     </div>
   );

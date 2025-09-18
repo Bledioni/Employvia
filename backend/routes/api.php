@@ -60,6 +60,9 @@ Route::post('/forgetpassword' , [ForgetPasswordController::class , 'ForgetPasswo
 //Get All Users
 Route::middleware(['auth:sanctum'])->get('/get-all-info/{user_id}' , [AuthenticationController::class, 'GetAllUsers']);
 
+//Count all Users
+Route::middleware(['auth:sanctum'])->get('/count-all-users' , [AuthenticationController::class, 'CountAllUSers']);
+
 // ------------------------------------------------------
 
 // Employer Dashboard
@@ -70,6 +73,8 @@ Route::middleware(['auth:sanctum'])->post('/insertcompany', [CompanyController::
 
 //Check User Company API
 Route::middleware(['auth:sanctum'])->get('/check-company/{user_id}', [CompanyController::class, 'checkCompany']);
+
+Route::middleware(['auth:sanctum'])->get('/get-companies', [CompanyController::class, 'GetCompanies']);
 
 
 //Insert Job API 

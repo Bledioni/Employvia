@@ -1,0 +1,30 @@
+.popular-vacancies-main-container{
+
+    margin-inline: 8rem;
+
+}
+
+.popular-vacancies-main-container h4{
+
+    font-weight: 600;
+    font-size: 40px;
+
+}
+
+.popular-vacancies-jobs-container{
+
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    column-gap: 4rem;
+    row-gap: 4rem;
+}
+
+.popular-vacancies-jobs-container h5{
+
+    font-size: 24px;
+    margin: 0;
+    font-weight: 500;
+    width: 15rem;
+}
+

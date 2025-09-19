@@ -1,7 +1,8 @@
 import react from "react";
 import NavBar from "./NavBar";
 import FindJobApi from "./api/FindJobApi";
-
+import FetchJobs from "./popularVacanies/FetchJobs";
+import Process from "./popularVacanies/Process";
 
 
 export default function HomePage(){
@@ -11,6 +12,8 @@ export default function HomePage(){
         <div>
             <NavBar/>
             <FindJobApi/>
+            <FetchJobs />
+            <Process/>
         </div>
 
     )

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { api } from "../../../index";
 import { useNavigate } from "react-router-dom";
 import "../style/findJobApi.css";
-import guestImage from '../../../images/GuestPage/image.png'
+import ManWorking from '../../../images/GuestPage/ManWorking.png'
 import GetAllJobs from "./GetAllJobs";
 import GetAllCompanies from './GetAllCompanies';
 import GetAllUsers from './GetAllUsers';
@@ -61,7 +61,7 @@ function FindJobApi() {
           </div>
         </div>
         <div className="find-job-second-section">
-          <img src={guestImage} alt="" />
+          <img src={ManWorking} alt="" />
         </div>
       </div>
       <div className="website-stats-main-container">
